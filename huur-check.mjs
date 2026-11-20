@@ -439,7 +439,24 @@ function meldingVoor(w) {
 }
 
 let teMelden = [];
-if (TOPIC && !FIXTURES && /^[-_A-Za-z0-9]{1,64}$/.test(TOPIC)) {
+const TOPIC_OK = /^[-_A-Za-z0-9]{1,64}$/.test(TOPIC);
+
+// Testmelding (knop "Run workflow" met het vinkje "Testmelding sturen" aan)
+if (/^(true|ja|1)$/i.test(env("TESTMELDING"))) {
+  if (!TOPIC) console.log("::error::Testmelding niet verstuurd: NTFY_TOPIC ontbreekt in Settings → Secrets and variables → Actions.");
+  else if (!TOPIC_OK) console.log("::error::Testmelding niet verstuurd: NTFY_TOPIC is geen geldig ntfy-onderwerp (alleen letters, cijfers, - en _).");
+  else {
+    const voorbeeld = woningen.find(pastVoorMelding) || woningen[0];
+    const msg = voorbeeld ? meldingVoor(voorbeeld) : { message: "Er staan nu geen woningen in het overzicht.", click: APP_URL };
+    msg.title = "Testmelding" + (voorbeeld ? ` · ${voorbeeld.bronNaam}: ${voorbeeld.adres}` : "");
+    msg.message = `Meldingen werken! Zo ziet een melding eruit.\n${msg.message}`;
+    msg.tags = ["white_check_mark"];
+    const ok = await stuur(msg);
+    console.log(ok ? "Testmelding verstuurd." : "::error::Testmelding kon niet worden verstuurd (ntfy.sh niet bereikbaar).");
+  }
+}
+
+if (TOPIC && !FIXTURES && TOPIC_OK) {
   // Nieuw = niet in de vorige stand. Een site die er net bij komt telt niet mee
   // (anders krijg je in één keer al zijn woningen als melding).
   const hadBron = new Set((vorige.woningen || []).map((w) => w.bron));
