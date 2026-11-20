@@ -1,1 +1,41 @@
+name: Huurdashboard verzamelen
 
+on:
+  schedule:
+    - cron: "7,37 * * * *" # elk half uur (GitHub kan soms wat later zijn)
+  workflow_dispatch: # handmatig starten via de knop "Run workflow"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: huur-verzamelaar
+  cancel-in-progress: false
+
+jobs:
+  verzamel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Aanbod van makelaars ophalen
+        run: node huur-check.mjs
+        env:
+          NODE_OPTIONS: --dns-result-order=ipv4first
+          POSTCODES: ${{ vars.POSTCODES }}
+      - name: Opslaan
+        run: |
+          git config user.name "huur-verzamelaar"
+          git config user.email "huur-verzamelaar@users.noreply.github.com"
+          [ -f huur-aanbod.json ] || exit 0
+          git add huur-aanbod.json
+          if git diff --cached --quiet; then
+            echo "Geen veranderingen."
+          else
+            git commit -m "Huurdashboard: aanbod bijgewerkt"
+            git pull --rebase --quiet
+            git push
+          fi
