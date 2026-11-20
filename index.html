@@ -743,7 +743,9 @@ function renderNotices() {
 }
 function renderFoot() {
   const regels = Object.entries(bronStatus).map(([id, b]) => (b.ok ? `${esc(b.naam)} ${b.aantal}` : `<span class="bad">${esc(b.naam)}: niet opgehaald</span>`));
-  $("#foot").innerHTML = regels.length ? `Makelaars ${bijgewerkt ? "bijgewerkt " + esc(geleden(bijgewerkt)) + (/\d$|uur|min/.test(geleden(bijgewerkt)) ? " geleden" : "") : ""} · ${regels.join(" · ")}` : "";
+  $("#foot").innerHTML = (regels.length ? `Makelaars ${bijgewerkt ? "bijgewerkt " + esc(geleden(bijgewerkt)) + (/\d$|uur|min/.test(geleden(bijgewerkt)) ? " geleden" : "") : ""} · ${regels.join(" · ")}` : "") +
+    `<div style="margin-top:10px"><a class="btn" href="https://github.com/DerleyMMS/HuurDashboard/actions/workflows/huur-verzamelaar.yml" target="_blank" rel="noopener">Testmelding sturen</a>
+    <div style="margin-top:6px">Opent GitHub: klik <b>Run workflow</b>, vink <b>Testmelding sturen</b> aan en klik nogmaals <b>Run workflow</b>. Binnen een minuut krijg je een melding.</div></div>`;
 }
 function render() {
   const fc = actieveFilters(); $("#fcount").hidden = !fc; $("#fcount").textContent = fc;
