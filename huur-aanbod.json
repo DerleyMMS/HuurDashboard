@@ -1,47 +1,47 @@
 {
- "bijgewerkt": "2026-11-20T11:37:22.995Z",
+ "bijgewerkt": "2026-11-20T11:53:28.782Z",
  "bronnen": {
   "rdam": {
    "naam": "Rdam Makelaars",
    "ok": true,
    "aantal": 68,
-   "tijd": "2026-11-20T11:37:22.995Z"
+   "tijd": "2026-11-20T11:53:28.782Z"
   },
   "riva": {
    "naam": "Riva Rentals",
    "ok": true,
    "aantal": 49,
-   "tijd": "2026-11-20T11:37:22.995Z"
+   "tijd": "2026-11-20T11:53:28.782Z"
   },
   "voorberg": {
    "naam": "Voorberg",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-20T11:37:22.995Z"
+   "tijd": "2026-11-20T11:53:28.782Z"
   },
   "fonzt": {
    "naam": "FONZT",
    "ok": true,
    "aantal": 0,
-   "tijd": "2026-11-20T11:37:22.995Z"
+   "tijd": "2026-11-20T11:53:28.782Z"
   },
   "atta": {
    "naam": "Atta Makelaars",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-20T11:37:22.995Z"
+   "tijd": "2026-11-20T11:53:28.782Z"
   },
   "ikwilhuren": {
    "naam": "Ik wil huren",
    "ok": true,
    "aantal": 8,
-   "tijd": "2026-11-20T11:37:22.995Z"
+   "tijd": "2026-11-20T11:53:28.782Z"
   },
   "woonzeker": {
    "naam": "Woonzeker",
    "ok": true,
    "aantal": 21,
-   "tijd": "2026-11-20T11:37:22.995Z"
+   "tijd": "2026-11-20T11:53:28.782Z"
   }
  },
  "woningen": [
@@ -79,8 +79,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/henegouwerlaan-rotterdam-h178262250/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/94df9954.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.920875,
+   "lng": 4.463182,
    "eersteGezien": "2026-11-20T11:33:25.546Z"
   },
   {
@@ -98,8 +98,8 @@
    "type": "",
    "url": "https://www.voorberg.nl/woningen/glazoenowlaan-3-rotterdam-12008b7acea8ef79e41ed8b403b16ac013e06/",
    "foto": "https://images.realworks.nl/servlets/images/media.objectmedia/297709223.jpg?portalid=4286&check=api_sha256%3ac5aa21e6ca52edd14fbb5661afc35bcd896edc3c543901dada9ac157a60af520&=20261020213218&width=1080&height=720",
-   "lat": null,
-   "lng": null,
+   "lat": 51.958837,
+   "lng": 4.513571,
    "eersteGezien": "2026-11-20T11:33:25.546Z"
   },
   {
@@ -117,8 +117,8 @@
    "type": "",
    "url": "https://atta.nl/object/zoetermeer-engelandlaan-266-a-8084997/",
    "foto": "https://venumfilestore.blob.core.windows.net/pub/5c41a8c4/8228/4917/9c72/e5a4952c226c/$m/ai%207.jpg",
-   "lat": null,
-   "lng": null,
+   "lat": 52.060252,
+   "lng": 4.490838,
    "eersteGezien": "2026-11-20T11:33:25.546Z"
   },
   {
@@ -136,8 +136,8 @@
    "type": "Appartement",
    "url": "https://rdammakelaars.nl/property/stadhoudersweg-151b/",
    "foto": "https://rdammakelaars.nl/wp-content/uploads/2026/11/image00003-488x326.jpeg",
-   "lat": null,
-   "lng": null,
+   "lat": 51.930045,
+   "lng": 4.4571,
    "eersteGezien": "2026-11-20T11:32:25.546Z"
   },
   {
@@ -155,8 +155,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/rosestraat-rotterdam-h178262248/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/653ac60e.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.907182,
+   "lng": 4.506662,
    "eersteGezien": "2026-11-20T11:32:25.546Z"
   },
   {
@@ -193,8 +193,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/mathenesserlaan-rotterdam-h178262247/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/d4ba4daa.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.914093,
+   "lng": 4.456749,
    "eersteGezien": "2026-11-20T11:31:25.546Z"
   },
   {
@@ -231,8 +231,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/piet-van-de-polsingel-rotterdam-h178262174/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/15089be7.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.950217,
+   "lng": 4.515801,
    "eersteGezien": "2026-11-20T11:30:25.546Z"
   },
   {
@@ -269,8 +269,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/mathenesserlaan-rotterdam-h178262246/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/5a2ddb82.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.914093,
+   "lng": 4.456749,
    "eersteGezien": "2026-11-20T11:29:25.546Z"
   },
   {
@@ -307,8 +307,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/kortebrantstraat-rotterdam-h178262245/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/12f790ff.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.926324,
+   "lng": 4.486154,
    "eersteGezien": "2026-11-20T11:28:25.546Z"
   },
   {
@@ -345,8 +345,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/willem-beukelszstraat-rotterdam-h178260122/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/53902571.1771896507-891.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.914716,
+   "lng": 4.435948,
    "eersteGezien": "2026-11-20T11:27:25.546Z"
   },
   {
@@ -383,8 +383,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/verzetsstraat-nieuwerkerk-aan-den-ijssel-h178262244/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/65006e9b.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.967858,
+   "lng": 4.605451,
    "eersteGezien": "2026-11-20T11:26:25.546Z"
   },
   {
@@ -421,8 +421,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/bergweg-rotterdam-h178262198/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/c99e88ac.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.93683,
+   "lng": 4.47769,
    "eersteGezien": "2026-11-20T11:25:25.546Z"
   },
   {
@@ -459,8 +459,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/goede-verwachtinghof-hoogvliet-rotterdam-h178262098/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/4af05f863488ac9041eeac965a40770e?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.861044,
+   "lng": 4.351184,
    "eersteGezien": "2026-11-20T11:24:25.546Z"
   },
   {
@@ -497,8 +497,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/admiraal-de-ruyterweg-rotterdam-h178261767/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/d6a90d39.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.927417,
+   "lng": 4.486706,
    "eersteGezien": "2026-11-20T11:23:25.546Z"
   },
   {
@@ -535,8 +535,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/verzetsstraat-nieuwerkerk-aan-den-ijssel-h178262243/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/8b20b8bf.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.967858,
+   "lng": 4.605451,
    "eersteGezien": "2026-11-20T11:22:25.546Z"
   },
   {
@@ -573,8 +573,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/gedempte-zalmhaven-rotterdam-h178260370/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/1f291f39.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.910758,
+   "lng": 4.479806,
    "eersteGezien": "2026-11-20T11:21:25.546Z"
   },
   {
@@ -611,8 +611,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/vaartweg-vlaardingen-h178262242/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/5312acf6.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.914392,
+   "lng": 4.342278,
    "eersteGezien": "2026-11-20T11:20:25.546Z"
   },
   {
@@ -649,8 +649,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/baan-rotterdam-h178262077/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/c4c2d9fa.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.913788,
+   "lng": 4.480531,
    "eersteGezien": "2026-11-20T11:19:25.546Z"
   },
   {
@@ -687,8 +687,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/laan-op-zuid-rotterdam-h178262241/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/1648c45a.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.904353,
+   "lng": 4.502565,
    "eersteGezien": "2026-11-20T11:18:25.546Z"
   },
   {
@@ -725,8 +725,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/karel-doormanstraat-rotterdam-h178260706/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/53903184.1771891558-953.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.919796,
+   "lng": 4.475135,
    "eersteGezien": "2026-11-20T11:17:25.546Z"
   },
   {
@@ -763,8 +763,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/beukelsdijk-rotterdam-h178262240/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/8cdf47b8.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.921327,
+   "lng": 4.456168,
    "eersteGezien": "2026-11-20T11:16:25.546Z"
   },
   {
@@ -801,8 +801,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/sint-jobskade-rotterdam-h178262238/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/ee37c14a.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.903417,
+   "lng": 4.462901,
    "eersteGezien": "2026-11-20T11:15:25.546Z"
   },
   {
@@ -839,8 +839,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/weena-rotterdam-h178262237/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/8d440c17.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.923041,
+   "lng": 4.469809,
    "eersteGezien": "2026-11-20T11:14:25.546Z"
   },
   {
@@ -877,8 +877,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/walravenstraat-rotterdam-h178262181/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/0f44adbc.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.891739,
+   "lng": 4.509598,
    "eersteGezien": "2026-11-20T11:13:25.546Z"
   },
   {
@@ -915,8 +915,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/puck-van-heelstraat-rotterdam-h178260688/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/53903166.1771895022-88.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.896655,
+   "lng": 4.525062,
    "eersteGezien": "2026-11-20T11:12:25.546Z"
   },
   {
@@ -953,8 +953,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/s-gravendijkwal-rotterdam-h178262225/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/21737671.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.911348,
+   "lng": 4.464331,
    "eersteGezien": "2026-11-20T11:11:25.546Z"
   },
   {
@@ -991,8 +991,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/s-gravendijkwal-rotterdam-h178262224/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/5b33a818.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.911348,
+   "lng": 4.464331,
    "eersteGezien": "2026-11-20T11:10:25.546Z"
   },
   {
@@ -1029,8 +1029,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/1e-middellandstraat-rotterdam-h178262223/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/6b58b872.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.918889,
+   "lng": 4.462057,
    "eersteGezien": "2026-11-20T11:09:25.546Z"
   },
   {
@@ -1067,8 +1067,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/saftlevenstraat-rotterdam-h178262222/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/69161947.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.913299,
+   "lng": 4.465524,
    "eersteGezien": "2026-11-20T11:08:25.546Z"
   },
   {
@@ -1105,8 +1105,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/saftlevenstraat-rotterdam-h178262221/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/c4b344de.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.913299,
+   "lng": 4.465524,
    "eersteGezien": "2026-11-20T11:07:25.546Z"
   },
   {
@@ -1124,8 +1124,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/kruisplein-rotterdam-h178262220/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/4eb97655.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.921737,
+   "lng": 4.470886,
    "eersteGezien": "2026-11-20T11:06:25.546Z"
   },
   {
@@ -1162,8 +1162,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/saftlevenstraat-rotterdam-h178262219/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/45cc3784.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.913299,
+   "lng": 4.465524,
    "eersteGezien": "2026-11-20T11:05:25.546Z"
   },
   {
@@ -1200,8 +1200,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/teylerstraat-schiedam-h178262218/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/ee63d93d.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.919874,
+   "lng": 4.41038,
    "eersteGezien": "2026-11-20T11:04:25.546Z"
   },
   {
@@ -1238,8 +1238,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/teylerstraat-schiedam-h178262217/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/dc972d9f.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.919874,
+   "lng": 4.41038,
    "eersteGezien": "2026-11-20T11:03:25.546Z"
   },
   {
@@ -1276,8 +1276,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/teylerstraat-schiedam-h178262215/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/feccd3f9.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.919874,
+   "lng": 4.41038,
    "eersteGezien": "2026-11-20T11:02:25.546Z"
   },
   {
@@ -1314,8 +1314,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/teylerstraat-schiedam-h178262216/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/1ac55ee6.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.919874,
+   "lng": 4.41038,
    "eersteGezien": "2026-11-20T11:01:25.546Z"
   },
   {
@@ -1352,8 +1352,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/feijenoordkade-rotterdam-h178262214/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/5260cc4c.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.913138,
+   "lng": 4.511152,
    "eersteGezien": "2026-11-20T11:00:25.546Z"
   },
   {
@@ -1390,8 +1390,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/taborstraat-rotterdam-h178260224/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/53902680.1771883353-708.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.926535,
+   "lng": 4.508295,
    "eersteGezien": "2026-11-20T10:59:25.546Z"
   },
   {
@@ -1428,8 +1428,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/schaatsbaan-rotterdam-h178262203/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/8815029f.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.92302,
+   "lng": 4.466349,
    "eersteGezien": "2026-11-20T10:58:25.546Z"
   },
   {
@@ -1466,8 +1466,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/mathenesserlaan-rotterdam-h178262202/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/7d419e91.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.914093,
+   "lng": 4.456749,
    "eersteGezien": "2026-11-20T10:57:25.546Z"
   },
   {
@@ -1504,8 +1504,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/mathenesserlaan-rotterdam-h178262201/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/fb10ca9f.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.914093,
+   "lng": 4.456749,
    "eersteGezien": "2026-11-20T10:56:25.546Z"
   },
   {
@@ -1542,8 +1542,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/mathenesserlaan-rotterdam-h178262200/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/7c9b387e.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.914093,
+   "lng": 4.456749,
    "eersteGezien": "2026-11-20T10:55:25.546Z"
   },
   {
@@ -1580,8 +1580,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/mathenesserlaan-rotterdam-h178262176/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/cd97884c.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.914093,
+   "lng": 4.456749,
    "eersteGezien": "2026-11-20T10:54:25.546Z"
   },
   {
@@ -1618,8 +1618,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/mathenesserlaan-rotterdam-h178262175/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/6894b4ef.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.914093,
+   "lng": 4.456749,
    "eersteGezien": "2026-11-20T10:53:25.546Z"
   },
   {
@@ -1656,8 +1656,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/mathenesserlaan-rotterdam-h178262173/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/57f5fb4f.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.914093,
+   "lng": 4.456749,
    "eersteGezien": "2026-11-20T10:52:25.546Z"
   },
   {
@@ -1694,8 +1694,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/hordijk-rotterdam-h178262172/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/aad9d42e.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.877237,
+   "lng": 4.541281,
    "eersteGezien": "2026-11-20T10:51:25.546Z"
   },
   {
@@ -1732,8 +1732,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/herman-robbersstraat-rotterdam-h178262066/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/4aee7d95746cc5b4031fb656f98dee76?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.92458,
+   "lng": 4.491952,
    "eersteGezien": "2026-11-20T10:50:25.546Z"
   },
   {
@@ -1770,8 +1770,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/boompjes-rotterdam-h178262113/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/a06ed2f5e9de9d85649f8aefe72edfd5?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.915402,
+   "lng": 4.48871,
    "eersteGezien": "2026-11-20T10:49:25.546Z"
   },
   {
@@ -1808,8 +1808,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/catharina-beersmansstraat-rotterdam-h178262106/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/b1b98c3b1f16e6889622101d0b34ec3f?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.908378,
+   "lng": 4.443037,
    "eersteGezien": "2026-11-20T10:48:25.546Z"
   },
   {
@@ -1846,8 +1846,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/s-gravenweg-rotterdam-h178260770/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/53903250.1771890621-869.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.921707,
+   "lng": 4.538174,
    "eersteGezien": "2026-11-20T10:47:25.546Z"
   },
   {
@@ -1884,8 +1884,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/strevelsweg-rotterdam-h178260999/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/53903481.1771894034-46.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.889087,
+   "lng": 4.496284,
    "eersteGezien": "2026-11-20T10:46:25.546Z"
   },
   {
@@ -1922,8 +1922,8 @@
    "type": "",
    "url": "https://rivarentals.nl/object/s-gravenweg-rotterdam-h178260677/",
    "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/53903155.1771899749-23.jpg?width=600",
-   "lat": null,
-   "lng": null,
+   "lat": 51.921707,
+   "lng": 4.538174,
    "eersteGezien": "2026-11-20T10:45:25.546Z"
   },
   {
@@ -2340,8 +2340,8 @@
    "type": "Appartement",
    "url": "https://ikwilhuren.nu/object/den-haag-2516ck-139-h-maanplein-d7c3d0ea9c092daf5e84888de0b455a2/",
    "foto": "https://b.static.nbo.nl/media/91/919cba5f612d09c66699a619efa841a7/768x510/thumb.jpg",
-   "lat": null,
-   "lng": null,
+   "lat": 52.067025,
+   "lng": 4.350506,
    "eersteGezien": "2026-11-19T23:44:16.145Z"
   },
   {
@@ -2359,8 +2359,8 @@
    "type": "Appartement",
    "url": "https://ikwilhuren.nu/object/schiedam-3119xt-733-s-gravelandseweg-cabf9205af14703eb3c0b0d401f94079/",
    "foto": "https://c.static.nbo.nl/media/0a/0adb70bd989fb2d018316534ec889961/768x510/thumb.jpg",
-   "lat": null,
-   "lng": null,
+   "lat": 51.92083,
+   "lng": 4.402719,
    "eersteGezien": "2026-11-19T23:44:16.145Z"
   },
   {
@@ -2378,8 +2378,8 @@
    "type": "Appartement",
    "url": "https://ikwilhuren.nu/object/den-haag-2511dk-225-turfhaven-17f6123edfd3ce0b2ea89d98ad8a4628/",
    "foto": "https://b.static.nbo.nl/media/b9/b94ab9da1b96dadf535da7a2bb56a9c2/768x510/thumb.jpg",
-   "lat": null,
-   "lng": null,
+   "lat": 52.077627,
+   "lng": 4.319541,
    "eersteGezien": "2026-11-19T23:44:16.145Z"
   },
   {
@@ -2397,8 +2397,8 @@
    "type": "Appartement",
    "url": "https://ikwilhuren.nu/object/den-haag-2511dk-405-turfhaven-d2f86b059929f53d4c129eace044f631/",
    "foto": "https://b.static.nbo.nl/media/b9/b94ab9da1b96dadf535da7a2bb56a9c2/768x510/thumb.jpg",
-   "lat": null,
-   "lng": null,
+   "lat": 52.077759,
+   "lng": 4.319636,
    "eersteGezien": "2026-11-19T23:44:16.145Z"
   },
   {
@@ -2416,8 +2416,8 @@
    "type": "Appartement",
    "url": "https://ikwilhuren.nu/object/alphen-aan-den-rijn-2405vv-187-willem-de-zwijgerlaan-7a323bf53b69c64b3bd8037ef841fc01/",
    "foto": "https://d.static.nbo.nl/media/e3/e34f723b9bb025551cbe3507ead3d562/768x510/thumb.jpg",
-   "lat": null,
-   "lng": null,
+   "lat": 52.134063,
+   "lng": 4.657063,
    "eersteGezien": "2026-11-19T23:44:16.145Z"
   },
   {
@@ -2435,8 +2435,8 @@
    "type": "Appartement",
    "url": "https://ikwilhuren.nu/object/den-haag-2555sg-29-robert-stolzplantsoen-37089435c11c287a4315d8393d85903e/",
    "foto": "https://c.static.nbo.nl/media/84/8432537d380f8fe9795b015bea0c29ad/768x510/thumb.jpg",
-   "lat": null,
-   "lng": null,
+   "lat": 52.062218,
+   "lng": 4.234205,
    "eersteGezien": "2026-11-19T23:44:16.145Z"
   },
   {
@@ -2454,8 +2454,8 @@
    "type": "Appartement",
    "url": "https://ikwilhuren.nu/object/vlaardingen-3137da-149-aristide-briandring-d05b898c9d740eb592a8315a15f5f71b/",
    "foto": "https://a.static.nbo.nl/media/77/77ce00f2e35b7bfcd39c797676af4537/768x510/thumb.jpg",
-   "lat": null,
-   "lng": null,
+   "lat": 51.932397,
+   "lng": 4.34627,
    "eersteGezien": "2026-11-19T23:44:16.145Z"
   },
   {
@@ -2473,8 +2473,8 @@
    "type": "Appartement",
    "url": "https://ikwilhuren.nu/object/voorburg-2274ez-205-guido-gezellestraat-4dcdea846e9a0d1dad85a91e0b966684/",
    "foto": "https://a.static.nbo.nl/media/f3/f3cb865d04e782cb78a152b39f3bac8b/768x510/thumb.jpg",
-   "lat": null,
-   "lng": null,
+   "lat": 52.074681,
+   "lng": 4.359165,
    "eersteGezien": "2026-11-19T23:44:16.145Z"
   },
   {
@@ -2857,5 +2857,187 @@
    "lng": 4.3281714,
    "eersteGezien": "2026-09-28T14:06:16.000000Z"
   }
- ]
+ ],
+ "geo": {
+  "henegouwerlaan||rotterdam": {
+   "lat": 51.920875,
+   "lng": 4.463182
+  },
+  "glazoenowlaan 3||rotterdam": {
+   "lat": 51.958837,
+   "lng": 4.513571
+  },
+  "engelandlaan 266 a||zoetermeer": {
+   "lat": 52.060252,
+   "lng": 4.490838
+  },
+  "stadhoudersweg 151b||rotterdam": {
+   "lat": 51.930045,
+   "lng": 4.4571
+  },
+  "rosestraat||rotterdam": {
+   "lat": 51.907182,
+   "lng": 4.506662
+  },
+  "mathenesserlaan||rotterdam": {
+   "lat": 51.914093,
+   "lng": 4.456749
+  },
+  "piet van de polsingel||rotterdam": {
+   "lat": 51.950217,
+   "lng": 4.515801
+  },
+  "kortebrantstraat||rotterdam": {
+   "lat": 51.926324,
+   "lng": 4.486154
+  },
+  "willem beukelszstraat||rotterdam": {
+   "lat": 51.914716,
+   "lng": 4.435948
+  },
+  "verzetsstraat||nieuwerkerk aan den ijssel": {
+   "lat": 51.967858,
+   "lng": 4.605451
+  },
+  "bergweg||rotterdam": {
+   "lat": 51.93683,
+   "lng": 4.47769
+  },
+  "goede verwachtinghof||hoogvliet rotterdam": {
+   "lat": 51.861044,
+   "lng": 4.351184
+  },
+  "admiraal de ruyterweg||rotterdam": {
+   "lat": 51.927417,
+   "lng": 4.486706
+  },
+  "gedempte zalmhaven||rotterdam": {
+   "lat": 51.910758,
+   "lng": 4.479806
+  },
+  "vaartweg||vlaardingen": {
+   "lat": 51.914392,
+   "lng": 4.342278
+  },
+  "baan||rotterdam": {
+   "lat": 51.913788,
+   "lng": 4.480531
+  },
+  "laan op zuid||rotterdam": {
+   "lat": 51.904353,
+   "lng": 4.502565
+  },
+  "karel doormanstraat||rotterdam": {
+   "lat": 51.919796,
+   "lng": 4.475135
+  },
+  "beukelsdijk||rotterdam": {
+   "lat": 51.921327,
+   "lng": 4.456168
+  },
+  "sint-jobskade||rotterdam": {
+   "lat": 51.903417,
+   "lng": 4.462901
+  },
+  "weena||rotterdam": {
+   "lat": 51.923041,
+   "lng": 4.469809
+  },
+  "walravenstraat||rotterdam": {
+   "lat": 51.891739,
+   "lng": 4.509598
+  },
+  "puck van heelstraat||rotterdam": {
+   "lat": 51.896655,
+   "lng": 4.525062
+  },
+  "‘s-gravendijkwal||rotterdam": {
+   "lat": 51.911348,
+   "lng": 4.464331
+  },
+  "1e middellandstraat||rotterdam": {
+   "lat": 51.918889,
+   "lng": 4.462057
+  },
+  "saftlevenstraat||rotterdam": {
+   "lat": 51.913299,
+   "lng": 4.465524
+  },
+  "kruisplein||rotterdam": {
+   "lat": 51.921737,
+   "lng": 4.470886
+  },
+  "teylerstraat||schiedam": {
+   "lat": 51.919874,
+   "lng": 4.41038
+  },
+  "feijenoordkade||rotterdam": {
+   "lat": 51.913138,
+   "lng": 4.511152
+  },
+  "taborstraat||rotterdam": {
+   "lat": 51.926535,
+   "lng": 4.508295
+  },
+  "schaatsbaan||rotterdam": {
+   "lat": 51.92302,
+   "lng": 4.466349
+  },
+  "hordijk||rotterdam": {
+   "lat": 51.877237,
+   "lng": 4.541281
+  },
+  "herman robbersstraat||rotterdam": {
+   "lat": 51.92458,
+   "lng": 4.491952
+  },
+  "boompjes||rotterdam": {
+   "lat": 51.915402,
+   "lng": 4.48871
+  },
+  "catharina beersmansstraat||rotterdam": {
+   "lat": 51.908378,
+   "lng": 4.443037
+  },
+  "‘s-gravenweg||rotterdam": {
+   "lat": 51.921707,
+   "lng": 4.538174
+  },
+  "strevelsweg||rotterdam": {
+   "lat": 51.889087,
+   "lng": 4.496284
+  },
+  "maanplein 139 h|2516ck|den haag": {
+   "lat": 52.067025,
+   "lng": 4.350506
+  },
+  "'s-gravelandseweg 733|3119xt|schiedam": {
+   "lat": 51.92083,
+   "lng": 4.402719
+  },
+  "turfhaven 225|2511dk|den haag": {
+   "lat": 52.077627,
+   "lng": 4.319541
+  },
+  "turfhaven 405|2511dk|den haag": {
+   "lat": 52.077759,
+   "lng": 4.319636
+  },
+  "willem de zwijgerlaan 187|2405vv|alphen aan den rijn": {
+   "lat": 52.134063,
+   "lng": 4.657063
+  },
+  "robert stolzplantsoen 29|2555sg|den haag": {
+   "lat": 52.062218,
+   "lng": 4.234205
+  },
+  "aristide briandring 149|3137da|vlaardingen": {
+   "lat": 51.932397,
+   "lng": 4.34627
+  },
+  "guido gezellestraat 205|2274ez|voorburg": {
+   "lat": 52.074681,
+   "lng": 4.359165
+  }
+ }
 }
