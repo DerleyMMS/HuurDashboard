@@ -373,8 +373,15 @@ const STANDAARD_SITES = [
   { id: "atta", naam: "Atta Makelaars", url: "https://atta.nl/woningaanbod/huuraanbod/" },
   { id: "ikwilhuren", naam: "Ik wil huren", url: "https://ikwilhuren.nu/" },
   { id: "woonzeker", naam: "Woonzeker", url: "https://woonzeker.com/aanbod/rotterdam?view=map" },
+  { id: "rentbird", naam: "Rentbird", url: "https://rentbird.nl/" },
 ];
 let sites = store.get("sites", null) || STANDAARD_SITES.slice();
+// Nieuwe standaardsites één keer toevoegen aan een al opgeslagen lijst.
+for (const s of STANDAARD_SITES) {
+  const k = "site-" + s.id;
+  if (!store.get(k, false)) { if (!sites.some((x) => x.id === s.id)) sites.push(s); store.set(k, true); }
+}
+store.set("sites", sites);
 const KLEUREN = ["#1F7A8C", "#2E6A57", "#7A4E8C", "#B5652A", "#3B5BA5", "#8C3B4E", "#4F7A1F", "#6A5A2E", "#246B8C", "#8C6A1F"];
 const kleur = (s) => { let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(0)) >>> 0; return KLEUREN[h % KLEUREN.length]; };
 const domein = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return u; } };
