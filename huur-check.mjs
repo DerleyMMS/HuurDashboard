@@ -7,9 +7,15 @@
 // Alleen openbare aanbodpagina's, binnen wat robots.txt toestaat, één keer per
 // half uur. Een site die faalt wordt overgeslagen; de rest gaat gewoon door.
 //
-// Optionele instelling (GitHub → Settings → Secrets and variables → Actions → Variables):
-//   POSTCODES   postcodegebied voor landelijke sites, standaard "2200-3399"
-//               (grofweg Zuid-Holland). "alles" = geen filter.
+// Instellingen (GitHub → Settings → Secrets and variables → Actions):
+//   Secret   NTFY_TOPIC       ntfy-onderwerp voor pushmeldingen (zonder = geen meldingen)
+//   Variable GEBIEDEN         meldingen alleen voor deze plaatsen/wijken, bijv. "Bergschenhoek, Hillegersberg"
+//   Variable MAX_HUUR         meldingen alleen tot deze huur, bijv. 1100
+//   Variable MIN_SLAAPKAMERS  bijv. 1
+//   Variable APP_URL          adres van je dashboard (knop in de melding)
+//   Variable POSTCODES        postcodegebied voor landelijke sites, standaard "2200-3399"
+//                             (grofweg Zuid-Holland). "alles" = geen filter.
+// Leeg laten = geen filter op dat punt.
 //
 // Testen zonder internet:  node huur-check.mjs --fixtures
 
@@ -26,6 +32,12 @@ const inRegio = (postcode) => {
   if (!n) return true; // onbekend: niet wegfilteren
   return n >= PC_MIN && n <= (PC_MAX || 9999);
 };
+
+// Snel controleren: van sites met meerdere pagina's alleen verder bladeren als
+// pagina 1 iets nieuws bevat. Eén keer per uur alles helemaal nalopen.
+const VORIGE = await readFile(OUT_FILE, "utf8").then(JSON.parse).catch(() => ({ woningen: [], bronnen: {} }));
+const KENT = new Set((VORIGE.woningen || []).map((w) => w.url));
+const VOL = FIXTURES || !VORIGE.laatsteVolledig || Date.now() - new Date(VORIGE.laatsteVolledig) > 55 * 60000;
 
 // ---------- hulpjes ----------
 const ENT = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'", nbsp: " ", euro: "€", sup2: "²", "#039": "'", "#038": "&", "#8211": "–", "#8217": "’" };
@@ -93,6 +105,10 @@ async function pages(urlFor, parse, max, fixName) {
     if (!items.length) break;
     items.forEach((i) => seen.add(i.url));
     all.push(...items);
+    if (!VOL && items.every((i) => KENT.has(i.url))) {
+      all.partial = true; // niets nieuws: de rest van de pagina's is nog hetzelfde
+      break;
+    }
     await sleep(800);
   }
   return all;
@@ -301,7 +317,7 @@ async function geocode(adres, plaats, postcode) {
 }
 
 // ---------- hoofdprogramma ----------
-const vorige = await readFile(OUT_FILE, "utf8").then(JSON.parse).catch(() => ({ woningen: [], bronnen: {} }));
+const vorige = VORIGE;
 const eerder = new Map((vorige.woningen || []).map((w) => [w.id, w]));
 const nu = new Date();
 const eersteRun = !(vorige.woningen || []).length;
@@ -330,8 +346,16 @@ for (const bron of BRONNEN) {
         eersteGezien: gezien,
       });
     });
-    status[bron.id] = { naam: bron.naam, ok: true, aantal: items.length, tijd: nu.toISOString() };
-    console.log(`✓ ${bron.naam}: ${items.length} woningen`);
+    let aantal = items.length;
+    if (items.partial) {
+      // Alleen pagina 1 bekeken: de rest van de vorige keer aanhouden.
+      const hier = new Set(woningen.filter((w) => w.bron === bron.id).map((w) => w.id));
+      const rest = (vorige.woningen || []).filter((w) => w.bron === bron.id && !hier.has(w.id));
+      woningen.push(...rest);
+      aantal += rest.length;
+    }
+    status[bron.id] = { naam: bron.naam, ok: true, aantal, tijd: nu.toISOString() };
+    console.log(`✓ ${bron.naam}: ${aantal} woningen${items.partial ? " (alleen pagina 1 bekeken, niets nieuws)" : ""}`);
   } catch (e) {
     // Mislukt: houd de woningen van de vorige keer aan, zodat ze niet "verdwijnen".
     const oud = (vorige.woningen || []).filter((w) => w.bron === bron.id);
@@ -362,13 +386,88 @@ for (const w of woningen) {
 }
 if (opgezocht) console.log(`Locatie opgezocht voor ${opgezocht} adressen.`);
 
+// ---------- pushmeldingen ----------
+const env = (k) => (process.env[k] || "").trim();
+const TOPIC = env("NTFY_TOPIC").replace(/\s+/g, "").replace(/^["'“”‘’`]+|["'“”‘’`]+$/g, "").replace(/^(https?:\/\/)?ntfy\.sh\//i, "").replace(/\/+$/, "");
+const GEBIEDEN = env("GEBIEDEN").split(",").map((s) => s.trim().toLowerCase()).filter(Boolean);
+const MAX_HUUR = parseFloat(env("MAX_HUUR").replace(",", ".")) || 0;
+const MIN_SLPK = parseInt(env("MIN_SLAAPKAMERS"), 10) || 0;
+const APP_URL = env("APP_URL") || "https://derleymms.github.io/HuurDashboard/";
+const euro = (n) => "€ " + Math.round(n).toLocaleString("nl-NL");
+
+function pastVoorMelding(w) {
+  const tekst = `${w.adres} ${w.wijk} ${w.plaats} ${w.postcode}`.toLowerCase();
+  if (GEBIEDEN.length && !GEBIEDEN.some((g) => tekst.includes(g))) return false;
+  if (MAX_HUUR && (!w.prijs || w.prijs > MAX_HUUR)) return false;
+  const slpk = w.slaapkamers || (w.kamers ? w.kamers - 1 : 0);
+  if (MIN_SLPK && slpk && slpk < MIN_SLPK) return false;
+  return true;
+}
+
+async function stuur(msg) {
+  for (let poging = 1; poging <= 3; poging++) {
+    try {
+      const res = await fetch("https://ntfy.sh", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ topic: TOPIC, ...msg }),
+        signal: AbortSignal.timeout(20000),
+      });
+      if (res.ok) return true;
+      console.log(`ntfy gaf status ${res.status}: ${await res.text()}`);
+      if (res.status < 500 && res.status !== 429) return false;
+    } catch (e) {
+      console.log(`ntfy niet bereikbaar (poging ${poging}/3): ${e.cause?.code || e.name || e.message}`);
+    }
+    if (poging < 3) await sleep(poging * 4000);
+  }
+  return false;
+}
+
+function meldingVoor(w) {
+  const waar = [...new Set([w.wijk, w.plaats].filter(Boolean))].join(", ");
+  const kamers = w.slaapkamers ? `${w.slaapkamers} slpk` : w.kamers ? `${w.kamers} kamers` : "";
+  return {
+    title: `${w.bronNaam}: ${w.adres}`,
+    message: [[w.prijs ? euro(w.prijs) + " p/m" : "Prijs onbekend", w.m2 ? `${w.m2} m²` : "", kamers].filter(Boolean).join(" · "), waar].filter(Boolean).join("\n"),
+    tags: ["house"],
+    priority: 4,
+    click: w.url,
+    ...(w.foto ? { attach: w.foto, filename: "woning.jpg" } : {}),
+    actions: [{ action: "view", label: "Bekijk woning", url: w.url }, { action: "view", label: "Dashboard", url: APP_URL }],
+  };
+}
+
+let teMelden = [];
+if (TOPIC && !FIXTURES && /^[-_A-Za-z0-9]{1,64}$/.test(TOPIC)) {
+  // Nieuw = niet in de vorige stand. Een site die er net bij komt telt niet mee
+  // (anders krijg je in één keer al zijn woningen als melding).
+  const hadBron = new Set((vorige.woningen || []).map((w) => w.bron));
+  const open = new Set(vorige.teMelden || []);
+  const kandidaten = eersteRun ? [] : woningen.filter((w) => (open.has(w.id) || (!eerder.has(w.id) && hadBron.has(w.bron))) && pastVoorMelding(w));
+  console.log(`Meldingen: ${kandidaten.length} nieuwe passende woning(en). Filters: gebieden=${GEBIEDEN.join(" | ") || "(alle)"}, max huur=${MAX_HUUR || "(geen)"}, min slaapkamers=${MIN_SLPK || "(geen)"}`);
+  if (kandidaten.length > 5) {
+    const regels = kandidaten.slice(0, 8).map((w) => `${w.prijs ? euro(w.prijs) : "?"}  ${w.adres}, ${w.plaats} (${w.bronNaam})`);
+    if (kandidaten.length > 8) regels.push(`en nog ${kandidaten.length - 8}`);
+    const ok = await stuur({ title: `${kandidaten.length} nieuwe woningen bij makelaars`, message: regels.join("\n"), tags: ["house"], priority: 4, click: APP_URL });
+    if (!ok) teMelden = kandidaten.map((w) => w.id);
+  } else {
+    for (const w of kandidaten) if (!(await stuur(meldingVoor(w)))) teMelden.push(w.id);
+  }
+  if (teMelden.length) console.log(`::warning::${teMelden.length} melding(en) niet verstuurd; de volgende run probeert het opnieuw.`);
+} else if (env("NTFY_TOPIC")) {
+  console.log("::warning::NTFY_TOPIC is geen geldig ntfy-onderwerp (alleen letters, cijfers, - en _).");
+}
+
 // Alleen wegschrijven als er inhoudelijk iets veranderde (scheelt commits).
 const kern = (lijst) => JSON.stringify(lijst.map((w) => [w.id, w.prijs, w.eersteGezien, w.adres, w.plaats, w.wijk, w.lat, w.lng]));
+const laatsteVolledig = VOL ? nu.toISOString() : vorige.laatsteVolledig;
 const veranderd = kern(woningen) !== kern(vorige.woningen || []) ||
+  JSON.stringify(teMelden) !== JSON.stringify(vorige.teMelden || []) || laatsteVolledig !== vorige.laatsteVolledig ||
   JSON.stringify(Object.values(status).map((s) => s.ok)) !== JSON.stringify(Object.values(vorige.bronnen || {}).map((s) => s.ok));
 
 if (veranderd || FIXTURES) {
-  const out = { bijgewerkt: nu.toISOString(), bronnen: status, woningen, geo: geoCache };
+  const out = { bijgewerkt: nu.toISOString(), laatsteVolledig, bronnen: status, woningen, teMelden, geo: geoCache };
   const doel = FIXTURES ? new URL("./huur-aanbod.test.json", import.meta.url) : OUT_FILE;
   await writeFile(doel, JSON.stringify(out, null, 1));
   console.log(`Opgeslagen: ${woningen.length} woningen.`);
