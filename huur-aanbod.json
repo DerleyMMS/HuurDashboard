@@ -1,49 +1,48 @@
 {
- "bijgewerkt": "2026-11-20T13:09:30.495Z",
+ "bijgewerkt": "2026-11-20T13:10:53.233Z",
  "laatsteVolledig": "2026-11-20T12:26:48.127Z",
  "bronnen": {
   "rdam": {
    "naam": "Rdam Makelaars",
    "ok": true,
    "aantal": 68,
-   "tijd": "2026-11-20T13:09:30.495Z"
+   "tijd": "2026-11-20T13:10:53.233Z"
   },
   "riva": {
    "naam": "Riva Rentals",
    "ok": true,
    "aantal": 50,
-   "tijd": "2026-11-20T13:09:30.495Z"
+   "tijd": "2026-11-20T13:10:53.233Z"
   },
   "voorberg": {
    "naam": "Voorberg",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-20T13:09:30.495Z"
+   "tijd": "2026-11-20T13:10:53.233Z"
   },
   "fonzt": {
    "naam": "FONZT",
    "ok": true,
    "aantal": 0,
-   "tijd": "2026-11-20T13:09:30.495Z"
+   "tijd": "2026-11-20T13:10:53.233Z"
   },
   "atta": {
    "naam": "Atta Makelaars",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-20T13:09:30.495Z"
+   "tijd": "2026-11-20T13:10:53.233Z"
   },
   "ikwilhuren": {
    "naam": "Ik wil huren",
-   "ok": false,
-   "aantal": 8,
-   "fout": "https://ikwilhuren.nu/aanbod/ gaf status 403",
-   "tijd": "2026-11-20T12:26:48.127Z"
+   "ok": true,
+   "aantal": 9,
+   "tijd": "2026-11-20T13:10:53.233Z"
   },
   "woonzeker": {
    "naam": "Woonzeker",
    "ok": true,
    "aantal": 20,
-   "tijd": "2026-11-20T13:09:30.495Z"
+   "tijd": "2026-11-20T13:10:53.233Z"
   }
  },
  "woningen": [
@@ -2499,6 +2498,25 @@
    "eersteGezien": "2026-11-19T23:44:16.145Z"
   },
   {
+   "id": "ikwilhuren:ikwilhuren.nu/object/rotterdam-3045pe-192-van-der-duijn-van-maasdamweg-f32d94d897ed629de13d60717021ae43",
+   "bron": "ikwilhuren",
+   "bronNaam": "Ik wil huren",
+   "adres": "Van der Duijn van Maasdamweg 192",
+   "plaats": "Rotterdam",
+   "wijk": "",
+   "postcode": "3045PE",
+   "prijs": 1290,
+   "slaapkamers": 2,
+   "kamers": 0,
+   "m2": 82,
+   "type": "Appartement",
+   "url": "https://ikwilhuren.nu/object/rotterdam-3045pe-192-van-der-duijn-van-maasdamweg-f32d94d897ed629de13d60717021ae43/",
+   "foto": "https://b.static.nbo.nl/media/89/8901c07b8ed177aa6ceb8290a9febec7/768x510/thumb.jpg",
+   "lat": 51.949082,
+   "lng": 4.453097,
+   "eersteGezien": "2026-11-19T23:01:42.503Z"
+  },
+  {
    "id": "woonzeker:woonzeker.com/huur/woningen/molenwaterweg-15-a",
    "bron": "woonzeker",
    "bronNaam": "Woonzeker",
@@ -3041,6 +3059,10 @@
   "guido gezellestraat 205|2274ez|voorburg": {
    "lat": 52.074681,
    "lng": 4.359165
+  },
+  "van der duijn van maasdamweg 192|3045pe|rotterdam": {
+   "lat": 51.949082,
+   "lng": 4.453097
   }
  }
 }
