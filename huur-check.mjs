@@ -287,6 +287,19 @@ const BRONNEN = [
   },
 ];
 
+
+// ---------- locatie (voor de kaart) ----------
+// Sites zonder coördinaten worden opgezocht bij de PDOK Locatieserver (de
+// openbare adreszoeker van de overheid). Resultaten worden onthouden in
+// huur-aanbod.json, dus elk adres wordt maar één keer opgezocht.
+async function geocode(adres, plaats, postcode) {
+  const q = [adres, postcode, plaats].filter(Boolean).join(" ");
+  const url = "https://api.pdok.nl/bzk/locatieserver/search/v3_1/free?rows=1&fl=centroide_ll,type&fq=type:(adres%20OR%20weg%20OR%20postcode)&q=" + encodeURIComponent(q);
+  const j = await get(url, "json");
+  const m = String(j?.response?.docs?.[0]?.centroide_ll || "").match(/POINT\(([\d.]+) ([\d.]+)\)/);
+  return m ? { lat: +(+m[2]).toFixed(6), lng: +(+m[1]).toFixed(6) } : null;
+}
+
 // ---------- hoofdprogramma ----------
 const vorige = await readFile(OUT_FILE, "utf8").then(JSON.parse).catch(() => ({ woningen: [], bronnen: {} }));
 const eerder = new Map((vorige.woningen || []).map((w) => [w.id, w]));
@@ -330,13 +343,32 @@ for (const bron of BRONNEN) {
 
 woningen.sort((a, b) => (b.eersteGezien || "").localeCompare(a.eersteGezien || ""));
 
+const geoCache = vorige.geo || {};
+let opgezocht = 0;
+for (const w of woningen) {
+  if (w.lat && w.lng) continue;
+  const key = `${w.adres}|${w.postcode}|${w.plaats}`.toLowerCase();
+  if (!(key in geoCache) && !FIXTURES && opgezocht < 150) {
+    opgezocht++;
+    try {
+      geoCache[key] = await geocode(w.adres, w.plaats, w.postcode);
+    } catch (e) {
+      console.log(`Adres niet gevonden: ${w.adres}, ${w.plaats} (${e.message || e})`);
+    }
+    await sleep(120);
+  }
+  const g = geoCache[key];
+  if (g) { w.lat = g.lat; w.lng = g.lng; }
+}
+if (opgezocht) console.log(`Locatie opgezocht voor ${opgezocht} adressen.`);
+
 // Alleen wegschrijven als er inhoudelijk iets veranderde (scheelt commits).
-const kern = (lijst) => JSON.stringify(lijst.map((w) => [w.id, w.prijs, w.eersteGezien, w.adres, w.plaats, w.wijk]));
+const kern = (lijst) => JSON.stringify(lijst.map((w) => [w.id, w.prijs, w.eersteGezien, w.adres, w.plaats, w.wijk, w.lat, w.lng]));
 const veranderd = kern(woningen) !== kern(vorige.woningen || []) ||
   JSON.stringify(Object.values(status).map((s) => s.ok)) !== JSON.stringify(Object.values(vorige.bronnen || {}).map((s) => s.ok));
 
 if (veranderd || FIXTURES) {
-  const out = { bijgewerkt: nu.toISOString(), bronnen: status, woningen };
+  const out = { bijgewerkt: nu.toISOString(), bronnen: status, woningen, geo: geoCache };
   const doel = FIXTURES ? new URL("./huur-aanbod.test.json", import.meta.url) : OUT_FILE;
   await writeFile(doel, JSON.stringify(out, null, 1));
   console.log(`Opgeslagen: ${woningen.length} woningen.`);

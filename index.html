@@ -6,7 +6,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Huur">
-<meta name="theme-color" content="#F1F5F5">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#EEF3F3">
 <meta name="robots" content="noindex">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" type="image/png" href="icon-192.png">
@@ -14,187 +15,353 @@
 <title>Huurdashboard</title>
 <style>
 :root{
-  --bg:#F1F5F5;--paper:#fff;--ink:#0F3440;--ink2:#56707A;--ink3:#8A9DA3;--line:#DFE6E7;
-  --water:#1F7A8C;--water-soft:#E6F0F2;--sun:#FFC23D;--sun-soft:#FFF6DF;--sun-ink:#4A3300;
+  --bg:#EEF3F3;--paper:#fff;--ink:#0F3440;--ink2:#56707A;--ink3:#8A9DA3;--line:#DCE5E6;--line2:#E9EFEF;
+  --water:#1F7A8C;--water-d:#16606E;--water-soft:#E3EFF1;--sun:#FFC23D;--sun-soft:#FFF4D6;--sun-ink:#4A3300;--red:#B3412E;
   --display:ui-rounded,"SF Pro Rounded","Nunito","Segoe UI",system-ui,sans-serif;
   --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --r:16px;
+  --sh:0 1px 2px rgba(15,52,64,.06),0 2px 8px rgba(15,52,64,.05);
+  --top:0px;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 var(--body);-webkit-text-size-adjust:100%}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 var(--body);-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
 button,input,select{font:inherit;color:inherit}
-button{cursor:pointer}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--sun);outline-offset:2px;border-radius:8px}
-.wrap{max-width:1100px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 18px) 16px calc(env(safe-area-inset-bottom) + 40px)}
+button{cursor:pointer;background:none;border:0;padding:0}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px;border-radius:10px}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.num{font-variant-numeric:tabular-nums}
 
-/* kop */
-.top{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:18px}
-h1{font:800 30px/1.05 var(--display);letter-spacing:-.02em;margin:0}
-.stamp{color:var(--ink2);font-size:13px;margin-top:4px}
-.iconbtn{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;flex:none}
-.iconbtn svg{width:20px;height:20px}
-.iconbtn.spin svg{animation:spin .9s linear infinite}
+/* ── Kop ── */
+.head{position:sticky;top:0;z-index:20;background:rgba(238,243,243,.92);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);
+  padding:calc(env(safe-area-inset-top) + 12px) 16px 0;border-bottom:1px solid transparent;transition:border-color .2s}
+.head.stuck{border-bottom-color:var(--line)}
+.bar{display:flex;align-items:center;gap:10px;max-width:1440px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;flex:none}
+.logo{width:34px;height:34px;border-radius:10px;background:var(--water);display:grid;place-items:center}
+.logo svg{width:20px;height:20px}
+.brand h1{font:800 20px/1 var(--display);letter-spacing:-.02em;margin:0}
+.brand small{display:block;font:500 12px/1.3 var(--body);color:var(--ink2);letter-spacing:0;margin-top:3px}
+.search{flex:1;min-width:0;display:flex;align-items:center;gap:8px;height:42px;padding:0 14px;border-radius:12px;background:var(--paper);border:1px solid var(--line);max-width:520px;margin-left:auto}
+.search:focus-within{border-color:var(--water);box-shadow:0 0 0 3px var(--water-soft)}
+.search svg{color:var(--ink3)}
+.search input{flex:1;min-width:0;border:0;outline:0;background:none;height:100%;font-size:15px}
+.search input::-webkit-search-cancel-button{display:none}
+.search .clr{color:var(--ink3);display:grid;place-items:center;width:24px;height:24px}
+.btn{height:42px;display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:0 14px;border-radius:12px;background:var(--paper);border:1px solid var(--line);font-weight:600;font-size:14.5px;white-space:nowrap;flex:none}
+.btn:hover{border-color:var(--ink3)}
+.btn.icon{width:42px;padding:0}
+.btn .badge{min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:var(--water);color:#fff;font-size:12px;display:grid;place-items:center}
+.btn.spin svg{animation:spin .9s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* sites */
-.sec-h{display:flex;align-items:baseline;justify-content:space-between;margin:0 2px 10px}
-h2{font:750 18px/1.2 var(--display);margin:0}
-.link{background:none;border:0;color:var(--water);font-weight:600;padding:6px 2px}
-.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:26px}
-.tile{position:relative;display:flex;align-items:center;gap:10px;padding:12px;border-radius:var(--r);background:var(--paper);border:1px solid var(--line);text-decoration:none;min-height:64px}
-.tile:hover{border-color:var(--water)}
-.mono{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font:800 15px var(--display);flex:none;color:#fff}
-.tile b{display:block;font-weight:650;font-size:14px;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.tile small{display:block;color:var(--ink3);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.tile .t{min-width:0;flex:1}
-.tile .cnt{position:absolute;top:-6px;right:-6px;background:var(--sun);color:var(--sun-ink);font-weight:750;font-size:12px;border-radius:999px;padding:1px 8px;border:2px solid var(--bg)}
-.tile .del{display:none;position:absolute;top:-8px;left:-8px;width:26px;height:26px;border-radius:50%;border:0;background:var(--ink);color:#fff;font-weight:700;line-height:1}
-.editing .tile .del{display:block}
-.editing .tile:not(.add){border-color:var(--ink3)}
-@media (prefers-reduced-motion:reduce){.iconbtn.spin svg{animation:none}}
-.tile.add{border-style:dashed;color:var(--water);justify-content:center;font-weight:650;background:transparent}
+/* sites-strook */
+.sites{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;max-width:1440px;margin:12px auto 0;padding:2px 0}
+.sites::-webkit-scrollbar{display:none}
+.site{flex:none;display:flex;align-items:center;gap:8px;height:40px;padding:0 12px 0 5px;border-radius:12px;background:var(--paper);border:1px solid var(--line);font-weight:600;font-size:13.5px;position:relative}
+.site:hover{border-color:var(--water)}
+.site .mono{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;color:#fff;font:800 12px var(--display)}
+.site .plus{font:700 12px var(--body);color:var(--water);margin-left:2px}
+.site.manage{padding:0 12px;color:var(--water);border-style:dashed;background:transparent}
 
-/* filters */
-.filters{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 10px;margin:0 -16px 6px;padding-left:16px;padding-right:16px;border-bottom:1px solid transparent}
-.filters.stuck{border-bottom-color:var(--line)}
-.row{display:flex;gap:8px;align-items:center}
-.search{flex:1;min-width:0;display:flex;align-items:center;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:0 14px;height:44px}
-.search input{border:0;outline:0;background:none;flex:1;min-width:0;height:100%}
-.search svg{width:18px;height:18px;color:var(--ink3);flex:none}
-select.sel{height:44px;border-radius:999px;border:1px solid var(--line);background:var(--paper);padding:0 12px}
-.chips{display:flex;gap:6px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
+/* gebieden + weergave */
+.sub{display:flex;align-items:center;gap:10px;max-width:1440px;margin:10px auto 0;padding-bottom:10px}
+.chips{flex:1;min-width:0;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
-.chip{flex:none;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 12px;font-size:13.5px;font-weight:550;white-space:nowrap}
-.chip[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:#fff}
-.chip.soft{color:var(--ink2)}
-.chip .n{opacity:.65;font-weight:500;margin-left:4px}
-.summary{color:var(--ink2);font-size:13px;margin:8px 2px 0}
+.chip{flex:none;height:34px;display:inline-flex;align-items:center;gap:6px;padding:0 13px;border-radius:999px;background:var(--paper);border:1px solid var(--line);font-size:13.5px;font-weight:550;white-space:nowrap}
+.chip .n{color:var(--ink3);font-weight:500}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip[aria-pressed="true"] .n{color:rgba(255,255,255,.65)}
+.chip.ghost{background:transparent;border-style:dashed;color:var(--ink2)}
+.seg{flex:none;display:flex;padding:3px;border-radius:12px;background:#DFE8E9}
+.seg button{height:32px;padding:0 13px;border-radius:9px;font-weight:600;font-size:13.5px;color:var(--ink2);display:flex;align-items:center;gap:6px}
+.seg button[aria-pressed="true"]{background:var(--paper);color:var(--ink);box-shadow:0 1px 3px rgba(15,52,64,.15)}
+.seg svg.i{width:17px;height:17px}
 
-/* lijst */
-.day{font:750 15px var(--display);margin:22px 2px 10px;display:flex;gap:8px;align-items:baseline}
-.day span{color:var(--ink3);font:500 13px var(--body)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
-.card{display:flex;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:10px;text-decoration:none;min-width:0}
-.card:hover{border-color:var(--water)}
-.ph{width:104px;height:88px;border-radius:12px;background:var(--water-soft) center/cover no-repeat;flex:none;position:relative}
-.ph.none{display:grid;place-items:center;color:var(--water);font:800 22px var(--display)}
-.info{min-width:0;flex:1;display:flex;flex-direction:column}
-.adr{font-weight:650;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.plc{color:var(--ink2);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.facts{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:13px;color:var(--ink2);margin-top:auto;padding-top:6px}
-.price{font:800 16px var(--display);color:var(--ink)}
-.meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}
-.badge{flex:none;max-width:60%;font-size:11.5px;font-weight:650;border-radius:6px;padding:2px 7px;background:var(--water-soft);color:var(--water);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.badge.wnr{background:var(--sun-soft);color:var(--sun-ink)}
-.ago{font-size:12px;color:var(--ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.empty{background:var(--paper);border:1px dashed var(--line);border-radius:var(--r);padding:22px;text-align:center;color:var(--ink2);margin-top:16px}
-.more{display:block;margin:18px auto 0;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:10px 20px;font-weight:600}
-.notice{background:var(--sun-soft);color:var(--sun-ink);border-radius:12px;padding:10px 14px;font-size:13.5px;margin:10px 0}
-.srcstat{font-size:12.5px;color:var(--ink2);margin-top:28px;line-height:1.7}
-.srcstat .bad{color:#A33}
+/* ── Hoofdgedeelte ── */
+.main{max-width:1440px;margin:0 auto;padding:0 16px calc(env(safe-area-inset-bottom) + 40px);display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+.col-list{min-width:0}
+.col-map{display:none}
 
-/* sheet */
-dialog{border:0;border-radius:20px;padding:0;max-width:420px;width:calc(100% - 32px);color:var(--ink)}
-dialog::backdrop{background:rgba(15,52,64,.35)}
-.sheet{padding:20px}
-.sheet h3{font:750 19px var(--display);margin:0 0 14px}
-.sheet label{display:block;font-size:13px;font-weight:600;color:var(--ink2);margin:10px 0 4px}
-.sheet input{width:100%;height:44px;border:1px solid var(--line);border-radius:12px;padding:0 12px;background:var(--bg)}
-.sheet .btns{display:flex;gap:8px;justify-content:flex-end;margin-top:18px}
-.btn{height:42px;border-radius:999px;border:1px solid var(--line);background:var(--paper);padding:0 18px;font-weight:650}
+.ribbon{display:flex;align-items:center;gap:10px;margin:14px 0 4px;padding:10px 12px 10px 14px;border-radius:14px;background:var(--sun-soft);color:var(--sun-ink);font-size:14px}
+.ribbon b{font:800 15px var(--display)}
+.ribbon .grow{flex:1}
+.ribbon button{font-weight:650;text-decoration:underline;text-underline-offset:3px}
+.ribbon .x{text-decoration:none;opacity:.6;display:grid;place-items:center;width:26px;height:26px}
+.ribbon.on{background:var(--sun)}
+.meta-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:14px 2px 0;color:var(--ink2);font-size:13px}
+.sortsel{border:0;background:transparent;font-weight:650;color:var(--ink);padding:4px 22px 4px 4px;appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230F3440' stroke-width='2.4' stroke-linecap='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 2px center;background-size:15px}
+.notice{margin:12px 0 0;padding:11px 14px;border-radius:12px;background:var(--paper);border:1px solid var(--line);font-size:13.5px;color:var(--ink2)}
+.notice.warn{border-color:#F0D9A0;background:var(--sun-soft);color:var(--sun-ink)}
+
+.day{position:sticky;top:var(--top);z-index:4;display:flex;align-items:baseline;gap:8px;margin:0 -16px;padding:16px 18px 8px;background:linear-gradient(var(--bg) 75%,rgba(238,243,243,0))}
+.day h3{margin:0;font:800 16px var(--display)}
+.day span{color:var(--ink3);font-size:13px}
+.day .c{margin-left:auto;color:var(--ink3);font-size:12.5px}
+.list{display:grid;gap:10px}
+
+.card{position:relative;display:grid;grid-template-columns:132px minmax(0,1fr);gap:0;background:var(--paper);border-radius:16px;box-shadow:var(--sh);overflow:hidden;border:1px solid transparent;transition:border-color .15s}
+.card:hover,.card.hl{border-color:var(--water)}
+.card .ph{position:relative;background:var(--water-soft) center/cover no-repeat;min-height:112px}
+.card .ph.none{display:grid;place-items:center;color:var(--water);font:800 22px var(--display)}
+.card .src{position:absolute;left:8px;bottom:8px;max-width:calc(100% - 16px);padding:3px 7px;border-radius:7px;background:rgba(15,52,64,.78);color:#fff;font-size:11px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.card .src.wnr{background:var(--sun);color:var(--sun-ink)}
+.card .body{padding:11px 44px 11px 14px;display:flex;flex-direction:column;min-width:0}
+.card .price{font:800 18px/1.15 var(--display);letter-spacing:-.01em}
+.card .price small{font:500 12.5px var(--body);color:var(--ink3);margin-left:3px;letter-spacing:0}
+.card .adr{font-weight:650;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card .plc{font-size:13px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card .facts{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:auto;padding-top:8px;font-size:12.5px;color:var(--ink2)}
+.card .facts span{display:inline-flex;align-items:center;gap:4px}
+.card .facts svg.i{width:14px;height:14px;color:var(--ink3)}
+.card .when{margin-left:auto;color:var(--ink3)}
+.card .new{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--sun);box-shadow:0 0 0 2px var(--sun-soft);margin-right:6px;vertical-align:1px}
+.card .acts{position:absolute;top:6px;right:6px;display:flex;flex-direction:column;gap:2px}
+.card .act{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:var(--ink3)}
+.card .act:hover{background:var(--bg);color:var(--ink)}
+.card .act[aria-pressed="true"]{color:#E0A100}
+.card .act[aria-pressed="true"] svg{fill:var(--sun);stroke:#C98F00}
+.card .act.hide{opacity:0;transition:opacity .15s}
+.card:hover .act.hide,.card:focus-within .act.hide{opacity:1}
+@media (hover:none){.card .act.hide{opacity:1}}
+.card.is-hidden{opacity:.55}
+.card .lnk{position:absolute;inset:0;z-index:0}
+.card .acts{z-index:2}
+
+.empty{margin-top:18px;padding:32px 20px;text-align:center;color:var(--ink2);background:var(--paper);border-radius:16px;border:1px dashed var(--line)}
+.empty b{display:block;color:var(--ink);font:750 17px var(--display);margin-bottom:4px}
+.empty .btn{margin-top:14px}
+.more{display:flex;margin:18px auto 0}
+.foot{margin-top:26px;font-size:12.5px;color:var(--ink3);line-height:1.8}
+.foot .bad{color:var(--red)}
+.skel{height:112px;border-radius:16px;background:linear-gradient(90deg,#E4ECEC 0,#F2F6F6 50%,#E4ECEC 100%);background-size:200% 100%;animation:sk 1.2s ease-in-out infinite}
+@keyframes sk{to{background-position:-200% 0}}
+
+/* ── Kaart ── */
+.mapbox{position:relative;overflow:hidden;background:#E8EEEE;border-radius:18px;touch-action:none;user-select:none}
+.mapbox:focus{outline:none}
+.m-tiles,.m-pins{position:absolute;inset:0}
+.m-pins{pointer-events:none}
+.m-tile{position:absolute;left:0;top:0;width:256px;height:256px;transform-origin:0 0;will-change:transform;user-select:none;-webkit-user-drag:none;filter:saturate(.5) brightness(1.04);opacity:0;transition:opacity .2s}
+.m-tile.ok{opacity:1}
+.m-pin{position:absolute;left:0;top:0;width:0;height:0;overflow:visible;pointer-events:auto;cursor:pointer;z-index:1;will-change:transform}
+.m-tiles{z-index:0}.m-pins{z-index:3}
+.m-pin.fav{z-index:2}.m-pin.sel{z-index:5}
+.pin-in{position:absolute;left:0;top:0;transform:translate(-50%,-50%);display:flex;align-items:center}
+.dot{display:block;width:12px;height:12px;border-radius:50%;background:var(--ink);border:2px solid #fff;box-shadow:0 1px 3px rgba(15,52,64,.45)}
+.m-pin.multi .dot{width:16px;height:16px}
+.m-pin.fav .dot{background:var(--sun);border-color:var(--ink)}
+.m-pin.sel .dot{background:var(--water);transform:scale(1.4)}
+.lbl,.cnt{display:none}
+.mapbox[data-zoom=near] .dot{display:none}
+.mapbox[data-zoom=near] .lbl{display:block;padding:6px 10px;border-radius:999px;background:#fff;color:var(--ink);font:750 13px/1 var(--display);font-variant-numeric:tabular-nums;white-space:nowrap;box-shadow:0 1px 5px rgba(15,52,64,.28)}
+.mapbox[data-zoom=near] .cnt{display:grid;place-items:center;min-width:20px;height:20px;margin-left:-7px;padding:0 5px;border:2px solid #fff;border-radius:10px;background:var(--ink);color:#fff;font:700 11px/1 var(--body);font-style:normal}
+.mapbox[data-zoom=near] .m-pin.fav .lbl{background:var(--sun);color:var(--sun-ink)}
+.mapbox[data-zoom=near] .m-pin.sel .lbl{background:var(--ink);color:#fff;transform:scale(1.08)}
+.m-zoom{position:absolute;z-index:6;right:12px;top:12px;display:flex;flex-direction:column;border-radius:12px;background:#fff;box-shadow:0 2px 10px rgba(15,52,64,.18);overflow:hidden}
+.m-zoom button{width:40px;height:40px;display:grid;place-items:center;color:var(--ink)}
+.m-zoom button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+.m-zoom button+button{border-top:1px solid var(--line)}
+.m-attr{position:absolute;z-index:6;right:0;bottom:0;padding:2px 7px;background:rgba(255,255,255,.85);font-size:11px;color:var(--ink2);border-top-left-radius:8px}
+.m-attr a{text-decoration:underline}
+.m-note{position:absolute;z-index:6;left:12px;top:12px;padding:6px 10px;border-radius:10px;background:rgba(255,255,255,.92);font-size:12.5px;color:var(--ink2);box-shadow:0 1px 4px rgba(15,52,64,.15)}
+.mcard{position:absolute;left:12px;right:12px;bottom:14px;z-index:7;max-width:420px}
+.mcard .card{box-shadow:0 10px 30px rgba(15,52,64,.28)}
+.mcard .pager{display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding:0 4px;font-size:12.5px;color:var(--ink2)}
+.mcard .pager button{height:30px;padding:0 10px;border-radius:9px;background:rgba(255,255,255,.95);font-weight:650;box-shadow:0 1px 4px rgba(15,52,64,.18)}
+
+/* ── Paneel (filters, sites) ── */
+.scrim{position:fixed;inset:0;z-index:40;background:rgba(15,52,64,.38);opacity:0;pointer-events:none;transition:opacity .2s}
+.scrim.on{opacity:1;pointer-events:auto}
+.panel{position:fixed;z-index:41;left:0;right:0;bottom:0;max-height:88vh;display:flex;flex-direction:column;background:var(--paper);border-radius:22px 22px 0 0;
+  box-shadow:0 -10px 40px rgba(15,52,64,.2);transform:translateY(105%);transition:transform .28s cubic-bezier(.2,.8,.2,1);visibility:hidden}
+.panel.on{transform:none;visibility:visible}
+.panel .grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:8px auto 0}
+.p-head{display:flex;align-items:center;gap:10px;padding:12px 16px 8px 20px}
+.p-head h2{flex:1;margin:0;font:800 20px var(--display)}
+.p-body{overflow-y:auto;padding:6px 20px 16px;display:grid;grid-template-columns:minmax(0,1fr);gap:22px;overscroll-behavior:contain}
+.p-foot{display:flex;gap:10px;padding:12px 20px calc(env(safe-area-inset-bottom) + 14px);border-top:1px solid var(--line2)}
+.p-foot .btn{flex:1;height:48px;border-radius:14px;font-size:15px}
 .btn.pri{background:var(--water);border-color:var(--water);color:#fff}
-.err{color:#A33;font-size:13px;min-height:18px;margin-top:6px}
+.btn.pri:hover{background:var(--water-d)}
+.fld>.lab{font-size:13px;font-weight:650;color:var(--ink2);margin-bottom:8px;display:flex;justify-content:space-between}
+.fld .wrapchips{display:flex;flex-wrap:wrap;gap:6px}
+.opts{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:3px;padding:3px;border-radius:12px;background:var(--bg)}
+.opts button{height:40px;border-radius:9px;font-weight:600;font-size:14px;color:var(--ink2)}
+.opts button[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(15,52,64,.15)}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;padding:0 14px;border:1px solid var(--line);border-radius:14px;font-weight:550}
+.sw{position:relative;width:46px;height:28px;flex:none}
+.sw input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.sw i{position:absolute;inset:0;border-radius:14px;background:#CFDADB;transition:background .15s}
+.sw i::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:transform .15s}
+.sw input:checked+i{background:var(--water)}
+.sw input:checked+i::after{transform:translateX(18px)}
+.addrow{display:flex;gap:8px;margin-top:8px}
+.inp{flex:1;min-width:0;height:44px;padding:0 12px;border:1px solid var(--line);border-radius:12px;background:var(--bg);font-size:16px}
+.inp:focus{outline:none;border-color:var(--water);background:#fff}
+.err{color:var(--red);font-size:13px;min-height:0}
+.siteman{display:grid;gap:6px}
+.sm{display:flex;align-items:center;gap:10px;padding:6px 6px 6px 8px;border:1px solid var(--line);border-radius:14px}
+.sm .mono{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:#fff;font:800 13px var(--display);flex:none}
+.sm .t{flex:1;min-width:0}
+.sm b{display:block;font-weight:650;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sm small{display:block;font-size:12px;color:var(--ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sm button{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;color:var(--ink3)}
+.sm button:hover{background:var(--bg);color:var(--ink)}
+.sm button:disabled{opacity:.3;cursor:default}
+.linkbtn{color:var(--water);font-weight:650;font-size:14px}
 
-@media (max-width:520px){
-  h1{font-size:26px}
-  .tiles{grid-template-columns:repeat(3,1fr);gap:8px}
-  .tile{flex-direction:column;justify-content:center;text-align:center;gap:6px;padding:10px 6px;min-height:84px}
-  .tile .t{width:100%}
-  .tile b{font-size:12.5px;white-space:normal;line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-  .tile small{display:none}
-  .mono{width:34px;height:34px;border-radius:11px;font-size:13px}
-  .grid{grid-template-columns:1fr}
-  select.sel{max-width:132px}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 18px);z-index:60;transform:translate(-50%,20px);opacity:0;pointer-events:none;
+  display:flex;align-items:center;gap:14px;padding:11px 12px 11px 16px;border-radius:14px;background:var(--ink);color:#fff;font-size:14px;box-shadow:0 8px 24px rgba(15,52,64,.3);transition:.2s}
+.toast.on{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.toast button{color:var(--sun);font-weight:700}
+
+.tabbar{display:none}
+/* ── Weergaven ── */
+body[data-view="map"] .col-list{display:none}
+body[data-view="map"] .col-map{display:block}
+body[data-view="map"] .mapbox{height:calc(100dvh - var(--top) - 16px - env(safe-area-inset-bottom));margin-top:12px}
+
+@media (min-width:980px){
+  .head{padding-left:24px;padding-right:24px}
+  .main{grid-template-columns:minmax(0,560px) minmax(0,1fr);padding:0 24px 40px}
+  .col-map,body[data-view="map"] .col-map{display:block}
+  body[data-view="map"] .col-list{display:block}
+  .col-map .mapbox,body[data-view="map"] .mapbox{position:sticky;top:calc(var(--top) + 14px);height:calc(100vh - var(--top) - 28px);margin-top:14px}
+  .seg [data-view="map"]{display:none}
+  .day{margin:0 -4px;padding-left:6px;padding-right:6px}
+  .panel{left:auto;right:16px;top:16px;bottom:16px;width:420px;max-height:none;border-radius:22px;transform:translateX(110%)}
+  .panel .grab{display:none}
 }
+@media (max-width:640px){
+  .brand small{display:none}
+  .bar{flex-wrap:wrap}
+  .search{order:5;flex-basis:100%;max-width:none;margin:10px 0 0}
+  .brand{margin-right:auto}
+  .btn .lbltxt{display:none}
+  .card{grid-template-columns:112px minmax(0,1fr)}
+  .card .ph{min-height:118px}
+  .sub{padding-bottom:10px}
+  .head .seg{display:none}
+  .seg.tabbar{display:flex;position:fixed;z-index:30;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom) + 10px);padding:5px;border-radius:18px;
+    background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 6px 24px rgba(15,52,64,.18)}
+  .seg button{flex:1;justify-content:center;height:46px;border-radius:13px;font-size:14px}
+  .seg button[aria-pressed="true"]{background:var(--ink);color:#fff;box-shadow:none}
+  .main{padding-bottom:calc(env(safe-area-inset-bottom) + 96px)}
+  body[data-view="map"] .mapbox{height:calc(100dvh - var(--top) - 96px - env(safe-area-inset-bottom))}
+  .toast{bottom:calc(env(safe-area-inset-bottom) + 80px)}
+  .mcard{bottom:10px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
-<body>
-<div class="wrap">
-  <header class="top">
-    <div>
-      <h1>Huurdashboard</h1>
-      <div class="stamp" id="stamp">Laden…</div>
+<body data-view="list">
+<header class="head" id="head">
+  <div class="bar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11.5 12 5l8 6.5" fill="none" stroke="#FFC23D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 10v9h11v-9" fill="#FFC23D"/><rect x="10.5" y="14" width="3" height="5" rx=".8" fill="#1F7A8C"/></svg></span>
+      <div><h1>Huurdashboard</h1><small id="stamp">Laden…</small></div>
     </div>
-    <button class="iconbtn" id="reload" aria-label="Opnieuw laden" title="Opnieuw laden">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg>
-    </button>
-  </header>
-
-  <section aria-labelledby="h-sites">
-    <div class="sec-h"><h2 id="h-sites">Sites</h2><button class="link" id="edit">Bewerken</button></div>
-    <div class="tiles" id="tiles"></div>
-    <button class="link" id="reset-sites" hidden style="margin:-16px 0 18px">Standaardlijst terugzetten</button>
-  </section>
-
-  <section aria-labelledby="h-new">
-    <div class="sec-h"><h2 id="h-new">Nieuwste woningen</h2></div>
-    <div class="filters" id="filters">
-      <div class="row">
-        <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-          <input id="q" type="search" placeholder="Zoek straat, wijk of plaats" autocomplete="off"></label>
-        <select class="sel" id="sort" aria-label="Sorteren">
-          <option value="nieuw">Nieuwste</option>
-          <option value="oud">Oudste</option>
-          <option value="plaats">Plaats</option>
-          <option value="prijs">Prijs ↑</option>
-          <option value="prijsAf">Prijs ↓</option>
-        </select>
-      </div>
-      <div class="chips" id="areas" aria-label="Gebieden"></div>
-      <div class="chips" id="more" aria-label="Meer filters"></div>
-      <div class="summary" id="summary"></div>
+    <label class="search"><svg class="i" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Zoek straat, wijk of plaats" autocomplete="off" enterkeyhint="search">
+      <button class="clr" id="qclr" aria-label="Zoekveld leegmaken" hidden><svg class="i" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </label>
+    <button class="btn" id="open-filters"><svg class="i" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg><span class="lbltxt">Filters</span><span class="badge" id="fcount" hidden></span></button>
+    <button class="btn icon" id="reload" aria-label="Vernieuwen" title="Vernieuwen"><svg class="i" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.8-4M4 4v4h4M4 13a8 8 0 0 0 14.8 4M20 20v-4h-4"/></svg></button>
+  </div>
+  <nav class="sites" id="sites" aria-label="Sites"></nav>
+  <div class="sub">
+    <div class="chips" id="areas" aria-label="Gebieden"></div>
+    <div class="seg" role="group" aria-label="Weergave">
+      <button data-view="list" aria-pressed="true"><svg class="i" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg><span>Lijst</span></button>
+      <button data-view="map" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="m9 4-5 2v14l5-2 6 2 5-2V4l-5 2-6-2zM9 4v14M15 6v14"/></svg><span>Kaart</span></button>
+      <button data-view="fav" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M12 3.8l2.5 5.1 5.6.8-4 4 .9 5.6-5-2.7-5 2.7.9-5.6-4-4 5.6-.8z"/></svg><span>Bewaard</span></button>
     </div>
-    <div id="notice"></div>
+  </div>
+</header>
+
+<main class="main">
+  <section class="col-list" aria-label="Woningen">
+    <div id="ribbon"></div>
+    <div id="notices"></div>
+    <div class="meta-row"><span id="count" class="num">&nbsp;</span>
+      <label>Sorteer: <select class="sortsel" id="sort">
+        <option value="nieuw">Nieuwste eerst</option><option value="oud">Oudste eerst</option>
+        <option value="plaats">Plaats</option><option value="prijs">Prijs laag–hoog</option><option value="prijsAf">Prijs hoog–laag</option><option value="m2">Grootste eerst</option>
+      </select></label>
+    </div>
     <div id="list"></div>
-    <button class="more" id="showmore" hidden>Meer tonen</button>
-    <div class="srcstat" id="srcstat"></div>
+    <button class="btn more" id="more" hidden>Meer tonen</button>
+    <div class="foot" id="foot"></div>
   </section>
-</div>
+  <aside class="col-map" aria-label="Kaart">
+    <div class="mapbox" id="map" tabindex="-1"></div>
+  </aside>
+</main>
 
-<dialog id="dlg-site">
-  <form class="sheet" method="dialog" id="f-site">
-    <h3>Site toevoegen</h3>
-    <label for="s-name">Naam</label>
-    <input id="s-name" placeholder="Bijv. Vesteda" maxlength="40">
-    <label for="s-url">Adres (link naar het huuraanbod)</label>
-    <input id="s-url" type="text" inputmode="url" autocapitalize="off" autocorrect="off" placeholder="https://…">
-    <div class="err" id="s-err"></div>
-    <div class="btns"><button class="btn" value="cancel" formnovalidate>Annuleren</button><button class="btn pri" value="ok" id="s-ok">Toevoegen</button></div>
-  </form>
-</dialog>
+<nav class="seg tabbar" aria-label="Weergave">
+      <button data-view="list" aria-pressed="true"><svg class="i" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12M4 6h.01M4 12h.01M4 18h.01"/></svg><span>Lijst</span></button>
+      <button data-view="map" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="m9 4-5 2v14l5-2 6 2 5-2V4l-5 2-6-2zM9 4v14M15 6v14"/></svg><span>Kaart</span></button>
+      <button data-view="fav" aria-pressed="false"><svg class="i" viewBox="0 0 24 24"><path d="M12 3.8l2.5 5.1 5.6.8-4 4 .9 5.6-5-2.7-5 2.7.9-5.6-4-4 5.6-.8z"/></svg><span>Bewaard</span></button>
+    </nav>
 
-<dialog id="dlg-areas">
-  <form class="sheet" method="dialog" id="f-areas">
-    <h3>Gebied toevoegen</h3>
-    <label for="a-name">Plaats, wijk of straat</label>
-    <input id="a-name" placeholder="Bijv. Kralingen" maxlength="40">
-    <div class="btns"><button class="btn" value="cancel" formnovalidate>Annuleren</button><button class="btn pri" value="ok">Toevoegen</button></div>
-  </form>
-</dialog>
+<div class="scrim" id="scrim"></div>
+
+<section class="panel" id="p-filters" role="dialog" aria-modal="true" aria-labelledby="pf-t">
+  <div class="grab"></div>
+  <div class="p-head"><h2 id="pf-t">Filters</h2><button class="linkbtn" id="f-reset">Wis alles</button></div>
+  <div class="p-body">
+    <div class="fld"><div class="lab">Gebieden <span id="f-areas-n"></span></div><div class="wrapchips" id="f-areas"></div>
+      <div class="addrow"><input class="inp" id="f-newarea" placeholder="Plaats, wijk of straat toevoegen" maxlength="40" enterkeyhint="done"><button class="btn" id="f-addarea">Toevoegen</button></div></div>
+    <div class="fld"><div class="lab">Maximale huur</div><div class="wrapchips" id="f-price"></div></div>
+    <div class="fld"><div class="lab">Slaapkamers</div><div class="opts" id="f-beds"></div></div>
+    <div class="fld"><div class="lab">Woonoppervlakte</div><div class="opts" id="f-m2"></div></div>
+    <div class="fld"><div class="lab">Sites</div><div class="wrapchips" id="f-src"></div></div>
+    <label class="toggle">Verborgen woningen tonen<span class="sw"><input type="checkbox" id="f-showhidden"><i></i></span></label>
+  </div>
+  <div class="p-foot"><button class="btn pri" id="f-apply">Toon woningen</button></div>
+</section>
+
+<section class="panel" id="p-sites" role="dialog" aria-modal="true" aria-labelledby="ps-t">
+  <div class="grab"></div>
+  <div class="p-head"><h2 id="ps-t">Sites beheren</h2><button class="linkbtn" id="s-reset">Standaardlijst</button></div>
+  <div class="p-body">
+    <div class="siteman" id="s-list"></div>
+    <div class="fld"><div class="lab">Site toevoegen</div>
+      <input class="inp" id="s-name" placeholder="Naam, bijv. Vesteda" maxlength="40" style="width:100%">
+      <div class="addrow"><input class="inp" id="s-url" placeholder="Link naar het huuraanbod" inputmode="url" autocapitalize="off" autocorrect="off" enterkeyhint="done"><button class="btn" id="s-add">Toevoegen</button></div>
+      <div class="err" id="s-err"></div></div>
+  </div>
+  <div class="p-foot"><button class="btn pri" id="s-done">Klaar</button></div>
+</section>
+
+<div class="toast" id="toast" role="status" aria-live="polite"><span id="toast-t"></span><button id="toast-b" hidden>Ongedaan maken</button></div>
 
 <script>
 (() => {
 "use strict";
-const $ = (s) => document.querySelector(s);
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const store = {
   get(k, d) { try { const v = localStorage.getItem("huur-" + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
   set(k, v) { try { localStorage.setItem("huur-" + k, JSON.stringify(v)); } catch {} },
 };
+const svg = (p) => `<svg class="i" viewBox="0 0 24 24">${p}</svg>`;
+const I = {
+  plus: '<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>',
+  minus: '<svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg>',
+  fit: '<svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>',
+  star: svg('<path d="M12 3.8l2.5 5.1 5.6.8-4 4 .9 5.6-5-2.7-5 2.7.9-5.6-4-4 5.6-.8z"/>'),
+  eyeOff: svg('<path d="M3 3l18 18M10.6 10.6a2 2 0 0 0 2.8 2.8M9.9 5.1A9.7 9.7 0 0 1 12 5c5 0 9 4.5 10 7-.4 1-1.2 2.3-2.4 3.5M6.6 6.6C4.4 8 2.8 10.2 2 12c1 2.5 5 7 10 7 1.6 0 3-.4 4.3-1.1"/>'),
+  eye: svg('<path d="M2 12c1-2.5 5-7 10-7s9 4.5 10 7c-1 2.5-5 7-10 7S3 14.5 2 12z"/><circle cx="12" cy="12" r="3"/>'),
+  bed: svg('<path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="1.6"/>'),
+  area: svg('<path d="M4 4h16v16H4zM4 9h5M15 20v-5h5"/>'),
+  up: svg('<path d="m6 15 6-6 6 6"/>'), down: svg('<path d="m6 9 6 6 6-6"/>'), x: svg('<path d="M6 6l12 12M18 6 6 18"/>'),
+};
 
-// ---------- sites ----------
+/* ═══ Sites ═══ */
 const STANDAARD_SITES = [
   { id: "woonnet", naam: "Woonnet Rijnmond", url: "https://www.woonnetrijnmond.nl/nl-NL" },
   { id: "pararius", naam: "Pararius", url: "https://www.pararius.nl" },
@@ -211,92 +378,96 @@ let sites = store.get("sites", null) || STANDAARD_SITES.slice();
 const KLEUREN = ["#1F7A8C", "#2E6A57", "#7A4E8C", "#B5652A", "#3B5BA5", "#8C3B4E", "#4F7A1F", "#6A5A2E", "#246B8C", "#8C6A1F"];
 const kleur = (s) => { let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(0)) >>> 0; return KLEUREN[h % KLEUREN.length]; };
 const domein = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return u; } };
-const initialen = (n) => n.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join("").toUpperCase() || "?";
+const initialen = (n) => String(n).split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join("").toUpperCase() || "?";
 
-function renderTiles() {
-  const vandaag = new Date(); vandaag.setHours(0, 0, 0, 0);
-  const nieuwVandaag = {};
-  for (const w of alle) if (new Date(w.datum) >= vandaag) nieuwVandaag[w.bron] = (nieuwVandaag[w.bron] || 0) + 1;
-  $("#tiles").innerHTML = sites.map((s, i) => {
-    const n = nieuwVandaag[s.id];
-    return `<a class="tile" href="${esc(s.url)}" target="_blank" rel="noopener" data-i="${i}">
-      <span class="mono" style="background:${kleur(s.naam)}">${esc(initialen(s.naam))}</span>
-      <span class="t"><b>${esc(s.naam)}</b><small>${esc(domein(s.url))}</small></span>
-      ${n ? `<span class="cnt" title="${n} nieuw vandaag">+${n}</span>` : ""}
-      <button class="del" data-del="${i}" aria-label="${esc(s.naam)} verwijderen">×</button></a>`;
-  }).join("") + `<button class="tile add" id="add-site">+ Site toevoegen</button>`;
+function renderSites() {
+  const dag = new Date(); dag.setHours(0, 0, 0, 0);
+  const vandaag = {};
+  for (const w of alle) if (new Date(w.datum) >= dag) vandaag[w.bron] = (vandaag[w.bron] || 0) + 1;
+  $("#sites").innerHTML = sites.map((s) => {
+    const n = vandaag[s.id];
+    return `<a class="site" href="${esc(s.url)}" target="_blank" rel="noopener" title="${esc(domein(s.url))}${n ? ` · ${n} nieuw vandaag` : ""}">
+      <span class="mono" style="background:${kleur(s.naam)}">${esc(initialen(s.naam))}</span>${esc(s.naam)}${n ? `<span class="plus num">+${n}</span>` : ""}</a>`;
+  }).join("") + `<button class="site manage" id="manage-sites">Beheer</button>`;
 }
-$("#tiles").addEventListener("click", (e) => {
-  const d = e.target.closest("[data-del]");
-  if (d) { e.preventDefault(); sites.splice(+d.dataset.del, 1); store.set("sites", sites); renderTiles(); return; }
-  if (e.target.closest("#add-site")) { e.preventDefault(); openSite(); return; }
-  if (document.body.classList.contains("editing") && e.target.closest(".tile")) e.preventDefault();
-});
-$("#edit").addEventListener("click", () => {
-  const on = document.body.classList.toggle("editing");
-  $("#tiles").classList.toggle("editing", on);
-  $("#edit").textContent = on ? "Klaar" : "Bewerken";
-  $("#reset-sites").hidden = !on;
-});
-$("#reset-sites").addEventListener("click", () => { sites = STANDAARD_SITES.slice(); store.set("sites", sites); renderTiles(); });
-
-function openSite() {
-  $("#s-name").value = ""; $("#s-url").value = ""; $("#s-err").textContent = "";
-  $("#dlg-site").showModal(); $("#s-url").focus();
+function renderSiteMan() {
+  $("#s-list").innerHTML = sites.map((s, i) => `<div class="sm"><span class="mono" style="background:${kleur(s.naam)}">${esc(initialen(s.naam))}</span>
+    <span class="t"><b>${esc(s.naam)}</b><small>${esc(domein(s.url))}</small></span>
+    <button data-up="${i}" aria-label="${esc(s.naam)} omhoog" ${i ? "" : "disabled"}>${I.up}</button>
+    <button data-down="${i}" aria-label="${esc(s.naam)} omlaag" ${i < sites.length - 1 ? "" : "disabled"}>${I.down}</button>
+    <button data-del="${i}" aria-label="${esc(s.naam)} verwijderen">${I.x}</button></div>`).join("");
 }
-$("#f-site").addEventListener("submit", (e) => {
-  if (e.submitter?.value !== "ok") return;
+$("#s-list").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  const i = +(b.dataset.up ?? b.dataset.down ?? b.dataset.del);
+  if (b.dataset.up) [sites[i - 1], sites[i]] = [sites[i], sites[i - 1]];
+  else if (b.dataset.down) [sites[i + 1], sites[i]] = [sites[i], sites[i + 1]];
+  else if (b.dataset.del) { const weg = sites.splice(i, 1)[0]; toast(`${weg.naam} verwijderd`, () => { sites.splice(i, 0, weg); saveSites(); }); }
+  saveSites();
+});
+function saveSites() { store.set("sites", sites); renderSites(); renderSiteMan(); }
+function addSite() {
   let url = $("#s-url").value.trim();
   if (url && !/^https?:\/\//i.test(url)) url = "https://" + url;
-  try { new URL(url); } catch { e.preventDefault(); $("#s-err").textContent = "Vul een geldig webadres in, bijv. https://www.vesteda.com"; return; }
-  const naam = $("#s-name").value.trim() || domein(url);
-  sites.push({ id: "eigen-" + Date.now(), naam, url });
-  store.set("sites", sites); renderTiles();
-});
+  try { if (!url) throw 0; new URL(url); } catch { $("#s-err").textContent = "Vul een webadres in, bijv. vesteda.com/huren"; return; }
+  sites.push({ id: "eigen-" + Date.now(), naam: $("#s-name").value.trim() || domein(url), url });
+  $("#s-name").value = $("#s-url").value = ""; $("#s-err").textContent = "";
+  saveSites();
+}
+$("#s-add").addEventListener("click", addSite);
+$("#s-url").addEventListener("keydown", (e) => { if (e.key === "Enter") addSite(); });
+$("#s-reset").addEventListener("click", () => { const oud = sites; sites = STANDAARD_SITES.slice(); saveSites(); toast("Standaardlijst teruggezet", () => { sites = oud; saveSites(); }); });
+$("#sites").addEventListener("click", (e) => { if (e.target.closest("#manage-sites")) openPanel("p-sites"); });
+$("#s-done").addEventListener("click", closePanel);
 
-// ---------- data ----------
-let alle = [];
-let bronStatus = {};
-let bijgewerkt = null;
+/* ═══ Panelen & toast ═══ */
+let openId = null, lastFocus = null;
+function openPanel(id) {
+  lastFocus = document.activeElement;
+  if (id === "p-sites") renderSiteMan();
+  if (id === "p-filters") renderFilterPanel();
+  openId = id; $("#" + id).classList.add("on"); $("#scrim").classList.add("on");
+  setTimeout(() => $("#" + id + " .p-head button")?.focus({ preventScroll: true }), 50);
+}
+function closePanel() {
+  if (!openId) return;
+  $("#" + openId).classList.remove("on"); $("#scrim").classList.remove("on"); openId = null;
+  lastFocus?.focus?.({ preventScroll: true });
+}
+$("#scrim").addEventListener("click", closePanel);
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePanel(); });
+let toastT, toastUndo;
+function toast(t, undo) {
+  $("#toast-t").textContent = t; toastUndo = undo; $("#toast-b").hidden = !undo;
+  $("#toast").classList.add("on"); clearTimeout(toastT); toastT = setTimeout(() => $("#toast").classList.remove("on"), 4500);
+}
+$("#toast-b").addEventListener("click", () => { toastUndo?.(); toastUndo = null; $("#toast").classList.remove("on"); });
+
+/* ═══ Gegevens ═══ */
+let alle = [], bronStatus = {}, bijgewerkt = null, laden = true, wnrFout = false, mkLeeg = false, mkFout = false;
 const BRONNAAM = { woonnet: "Woonnet" };
-
 async function laadMakelaars() {
   const r = await fetch("huur-aanbod.json?t=" + Date.now(), { cache: "no-store" });
   if (r.status === 404) return { leeg: true, woningen: [] };
   if (!r.ok) throw new Error("status " + r.status);
   const j = await r.json();
-  bronStatus = j.bronnen || {};
-  bijgewerkt = j.bijgewerkt;
+  bronStatus = j.bronnen || {}; bijgewerkt = j.bijgewerkt;
   for (const [id, b] of Object.entries(bronStatus)) BRONNAAM[id] = b.naam;
   return { woningen: (j.woningen || []).map((w) => ({ ...w, datum: w.eersteGezien })) };
 }
-
-// Woonnet live (zelfde gegevens als op de site, direct uit hun openbare aanbod)
 const WNR = {
   url: "https://housing.mesh-router.embracecloud.nl/graphql",
-  headers: {
-    accept: "application/graphql-response+json,application/json;q=0.9",
-    "apollographql-client-name": "Portal UI - woonnetrijnmond",
-    "apollographql-client-version": "1.0.0",
-    "content-type": "application/json",
-    "x-ec-portal-id": "UG9ydGFsUHJvdmlkZXJQb3J0YWw6NDg0MDExNWQtZTk4NC00MzQwLTgxYTktZjNjODZiYjM0MDk2",
-    "x-ec-tenant-id": "woonnetrijnmond",
-  },
+  headers: { accept: "application/graphql-response+json,application/json;q=0.9", "apollographql-client-name": "Portal UI - woonnetrijnmond", "apollographql-client-version": "1.0.0", "content-type": "application/json",
+    "x-ec-portal-id": "UG9ydGFsUHJvdmlkZXJQb3J0YWw6NDg0MDExNWQtZTk4NC00MzQwLTgxYTktZjNjODZiYjM0MDk2", "x-ec-tenant-id": "woonnetrijnmond" },
   query: `query wnrOverzicht($first: Int, $after: String, $filter: HousingWherePublicationFilterInput, $locale: String) {
   housingPublications(orderBy: STARTDATE_ASC, filter: $filter, locale: $locale) {
     nodes(first: $first, after: $after) {
       pageInfo { hasNextPage endCursor }
-      edges { node {
-        id startTime
-        unit {
-          slug { value }
-          basicRent { exact min max }
-          numberOfBedrooms { exact min max }
+      edges { node { id startTime
+        unit { slug { value } basicRent { exact min max } numberOfBedrooms { exact min max }
           dimensions { edges { node { area surfaceArea } } }
           thumbnails: photos(size: PRESENTATION) { edges { node { url } } }
-          location { addressLine1 addressLine2 addressLine3 }
-        }
-      } }
+          location { addressLine1 addressLine2 addressLine3 geoPosition { latitude longitude } } } } }
     }
   }
 }`,
@@ -304,27 +475,24 @@ const WNR = {
 };
 const money = (v) => (v ? v.exact || v.min || v.max || 0 : 0);
 async function laadWoonnet() {
-  const out = [];
-  let after = null;
+  const out = []; let after = null;
   for (let p = 0; p < 30; p++) {
     const r = await fetch(WNR.url, { method: "POST", headers: WNR.headers, body: JSON.stringify({ operationName: "wnrOverzicht", query: WNR.query, variables: { first: 50, after, locale: "nl-NL", filter: WNR.filter } }) });
     if (!r.ok) throw new Error("Woonnet status " + r.status);
     const j = await r.json();
     const nodes = j?.data?.housingPublications?.nodes;
-    if (!nodes) throw new Error(j?.errors?.[0]?.message || "Woonnet gaf geen gegevens");
+    if (!nodes) throw new Error(j?.errors?.[0]?.message || "geen gegevens");
     for (const { node } of nodes.edges || []) {
       const u = node.unit || {}, loc = u.location || {};
       const parts = String(loc.addressLine3 || "").split(",").map((s) => s.trim()).filter(Boolean);
       const total = (u.dimensions?.edges || []).map((e) => e.node).find((n) => n.area === "TOTAL");
-      out.push({
-        id: "woonnet:" + node.id, bron: "woonnet",
-        adres: loc.addressLine1 || "", plaats: loc.addressLine2 || parts[parts.length - 1] || "",
+      out.push({ id: "woonnet:" + node.id, bron: "woonnet", adres: loc.addressLine1 || "", plaats: loc.addressLine2 || parts[parts.length - 1] || "",
         wijk: parts.length >= 2 ? parts.slice(0, parts.length >= 3 ? 2 : 1).join(", ") : "",
         prijs: Math.round(money(u.basicRent)), slaapkamers: u.numberOfBedrooms ? u.numberOfBedrooms.exact || u.numberOfBedrooms.min || 0 : 0,
         m2: total?.surfaceArea ? Math.round(total.surfaceArea / 1e6) : 0,
         url: "https://www.woonnetrijnmond.nl/nl-NL/aanbod/advertentie/" + (u.slug?.value || ""),
         foto: u.thumbnails?.edges?.[0]?.node?.url || "", datum: node.startTime || null,
-      });
+        lat: loc.geoPosition?.latitude || null, lng: loc.geoPosition?.longitude || null });
     }
     if (!nodes.pageInfo?.hasNextPage) break;
     after = nodes.pageInfo.endCursor;
@@ -332,23 +500,43 @@ async function laadWoonnet() {
   return out;
 }
 
-// ---------- filters ----------
+/* ═══ Filters & status ═══ */
 const STANDAARD_GEBIEDEN = ["Bergschenhoek", "Berkel en Rodenrijs", "Hillegersberg", "Schiebroek", "Rotterdam"];
-const f = Object.assign({ gebieden: [], eigenGebieden: STANDAARD_GEBIEDEN, q: "", sort: "nieuw", bronnen: [], maxPrijs: 0 }, store.get("filters", {}));
+const f = Object.assign({ gebieden: [], eigenGebieden: STANDAARD_GEBIEDEN, q: "", sort: "nieuw", bronnen: [], maxPrijs: 0, minSlpk: 0, minM2: 0, toonVerborgen: false }, store.get("filters", {}));
 const bewaar = () => store.set("filters", f);
+const fav = new Set(store.get("fav", []));
+const verborgen = new Set(store.get("hidden", []));
 const PRIJZEN = [0, 900, 1000, 1100, 1250, 1500, 2000];
-let toon = 60;
+const SLPK = [0, 1, 2, 3];
+const M2 = [0, 40, 60, 80];
+let view = "list", toon = 50, alleenNieuw = false;
+
+// "Nieuw sinds je laatste bezoek": het moment waarop je de vorige keer keek.
+const vorigBezoek = store.get("bezoek", null);
+let bezoekGrens = vorigBezoek;
+const markeerBezoek = () => store.set("bezoek", new Date().toISOString());
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") markeerBezoek(); });
+window.addEventListener("pagehide", markeerBezoek);
+const isNieuw = (w) => bezoekGrens && w.datum && w.datum > bezoekGrens && new Date(w.datum) <= new Date();
 
 const tekstVan = (w) => `${w.adres} ${w.wijk} ${w.plaats} ${w.postcode || ""}`.toLowerCase();
 const inGebied = (w, g) => tekstVan(w).includes(g.toLowerCase());
-
-function gefilterd() {
+const kamersVan = (w) => w.slaapkamers || (w.kamers ? Math.max(1, w.kamers - 1) : 0);
+function past(w, o = {}) {
   const q = f.q.trim().toLowerCase();
-  return alle.filter((w) =>
-    (!f.gebieden.length || f.gebieden.some((g) => inGebied(w, g))) &&
+  return (o.gebied === false || !f.gebieden.length || f.gebieden.some((g) => inGebied(w, g))) &&
     (!q || tekstVan(w).includes(q)) &&
     (!f.bronnen.length || f.bronnen.includes(w.bron)) &&
-    (!f.maxPrijs || (w.prijs && w.prijs <= f.maxPrijs)));
+    (!f.maxPrijs || (w.prijs && w.prijs <= f.maxPrijs)) &&
+    (!f.minSlpk || kamersVan(w) >= f.minSlpk) &&
+    (!f.minM2 || w.m2 >= f.minM2) &&
+    (f.toonVerborgen || !verborgen.has(w.id));
+}
+function zichtbaar() {
+  let l = alle.filter((w) => past(w));
+  if (view === "fav") l = alle.filter((w) => fav.has(w.id));
+  else if (alleenNieuw) l = l.filter(isNieuw);
+  return l.sort(SORT[f.sort]);
 }
 const SORT = {
   nieuw: (a, b) => (b.datum || "").localeCompare(a.datum || ""),
@@ -356,66 +544,93 @@ const SORT = {
   plaats: (a, b) => a.plaats.localeCompare(b.plaats, "nl") || a.adres.localeCompare(b.adres, "nl"),
   prijs: (a, b) => (a.prijs || 1e9) - (b.prijs || 1e9),
   prijsAf: (a, b) => (b.prijs || 0) - (a.prijs || 0),
+  m2: (a, b) => (b.m2 || 0) - (a.m2 || 0),
 };
+const actieveFilters = () => (f.maxPrijs ? 1 : 0) + (f.minSlpk ? 1 : 0) + (f.minM2 ? 1 : 0) + (f.bronnen.length ? 1 : 0) + (f.toonVerborgen ? 1 : 0);
 
-function renderChips() {
-  const telling = (g) => alle.filter((w) => inGebied(w, g)).length;
-  $("#areas").innerHTML =
-    `<button class="chip" data-area="" aria-pressed="${!f.gebieden.length}">Alle gebieden</button>` +
-    f.eigenGebieden.map((g) => `<button class="chip" data-area="${esc(g)}" aria-pressed="${f.gebieden.includes(g)}">${esc(g)}<span class="n">${telling(g)}</span></button>`).join("") +
-    `<button class="chip soft" id="add-area">+ Gebied</button>`;
-  const bronnen = [...new Set(alle.map((w) => w.bron))];
-  $("#more").innerHTML =
-    `<select class="chip" id="maxprijs" aria-label="Maximale huur">${PRIJZEN.map((p) => `<option value="${p}"${p === f.maxPrijs ? " selected" : ""}>${p ? "Tot € " + p.toLocaleString("nl-NL") : "Elke prijs"}</option>`).join("")}</select>` +
-    bronnen.map((b) => `<button class="chip" data-bron="${esc(b)}" aria-pressed="${f.bronnen.includes(b)}">${esc(BRONNAAM[b] || b)}</button>`).join("");
+function renderAreas() {
+  const tel = (g) => alle.filter((w) => inGebied(w, g) && past(w, { gebied: false })).length;
+  $("#areas").innerHTML = `<button class="chip" data-area="" aria-pressed="${!f.gebieden.length}">Overal</button>` +
+    f.eigenGebieden.map((g) => `<button class="chip" data-area="${esc(g)}" aria-pressed="${f.gebieden.includes(g)}">${esc(g)}<span class="n num">${laden && !alle.length ? "" : tel(g)}</span></button>`).join("") +
+    `<button class="chip ghost" id="area-add">+ Gebied</button>`;
 }
-
 $("#areas").addEventListener("click", (e) => {
-  const c = e.target.closest("[data-area]");
-  if (e.target.closest("#add-area")) { $("#a-name").value = ""; $("#dlg-areas").showModal(); return; }
-  if (!c) return;
+  if (e.target.closest("#area-add")) { openPanel("p-filters"); setTimeout(() => $("#f-newarea").focus(), 300); return; }
+  const c = e.target.closest("[data-area]"); if (!c) return;
   const g = c.dataset.area;
-  if (!g) f.gebieden = [];
-  else f.gebieden = f.gebieden.includes(g) ? f.gebieden.filter((x) => x !== g) : [...f.gebieden, g];
-  bewaar(); toon = 60; render();
+  f.gebieden = !g ? [] : f.gebieden.includes(g) ? f.gebieden.filter((x) => x !== g) : [...f.gebieden, g];
+  bewaar(); toon = 50; render();
 });
-// lang indrukken / rechtsklik op een gebied = verwijderen uit de lijst
-let lp;
-$("#areas").addEventListener("contextmenu", (e) => { const c = e.target.closest("[data-area]"); if (c && c.dataset.area) { e.preventDefault(); verwijderGebied(c.dataset.area); } });
-$("#areas").addEventListener("touchstart", (e) => { const c = e.target.closest("[data-area]"); if (c && c.dataset.area) lp = setTimeout(() => verwijderGebied(c.dataset.area), 650); }, { passive: true });
-["touchend", "touchmove"].forEach((t) => $("#areas").addEventListener(t, () => clearTimeout(lp), { passive: true }));
-function verwijderGebied(g) {
-  if (!confirm(`"${g}" uit je gebieden halen?`)) return;
-  f.eigenGebieden = f.eigenGebieden.filter((x) => x !== g); f.gebieden = f.gebieden.filter((x) => x !== g); bewaar(); render();
+
+/* filterpaneel */
+const keuze = (vals, cur, lab) => vals.map((v) => `<button data-v="${v}" aria-pressed="${v === cur}">${lab(v)}</button>`).join("");
+function renderFilterPanel() {
+  $("#f-areas").innerHTML = f.eigenGebieden.map((g) => `<button class="chip" data-area="${esc(g)}" aria-pressed="${f.gebieden.includes(g)}">${esc(g)}</button>`).join("") || `<span style="color:var(--ink3);font-size:13px">Nog geen gebieden.</span>`;
+  $("#f-areas-n").innerHTML = f.eigenGebieden.length ? `<button class="linkbtn" id="f-edit-areas" style="font-size:13px">${$("#f-areas").dataset.edit ? "Klaar" : "Aanpassen"}</button>` : "";
+  if ($("#f-areas").dataset.edit) $$("#f-areas .chip").forEach((c) => c.insertAdjacentHTML("beforeend", ` <span aria-hidden="true">×</span>`));
+  $("#f-price").innerHTML = PRIJZEN.map((p) => `<button class="chip" data-v="${p}" aria-pressed="${p === f.maxPrijs}">${p ? "Tot € " + p.toLocaleString("nl-NL") : "Elke prijs"}</button>`).join("");
+  $("#f-beds").innerHTML = keuze(SLPK, f.minSlpk, (v) => (v ? v + "+" : "Alle"));
+  $("#f-m2").innerHTML = keuze(M2, f.minM2, (v) => (v ? v + "+ m²" : "Alle"));
+  const bronnen = [...new Set(alle.map((w) => w.bron))].sort((a, b) => (BRONNAAM[a] || a).localeCompare(BRONNAAM[b] || b));
+  $("#f-src").innerHTML = bronnen.map((b) => `<button class="chip" data-v="${esc(b)}" aria-pressed="${f.bronnen.includes(b)}">${esc(BRONNAAM[b] || b)}</button>`).join("");
+  $("#f-showhidden").checked = f.toonVerborgen;
+  updateApply();
 }
-$("#f-areas").addEventListener("submit", (e) => {
-  if (e.submitter?.value !== "ok") return;
-  const g = $("#a-name").value.trim();
-  if (g && !f.eigenGebieden.some((x) => x.toLowerCase() === g.toLowerCase())) { f.eigenGebieden = [...f.eigenGebieden, g]; f.gebieden = [...f.gebieden, g]; bewaar(); render(); }
+function updateApply() { const n = alle.filter((w) => past(w)).length; $("#f-apply").textContent = `Toon ${n} ${n === 1 ? "woning" : "woningen"}`; }
+function wijzig(fn) { fn(); bewaar(); toon = 50; renderFilterPanel(); render(); }
+$("#p-filters").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  const host = b.parentElement.id;
+  if (b.id === "f-edit-areas") { const fa = $("#f-areas"); fa.dataset.edit = fa.dataset.edit ? "" : "1"; renderFilterPanel(); return; }
+  if (host === "f-areas") {
+    const g = b.dataset.area;
+    if ($("#f-areas").dataset.edit) return wijzig(() => { f.eigenGebieden = f.eigenGebieden.filter((x) => x !== g); f.gebieden = f.gebieden.filter((x) => x !== g); });
+    return wijzig(() => { f.gebieden = f.gebieden.includes(g) ? f.gebieden.filter((x) => x !== g) : [...f.gebieden, g]; });
+  }
+  if (host === "f-price") return wijzig(() => (f.maxPrijs = +b.dataset.v));
+  if (host === "f-beds") return wijzig(() => (f.minSlpk = +b.dataset.v));
+  if (host === "f-m2") return wijzig(() => (f.minM2 = +b.dataset.v));
+  if (host === "f-src") { const v = b.dataset.v; return wijzig(() => (f.bronnen = f.bronnen.includes(v) ? f.bronnen.filter((x) => x !== v) : [...f.bronnen, v])); }
 });
-$("#more").addEventListener("click", (e) => {
-  const c = e.target.closest("[data-bron]"); if (!c) return;
-  const b = c.dataset.bron;
-  f.bronnen = f.bronnen.includes(b) ? f.bronnen.filter((x) => x !== b) : [...f.bronnen, b];
-  bewaar(); toon = 60; render();
-});
-$("#more").addEventListener("change", (e) => { if (e.target.id === "maxprijs") { f.maxPrijs = +e.target.value; bewaar(); toon = 60; render(); } });
-$("#q").value = f.q;
-$("#q").addEventListener("input", () => { f.q = $("#q").value; bewaar(); toon = 60; renderList(); });
+function addArea() {
+  const g = $("#f-newarea").value.trim(); if (!g) return;
+  wijzig(() => { if (!f.eigenGebieden.some((x) => x.toLowerCase() === g.toLowerCase())) f.eigenGebieden = [...f.eigenGebieden, g]; if (!f.gebieden.includes(g)) f.gebieden = [...f.gebieden, g]; });
+  $("#f-newarea").value = "";
+}
+$("#f-addarea").addEventListener("click", addArea);
+$("#f-newarea").addEventListener("keydown", (e) => { if (e.key === "Enter") addArea(); });
+$("#f-showhidden").addEventListener("change", (e) => wijzig(() => (f.toonVerborgen = e.target.checked)));
+$("#f-reset").addEventListener("click", () => wijzig(() => Object.assign(f, { gebieden: [], bronnen: [], maxPrijs: 0, minSlpk: 0, minM2: 0, toonVerborgen: false })));
+$("#f-apply").addEventListener("click", closePanel);
+$("#open-filters").addEventListener("click", () => openPanel("p-filters"));
+
+/* zoeken, sorteren, weergave */
+$("#q").value = f.q; $("#qclr").hidden = !f.q;
+let qT;
+$("#q").addEventListener("input", () => { $("#qclr").hidden = !$("#q").value; clearTimeout(qT); qT = setTimeout(() => { f.q = $("#q").value; bewaar(); toon = 50; render(); }, 120); });
+$("#qclr").addEventListener("click", (e) => { e.preventDefault(); $("#q").value = ""; f.q = ""; $("#qclr").hidden = true; bewaar(); render(); $("#q").focus(); });
 $("#sort").value = f.sort;
 $("#sort").addEventListener("change", () => { f.sort = $("#sort").value; bewaar(); renderList(); });
-$("#showmore").addEventListener("click", () => { toon += 60; renderList(); });
+$$(".seg button").forEach((b) => b.addEventListener("click", () => setView(b.dataset.view)));
+function setView(v) {
+  view = v; document.body.dataset.view = v;
+  $$(".seg button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.view === v)));
+  toon = 50; render();
+  if (v === "map" || window.innerWidth >= 980) requestAnimationFrame(() => { map.render(); if (map.pendingFit) map.fit(map.pendingFit); });
+  window.scrollTo({ top: 0 });
+}
+$("#more").addEventListener("click", () => { toon += 50; renderList(); });
 
-// ---------- weergave ----------
+/* ═══ Weergave ═══ */
 const euro = (n) => "€ " + Math.round(n).toLocaleString("nl-NL");
 function geleden(iso) {
   const d = new Date(iso); if (!iso || isNaN(d)) return "";
   const m = Math.round((Date.now() - d) / 60000);
   if (m < 0) return "binnenkort";
-  if (m < 60) return m <= 1 ? "zojuist" : `${m} min geleden`;
-  const u = Math.round(m / 60); if (u < 24) return `${u} uur geleden`;
-  const dg = Math.round(u / 24); if (dg === 1) return "gisteren"; if (dg <= 30) return `${dg} dagen geleden`;
-  return "sinds " + d.toLocaleDateString("nl-NL", { day: "numeric", month: "short", year: "numeric" });
+  if (m < 60) return m <= 1 ? "zojuist" : `${m} min`;
+  const u = Math.round(m / 60); if (u < 24) return `${u} uur`;
+  const dg = Math.round(u / 24); if (dg === 1) return "gisteren"; if (dg <= 30) return `${dg} dagen`;
+  return d.toLocaleDateString("nl-NL", { day: "numeric", month: "short", year: "2-digit" });
 }
 function dagKop(iso) {
   const d = new Date(iso);
@@ -423,80 +638,580 @@ function dagKop(iso) {
   const dag = (x) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
   const diff = Math.round((dag(d) - dag(new Date())) / 864e5);
   const sub = d.toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long" });
-  const titel = diff === 0 ? "Vandaag" : diff === -1 ? "Gisteren" : sub.charAt(0).toUpperCase() + sub.slice(1);
-  return { key: String(dag(d)), titel, sub: titel.toLowerCase() === sub ? "" : sub };
+  if (diff === 0) return { key: "0", titel: "Vandaag", sub };
+  if (diff === -1) return { key: "-1", titel: "Gisteren", sub };
+  if (diff > -7) return { key: String(dag(d)), titel: sub.charAt(0).toUpperCase() + sub.slice(1), sub: "" };
+  if (diff > -31) { const wk = Math.ceil(-diff / 7); return { key: "w" + wk, titel: wk === 1 ? "Vorige week" : `${wk} weken geleden`, sub: "" }; }
+  return { key: "ouder", titel: "Ouder", sub: "" };
 }
-function kaart(w) {
+function kaart(w, extra = "") {
   const naam = BRONNAAM[w.bron] || w.bron;
-  const feiten = [
-    w.prijs ? `<span class="price">${euro(w.prijs)}</span>` : `<span class="price">Prijs op aanvraag</span>`,
-    w.m2 ? `<span>${w.m2} m²</span>` : "",
-    w.slaapkamers ? `<span>${w.slaapkamers} slpk</span>` : w.kamers ? `<span>${w.kamers} ${w.kamers === 1 ? "kamer" : "kamers"}</span>` : "",
-  ].join("");
   const plek = [...new Set([...String(w.wijk || "").split(",").map((x) => x.trim()), w.plaats])].filter(Boolean).join(", ");
-  const foto = w.foto ? `<div class="ph" style="background-image:url('${esc(w.foto).replace(/'/g, "%27")}')"></div>` : `<div class="ph none">${esc(initialen(naam))}</div>`;
-  return `<a class="card" href="${esc(w.url)}" target="_blank" rel="noopener">${foto}
-    <div class="info"><div class="adr">${esc(w.adres || "Adres onbekend")}</div><div class="plc">${esc(plek)}</div>
-    <div class="facts">${feiten}</div>
-    <div class="meta"><span class="badge${w.bron === "woonnet" ? " wnr" : ""}">${esc(naam)}</span><span class="ago">${esc(w.bron === "woonnet" ? "geplaatst " + geleden(w.datum) : (/^sinds/.test(geleden(w.datum)) ? "" : "gezien ") + geleden(w.datum))}</span></div></div></a>`;
+  const foto = w.foto ? `<div class="ph" style="background-image:url('${esc(w.foto).replace(/'/g, "%27")}')">` : `<div class="ph none">${esc(initialen(naam))}`;
+  const kamers = w.slaapkamers ? `${w.slaapkamers} slpk` : w.kamers ? `${w.kamers} ${w.kamers === 1 ? "kamer" : "kamers"}` : "";
+  const isFav = fav.has(w.id), isVerb = verborgen.has(w.id);
+  return `<article class="card${isVerb ? " is-hidden" : ""}${extra}" data-id="${esc(w.id)}">
+    <a class="lnk" href="${esc(w.url)}" target="_blank" rel="noopener" aria-label="${esc(w.adres || "Woning")} bij ${esc(naam)} openen"></a>
+    ${foto}<span class="src${w.bron === "woonnet" ? " wnr" : ""}">${esc(naam)}</span></div>
+    <div class="body">
+      <div class="price num">${w.prijs ? euro(w.prijs) + "<small>p/m</small>" : '<span style="font-size:15px">Prijs op aanvraag</span>'}</div>
+      <div class="adr">${isNieuw(w) ? '<i class="new" title="Nieuw sinds je laatste bezoek"></i>' : ""}${esc(w.adres || "Adres onbekend")}</div>
+      <div class="plc">${esc(plek)}</div>
+      <div class="facts num">${w.m2 ? `<span>${I.area}${w.m2} m²</span>` : ""}${kamers ? `<span>${I.bed}${kamers}</span>` : ""}<span class="when">${esc(w.bron === "woonnet" ? "geplaatst " : "gezien ")}${esc(geleden(w.datum))}</span></div>
+    </div>
+    <div class="acts">
+      <button class="act" data-fav aria-pressed="${isFav}" aria-label="${isFav ? "Niet meer bewaren" : "Bewaren"}" title="${isFav ? "Bewaard" : "Bewaren"}">${I.star}</button>
+      <button class="act hide" data-hide aria-label="${isVerb ? "Weer tonen" : "Verbergen"}" title="${isVerb ? "Weer tonen" : "Verbergen"}">${isVerb ? I.eye : I.eyeOff}</button>
+    </div></article>`;
 }
+function onCardAction(e) {
+  const b = e.target.closest("[data-fav],[data-hide]"); if (!b) return;
+  e.preventDefault(); e.stopPropagation();
+  const id = b.closest(".card").dataset.id;
+  if (b.hasAttribute("data-fav")) {
+    fav.has(id) ? fav.delete(id) : fav.add(id); store.set("fav", [...fav]);
+    toast(fav.has(id) ? "Bewaard" : "Niet meer bewaard");
+  } else {
+    const was = verborgen.has(id);
+    was ? verborgen.delete(id) : verborgen.add(id); store.set("hidden", [...verborgen]);
+    toast(was ? "Weer zichtbaar" : "Verborgen", () => { was ? verborgen.add(id) : verborgen.delete(id); store.set("hidden", [...verborgen]); render(); });
+  }
+  render();
+}
+$("#list").addEventListener("click", onCardAction);
+$("#map").addEventListener("click", onCardAction, true);
+
+function renderRibbon() {
+  const n = alle.filter((w) => past(w) && isNieuw(w)).length;
+  if (view === "fav" || (!n && !alleenNieuw)) return ($("#ribbon").innerHTML = "");
+  $("#ribbon").innerHTML = alleenNieuw
+    ? `<div class="ribbon on"><span class="grow"><b class="num">${n}</b> nieuw sinds je laatste bezoek</span><button id="rb-all">Alles tonen</button></div>`
+    : `<div class="ribbon"><span class="grow"><b class="num">${n}</b> ${n === 1 ? "woning" : "woningen"} nieuw sinds je laatste bezoek</span><button id="rb-new">Bekijk</button><button class="x" id="rb-x" aria-label="Markeren als gezien">${I.x}</button></div>`;
+}
+$("#ribbon").addEventListener("click", (e) => {
+  if (e.target.closest("#rb-new")) { alleenNieuw = true; f.sort = "nieuw"; $("#sort").value = "nieuw"; }
+  else if (e.target.closest("#rb-all")) alleenNieuw = false;
+  else if (e.target.closest("#rb-x")) { bezoekGrens = new Date().toISOString(); markeerBezoek(); alleenNieuw = false; }
+  else return;
+  toon = 50; render(); window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
 function renderList() {
-  const lijst = gefilterd().sort(SORT[f.sort]);
+  if (laden && !alle.length) { $("#list").innerHTML = `<div class="list" style="margin-top:14px">${'<div class="skel"></div>'.repeat(5)}</div>`; $("#count").textContent = "Laden…"; return; }
+  const lijst = zichtbaar();
   const zicht = lijst.slice(0, toon);
-  $("#summary").textContent = alle.length ? `${lijst.length} van ${alle.length} woningen` : "";
+  $("#count").textContent = view === "fav" ? `${lijst.length} bewaard` : `${lijst.length} van ${alle.length} woningen`;
   if (!lijst.length) {
-    $("#list").innerHTML = alle.length ? `<div class="empty">Geen woningen met deze filters. Kies een ander gebied of zet “Elke prijs” aan.</div>` : "";
-    $("#showmore").hidden = true; return;
+    $("#list").innerHTML = view === "fav"
+      ? `<div class="empty"><b>Nog niets bewaard</b>Tik op de ster bij een woning om hem hier te zetten.</div>`
+      : alle.length ? `<div class="empty"><b>Geen woningen gevonden</b>Probeer een ander gebied of minder filters.<br><button class="btn" id="e-reset">Filters wissen</button></div>` : "";
+    $("#more").hidden = true; return;
   }
   let html = "";
-  if (f.sort === "nieuw" || f.sort === "oud" || f.sort === "plaats") {
-    let key = null, open = false;
+  const groepeer = f.sort === "nieuw" || f.sort === "oud" || f.sort === "plaats";
+  if (groepeer) {
+    const tel = {};
+    const keyOf = (w) => (f.sort === "plaats" ? { key: w.plaats || "?", titel: w.plaats || "Plaats onbekend", sub: "" } : dagKop(w.datum));
+    for (const w of lijst) { const k = keyOf(w).key; tel[k] = (tel[k] || 0) + 1; }
+    let key = null;
     for (const w of zicht) {
-      const k = f.sort === "plaats" ? { key: w.plaats || "?", titel: w.plaats || "Plaats onbekend", sub: "" } : dagKop(w.datum);
-      if (k.key !== key) { if (open) html += "</div>"; html += `<div class="day">${esc(k.titel)}${k.sub ? `<span>${esc(k.sub)}</span>` : ""}</div><div class="grid">`; key = k.key; open = true; }
+      const k = keyOf(w);
+      if (k.key !== key) { if (key !== null) html += "</div>"; html += `<div class="day"><h3>${esc(k.titel)}</h3>${k.sub ? `<span>${esc(k.sub)}</span>` : ""}<span class="c num">${tel[k.key]}</span></div><div class="list">`; key = k.key; }
       html += kaart(w);
     }
-    if (open) html += "</div>";
-  } else html = `<div class="grid" style="margin-top:14px">${zicht.map(kaart).join("")}</div>`;
+    html += "</div>";
+  } else html = `<div class="list" style="margin-top:14px">${zicht.map((w) => kaart(w)).join("")}</div>`;
   $("#list").innerHTML = html;
-  $("#showmore").hidden = lijst.length <= toon;
+  $("#more").hidden = lijst.length <= toon;
+  $("#more").textContent = `Meer tonen (${lijst.length - toon})`;
 }
-function renderStatus() {
-  const regels = Object.entries(bronStatus).map(([id, b]) =>
-    b.ok ? `${esc(b.naam)}: ${b.aantal}` : `<span class="bad">${esc(b.naam)}: kon niet worden opgehaald</span>`);
-  $("#srcstat").innerHTML = regels.length ? `Makelaars ${bijgewerkt ? "bijgewerkt " + esc(geleden(bijgewerkt)) : ""}: ${regels.join(" · ")}` : "";
-}
-function render() { renderTiles(); renderChips(); renderList(); renderStatus(); }
+$("#list").addEventListener("click", (e) => { if (e.target.closest("#e-reset")) { Object.assign(f, { gebieden: [], bronnen: [], maxPrijs: 0, minSlpk: 0, minM2: 0, q: "" }); $("#q").value = ""; bewaar(); render(); } });
 
-// ---------- laden ----------
-let wnrStatus = "";
+function renderNotices() {
+  const n = [];
+  if (mkLeeg) n.push(["warn", "Nog geen makelaarsgegevens. Start in GitHub de workflow “Huurdashboard verzamelen” (Actions → Run workflow)."]);
+  if (mkFout) n.push(["warn", "De makelaarsgegevens konden niet worden geladen. Probeer het zo opnieuw."]);
+  if (wnrFout) n.push(["warn", "Woonnet is nu niet bereikbaar; de makelaars worden wel getoond."]);
+  $("#notices").innerHTML = n.map(([c, t]) => `<div class="notice ${c}">${esc(t)}</div>`).join("");
+}
+function renderFoot() {
+  const regels = Object.entries(bronStatus).map(([id, b]) => (b.ok ? `${esc(b.naam)} ${b.aantal}` : `<span class="bad">${esc(b.naam)}: niet opgehaald</span>`));
+  $("#foot").innerHTML = regels.length ? `Makelaars ${bijgewerkt ? "bijgewerkt " + esc(geleden(bijgewerkt)) + (/\d$|uur|min/.test(geleden(bijgewerkt)) ? " geleden" : "") : ""} · ${regels.join(" · ")}` : "";
+}
+function render() {
+  const fc = actieveFilters(); $("#fcount").hidden = !fc; $("#fcount").textContent = fc;
+  renderSites(); renderAreas(); renderRibbon(); renderNotices(); renderList(); renderFoot(); renderMap();
+  if (openId === "p-filters") updateApply();
+}
+
+/* ═══ Kaart ═══ */
+  const TILE = 256;
+  const MIN_Z = 8, MAX_Z = 18;
+  const NEAR_Z = 13; // vanaf dit zoomniveau prijslabels i.p.v. stipjes
+  function project(lat, lng, z) {
+    const s = TILE * 2 ** z;
+    const sin = Math.sin((lat * Math.PI) / 180);
+    return { x: ((lng + 180) / 360) * s, y: (0.5 - Math.log((1 + sin) / (1 - sin)) / (4 * Math.PI)) * s };
+  }
+  function unproject(x, y, z) {
+    const s = TILE * 2 ** z;
+    const n = Math.PI - (2 * Math.PI * y) / s;
+    return { lat: (180 / Math.PI) * Math.atan(Math.sinh(n)), lng: (x / s) * 360 - 180 };
+  }
+
+  class TinyMap {
+    constructor(el, { onPinClick, onBackgroundClick }) {
+      this.el = el;
+      this.z = 11; // mag een kommagetal zijn: traploos zoomen
+      this.center = { lat: 51.95, lng: 4.48 };
+      this.tiles = new Map();
+      this.pins = [];
+      this.onPinClick = onPinClick;
+      this.onBackgroundClick = onBackgroundClick;
+      this.zoomTarget = null;
+      this.anchor = null;
+      this._zr = this._fr = this._ir = this._rr = null; // animatie-frames
+      el.innerHTML = `
+        <div class="m-tiles"></div><div class="m-pins"></div>
+        <div class="m-zoom"><button data-z="1" aria-label="Inzoomen">${I.plus}</button><button data-z="-1" aria-label="Uitzoomen">${I.minus}</button><button data-fit aria-label="Alle woningen tonen">${I.fit}</button></div>
+        <div class="m-attr">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>-bijdragers</div>`;
+      this.tileLayer = el.querySelector(".m-tiles");
+      this.pinLayer = el.querySelector(".m-pins");
+      el.querySelector(".m-zoom").addEventListener("click", (e) => {
+        const b = e.target.closest("button");
+        if (!b) return;
+        e.stopPropagation();
+        if (b.dataset.fit !== undefined) this.flyToPoints(this.lastFitPoints || []);
+        else this.zoomBy(Number(b.dataset.z));
+      });
+      this._bindPointer();
+      // Scrollwiel en trackpad: traploos, met zachte uitloop.
+      el.addEventListener("wheel", (e) => {
+        if (e.target.closest(".mcard")) return;
+        e.preventDefault();
+        const r = el.getBoundingClientRect();
+        const factor = e.ctrlKey ? 0.012 : e.deltaMode === 1 ? 0.06 : 0.0028; // ctrl = knijpen op trackpad
+        const delta = Math.max(-1, Math.min(1, -e.deltaY * factor));
+        this._stopFly();
+        this._stopInertia();
+        this.anchor = { px: e.clientX - r.left, py: e.clientY - r.top };
+        this.zoomTarget = this.clampZ((this.zoomTarget ?? this.z) + delta);
+        this._runZoom();
+      }, { passive: false });
+      el.addEventListener("dblclick", (e) => {
+        if (e.target.closest(".m-pin,.mcard,.m-zoom")) return;
+        const r = el.getBoundingClientRect();
+        this.zoomBy(1, e.clientX - r.left, e.clientY - r.top);
+      });
+      new ResizeObserver(() => {
+        if (this.pendingFit && el.clientWidth && el.clientHeight) this.fit(this.pendingFit);
+        else this.render();
+      }).observe(el);
+    }
+
+    clampZ(z) {
+      return Math.max(MIN_Z, Math.min(MAX_Z, z));
+    }
+
+    size() {
+      return { w: this.el.clientWidth, h: this.el.clientHeight };
+    }
+
+    topLeft() {
+      const c = project(this.center.lat, this.center.lng, this.z);
+      const { w, h } = this.size();
+      return { x: c.x - w / 2, y: c.y - h / 2 };
+    }
+
+    // Zoom naar z2 terwijl het punt (px,py) op het scherm op zijn plek blijft.
+    setZoomAround(z2, px, py) {
+      z2 = this.clampZ(z2);
+      const { w, h } = this.size();
+      const tl = this.topLeft();
+      const ll = unproject(tl.x + px, tl.y + py, this.z);
+      const p2 = project(ll.lat, ll.lng, z2);
+      this.z = z2;
+      this.center = unproject(p2.x - px + w / 2, p2.y - py + h / 2, z2);
+      this.render();
+    }
+
+    _runZoom() {
+      if (this._zr) return;
+      const step = () => {
+        const d = this.zoomTarget - this.z;
+        if (Math.abs(d) < 0.003) {
+          this.setZoomAround(this.zoomTarget, this.anchor.px, this.anchor.py);
+          this._zr = null;
+          this.zoomTarget = null;
+          return;
+        }
+        this.setZoomAround(this.z + d * 0.2, this.anchor.px, this.anchor.py);
+        this._zr = requestAnimationFrame(step);
+      };
+      this._zr = requestAnimationFrame(step);
+    }
+
+    _stopZoom() {
+      if (this._zr) cancelAnimationFrame(this._zr);
+      this._zr = null;
+      this.zoomTarget = null;
+    }
+    _stopFly() {
+      if (this._fr) cancelAnimationFrame(this._fr);
+      this._fr = null;
+    }
+    _stopInertia() {
+      if (this._ir) cancelAnimationFrame(this._ir);
+      this._ir = null;
+    }
+    stopAll() {
+      this._stopZoom();
+      this._stopFly();
+      this._stopInertia();
+    }
+
+    // Knoppen en dubbelklik: één hele stap, vloeiend.
+    zoomBy(delta, px, py) {
+      const { w, h } = this.size();
+      this._stopFly();
+      this._stopInertia();
+      this.anchor = { px: px ?? w / 2, py: py ?? h / 2 };
+      const base = this.zoomTarget ?? this.z;
+      this.zoomTarget = this.clampZ(Math.round(base) + delta);
+      this._runZoom();
+    }
+
+    // Vloeiend naar een plek en zoomniveau "vliegen".
+    flyTo(lat, lng, z, ms = 550) {
+      this.stopAll();
+      const z0 = this.z, z1 = this.clampZ(z ?? this.z);
+      const a = project(this.center.lat, this.center.lng, 0);
+      const b = project(lat, lng, 0);
+      const t0 = performance.now();
+      const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+      const step = (now) => {
+        const t = Math.min(1, (now - t0) / ms);
+        const k = ease(t);
+        this.z = z0 + (z1 - z0) * k;
+        this.center = unproject(a.x + (b.x - a.x) * k, a.y + (b.y - a.y) * k, 0);
+        this.render();
+        this._fr = t < 1 ? requestAnimationFrame(step) : null;
+      };
+      this._fr = requestAnimationFrame(step);
+    }
+
+    _bindPointer() {
+      // Slepen met één vinger/muis (met uitglijden), knijpen met twee vingers.
+      const pts = new Map();
+      let drag = null;
+      let pinch = null;
+      let samples = [];
+      const startDrag = (x, y) => {
+        const c = project(this.center.lat, this.center.lng, this.z);
+        drag = { x, y, cx: c.x, cy: c.y, moved: false };
+        samples = [{ x, y, t: performance.now() }];
+      };
+      const pinchInfo = () => {
+        const [a, b] = [...pts.values()];
+        const r = this.el.getBoundingClientRect();
+        return {
+          d: Math.max(1, Math.hypot(a.x - b.x, a.y - b.y)),
+          mx: (a.x + b.x) / 2 - r.left,
+          my: (a.y + b.y) / 2 - r.top,
+        };
+      };
+      this.el.addEventListener("pointerdown", (e) => {
+        if (e.button !== 0 || e.target.closest(".m-pin,.mcard,.m-zoom,.m-attr")) return;
+        this.stopAll();
+        pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        try { this.el.setPointerCapture(e.pointerId); } catch (_) {}
+        if (pts.size === 2) {
+          const { d, mx, my } = pinchInfo();
+          const tl = this.topLeft();
+          pinch = { d0: d, z0: this.z, ll: unproject(tl.x + mx, tl.y + my, this.z) };
+          drag = null;
+        } else if (pts.size === 1) {
+          startDrag(e.clientX, e.clientY);
+          this.el.classList.add("dragging");
+        }
+      });
+      this.el.addEventListener("pointermove", (e) => {
+        if (!pts.has(e.pointerId)) return;
+        pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        if (pinch && pts.size >= 2) {
+          // Kaart volgt de vingers: zoom én verschuiven tegelijk.
+          const { d, mx, my } = pinchInfo();
+          const z2 = this.clampZ(pinch.z0 + Math.log2(d / pinch.d0));
+          const p = project(pinch.ll.lat, pinch.ll.lng, z2);
+          const { w, h } = this.size();
+          this.z = z2;
+          this.center = unproject(p.x - mx + w / 2, p.y - my + h / 2, z2);
+          this.render();
+          return;
+        }
+        if (!drag) return;
+        const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+        if (Math.abs(dx) + Math.abs(dy) > 4) drag.moved = true;
+        this.center = unproject(drag.cx - dx, drag.cy - dy, this.z);
+        const now = performance.now();
+        samples.push({ x: e.clientX, y: e.clientY, t: now });
+        while (samples.length > 2 && now - samples[0].t > 100) samples.shift();
+        this.render();
+      });
+      const end = (e) => {
+        if (!pts.has(e.pointerId)) return;
+        pts.delete(e.pointerId);
+        try { this.el.releasePointerCapture(e.pointerId); } catch (_) {}
+        if (pinch) {
+          if (pts.size < 2) pinch = null;
+          if (pts.size === 1) {
+            const [p] = [...pts.values()];
+            startDrag(p.x, p.y);
+            drag.moved = true; // na knijpen geen "tik"
+          }
+          return;
+        }
+        if (pts.size > 0) return;
+        if (drag && !drag.moved && this.onBackgroundClick) this.onBackgroundClick();
+        if (drag && drag.moved && samples.length >= 2) {
+          const a = samples[0], b = samples[samples.length - 1];
+          const dt = Math.max(1, b.t - a.t);
+          if (performance.now() - b.t < 60) this._inertia((b.x - a.x) / dt, (b.y - a.y) / dt);
+        }
+        drag = null;
+        this.el.classList.remove("dragging");
+      };
+      this.el.addEventListener("pointerup", end);
+      this.el.addEventListener("pointercancel", end);
+    }
+
+    // Uitglijden na loslaten.
+    _inertia(vx, vy) {
+      if (Math.hypot(vx, vy) < 0.25) return;
+      let last = performance.now();
+      const step = (now) => {
+        const dt = Math.min(40, now - last);
+        last = now;
+        const c = project(this.center.lat, this.center.lng, this.z);
+        this.center = unproject(c.x - vx * dt, c.y - vy * dt, this.z);
+        const decay = Math.pow(0.994, dt);
+        vx *= decay;
+        vy *= decay;
+        this.render();
+        this._ir = Math.hypot(vx, vy) > 0.02 ? requestAnimationFrame(step) : null;
+      };
+      this._ir = requestAnimationFrame(step);
+    }
+
+    setView(lat, lng, z) {
+      this.stopAll();
+      this.center = { lat, lng };
+      if (z) this.z = this.clampZ(z);
+      this.render();
+    }
+
+    _fitTarget(points) {
+      const { w, h } = this.size();
+      const pad = Math.min(90, w / 5, h / 5);
+      let z = MAX_Z - 2;
+      for (; z > MIN_Z; z--) {
+        const ps = points.map((p) => project(p.lat, p.lng, z));
+        const xs = ps.map((p) => p.x), ys = ps.map((p) => p.y);
+        if (Math.max(...xs) - Math.min(...xs) < w - pad && Math.max(...ys) - Math.min(...ys) < h - pad) break;
+      }
+      const ps = points.map((p) => project(p.lat, p.lng, z));
+      const xs = ps.map((p) => p.x), ys = ps.map((p) => p.y);
+      return { z, center: unproject((Math.min(...xs) + Math.max(...xs)) / 2, (Math.min(...ys) + Math.max(...ys)) / 2, z) };
+    }
+
+    fit(points) {
+      this.lastFitPoints = points;
+      if (!points.length) return this.render();
+      const { w, h } = this.size();
+      if (!w || !h) {
+        this.pendingFit = points; // kaart nog onzichtbaar: inpassen zodra hij zichtbaar wordt
+        return;
+      }
+      this.pendingFit = null;
+      this.stopAll();
+      const t = this._fitTarget(points);
+      this.z = t.z;
+      this.center = t.center;
+      this.render();
+    }
+
+    flyToPoints(points) {
+      if (!points.length) return;
+      const t = this._fitTarget(points);
+      this.flyTo(t.center.lat, t.center.lng, t.z);
+    }
+
+    setPins(pins) {
+      this.pins = pins;
+      this.pinLayer.innerHTML = "";
+      for (const p of pins) {
+        const d = document.createElement("button");
+        d.type = "button";
+        d.className = "m-pin" + (p.fav ? " fav" : "") + (p.items.length > 1 ? " multi" : "");
+        d.innerHTML = `<span class="pin-in"><i class="dot"></i><b class="lbl">${esc(p.label)}</b>${p.items.length > 1 ? `<em class="cnt">${p.items.length}</em>` : ""}</span>`;
+        d.setAttribute("aria-label", p.items.length > 1 ? `${p.items.length} woningen, ${p.items[0].address}` : `${p.items[0].address}, ${p.label}`);
+        d.addEventListener("click", (e) => {
+          e.stopPropagation();
+          this.onPinClick && this.onPinClick(p);
+        });
+        d.addEventListener("pointerdown", (e) => e.stopPropagation());
+        p.el = d;
+        this.pinLayer.appendChild(d);
+      }
+      this.render();
+    }
+
+    _scheduleRender() {
+      if (this._rr) return;
+      this._rr = requestAnimationFrame(() => {
+        this._rr = null;
+        this.render();
+      });
+    }
+
+    render() {
+      const { w, h } = this.size();
+      if (!w || !h) return;
+      const z = this.z;
+      const tz = Math.round(z); // tegels van het dichtstbijzijnde hele niveau, geschaald
+      this.el.dataset.zoom = z >= NEAR_Z - 0.4 ? "near" : "far";
+      const tl = this.topLeft();
+      const n = 2 ** tz;
+      const ts = TILE * 2 ** (z - tz);
+      const x0 = Math.floor(tl.x / ts), x1 = Math.floor((tl.x + w) / ts);
+      const y0 = Math.max(0, Math.floor(tl.y / ts)), y1 = Math.min(n - 1, Math.floor((tl.y + h) / ts));
+      const want = new Set();
+      let allLoaded = true;
+      for (let x = x0; x <= x1; x++) {
+        for (let y = y0; y <= y1; y++) {
+          const key = `${tz}/${x}/${y}`;
+          want.add(key);
+          let img = this.tiles.get(key);
+          if (!img) {
+            img = document.createElement("img");
+            img.className = "m-tile";
+            img.draggable = false;
+            img.alt = "";
+            img._z = tz; img._x = x; img._y = y;
+            img.onload = () => {
+              img.classList.add("ok");
+              // pas als "klaar" tellen na het infaden, zodat oude tegels niet te vroeg verdwijnen
+              setTimeout(() => {
+                img._ok = true;
+                this._scheduleRender();
+              }, 220);
+            };
+            img.onerror = () => {
+              img._ok = true;
+              this._scheduleRender();
+            };
+            img.src = `https://tile.openstreetmap.org/${tz}/${((x % n) + n) % n}/${y}.png`;
+            this.tiles.set(key, img);
+            this.tileLayer.appendChild(img);
+          }
+          if (!img._ok) allLoaded = false;
+        }
+      }
+      // Alle tegels (ook van vorige niveaus) op de juiste plek en schaal zetten.
+      // Oude niveaus blijven eronder liggen tot het nieuwe niveau geladen is.
+      for (const [key, img] of this.tiles) {
+        const s = TILE * 2 ** (z - img._z);
+        const left = img._x * s - tl.x, top = img._y * s - tl.y;
+        const current = img._z === tz;
+        const off = left > w || top > h || left + s < 0 || top + s < 0;
+        if ((current && !want.has(key)) || (!current && (allLoaded || off || Math.abs(img._z - tz) > 3))) {
+          img.remove();
+          this.tiles.delete(key);
+          continue;
+        }
+        img.style.zIndex = current ? 2 : 1;
+        img.style.transform = `translate3d(${left}px, ${top}px, 0) scale(${s / TILE})`;
+      }
+      for (const p of this.pins) {
+        const pp = project(p.lat, p.lng, z);
+        p.el.style.transform = `translate3d(${Math.round(pp.x - tl.x)}px, ${Math.round(pp.y - tl.y)}px, 0)`;
+      }
+    }
+  }
+
+let selPin = null, selIdx = 0;
+const map = new TinyMap($("#map"), {
+  onPinClick: (p) => { selPin = p; selIdx = 0; drawSel(); },
+  onBackgroundClick: () => { selPin = null; drawSel(); },
+});
+function renderMap() {
+  const items = zichtbaar().filter((w) => w.lat && w.lng);
+  const groups = new Map();
+  for (const w of items) { const k = w.lat.toFixed(4) + "," + w.lng.toFixed(4); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(w); }
+  const pins = [...groups.values()].map((g) => ({ lat: g[0].lat, lng: g[0].lng, items: g.map((w) => ({ ...w, address: w.adres })), fav: g.some((w) => fav.has(w.id)),
+    label: prijsLabel(g) }));
+  const sig = pins.map((p) => p.lat + p.lng).join();
+  map.setPins(pins);
+  if (sig !== renderMap.sig) { renderMap.sig = sig; if (pins.length) map.fit(pins); }
+  if (selPin) { selPin = pins.find((p) => p.lat === selPin.lat && p.lng === selPin.lng) || null; }
+  drawSel();
+  const zonder = zichtbaar().length - items.length;
+  let note = $("#map .m-note");
+  if (!note) { note = document.createElement("div"); note.className = "m-note"; $("#map").appendChild(note); }
+  note.textContent = `${items.length} op de kaart${zonder ? ` · ${zonder} zonder locatie` : ""}`;
+}
+function prijsLabel(g) {
+  const p = g.map((w) => w.prijs).filter(Boolean);
+  if (!p.length) return "?";
+  return (g.length > 1 && Math.min(...p) !== Math.max(...p) ? "v.a. " : "") + euro(Math.min(...p));
+}
+function drawSel() {
+  $$("#map .m-pin.sel").forEach((e) => e.classList.remove("sel"));
+  let box = $("#map .mcard");
+  if (!selPin) { box?.remove(); $$("#list .card.hl").forEach((c) => c.classList.remove("hl")); return; }
+  selPin.el?.classList.add("sel");
+  if (!box) { box = document.createElement("div"); box.className = "mcard"; $("#map").appendChild(box); box.addEventListener("pointerdown", (e) => e.stopPropagation()); box.addEventListener("wheel", (e) => e.stopPropagation()); }
+  const n = selPin.items.length; selIdx = Math.max(0, Math.min(selIdx, n - 1));
+  box.innerHTML = kaart(selPin.items[selIdx]) + (n > 1 ? `<div class="pager"><button data-p="-1" ${selIdx ? "" : "disabled"}>Vorige</button><span class="num">${selIdx + 1} / ${n} op dit adres</span><button data-p="1" ${selIdx < n - 1 ? "" : "disabled"}>Volgende</button></div>` : "");
+  box.onclick = (e) => { const b = e.target.closest("[data-p]"); if (b) { e.stopPropagation(); selIdx += +b.dataset.p; drawSel(); } };
+  $$("#list .card.hl").forEach((c) => c.classList.remove("hl"));
+  const c = $(`#list .card[data-id="${CSS.escape(selPin.items[selIdx].id)}"]`);
+  if (c) { c.classList.add("hl"); if (window.innerWidth >= 980) c.scrollIntoView({ block: "nearest", behavior: "smooth" }); }
+}
+// lijst ↔ kaart: muis over een woning licht de speld op
+$("#list").addEventListener("pointerover", (e) => {
+  if (window.innerWidth < 980) return;
+  const c = e.target.closest(".card"); $$("#map .m-pin.hover").forEach((p) => p.classList.remove("hover", "sel"));
+  if (!c) return;
+  const p = map.pins.find((p) => p.items.some((w) => w.id === c.dataset.id));
+  if (p && p !== selPin) p.el.classList.add("sel", "hover");
+});
+$("#list").addEventListener("pointerleave", () => $$("#map .m-pin.hover").forEach((p) => p.classList.remove("hover", "sel")));
+
+/* ═══ Laden ═══ */
 function stamp() {
   const t = new Date().toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit" });
-  $("#stamp").textContent = `Opgehaald om ${t}${wnrStatus}`;
+  $("#stamp").textContent = `Bijgewerkt om ${t}`;
 }
 async function laad() {
-  $("#reload").classList.add("spin");
-  const notes = [];
+  $("#reload").classList.add("spin"); laden = true; if (!alle.length) render();
   const [mk, wn] = await Promise.allSettled([laadMakelaars(), laadWoonnet()]);
-  alle = [];
-  if (mk.status === "fulfilled") {
-    alle.push(...mk.value.woningen);
-    if (mk.value.leeg) notes.push("Nog geen makelaarsgegevens. Start in GitHub de workflow “Huurdashboard verzamelen” (Actions → Run workflow); daarna verschijnen ze hier.");
-  } else notes.push("Makelaarsgegevens konden niet worden geladen. Probeer het zo opnieuw.");
-  if (wn.status === "fulfilled") { alle.push(...wn.value); wnrStatus = ""; }
-  else { wnrStatus = " · Woonnet niet bereikbaar"; notes.push("Woonnet is nu niet bereikbaar; de makelaars worden wel getoond."); }
-  $("#notice").innerHTML = notes.map((n) => `<div class="notice">${esc(n)}</div>`).join("");
+  const nieuw = [];
+  mkLeeg = mkFout = wnrFout = false;
+  if (mk.status === "fulfilled") { nieuw.push(...mk.value.woningen); mkLeeg = !!mk.value.leeg; } else mkFout = true;
+  if (wn.status === "fulfilled") nieuw.push(...wn.value); else wnrFout = true;
+  alle = nieuw; laden = false;
   $("#reload").classList.remove("spin");
   stamp(); render();
 }
-$("#reload").addEventListener("click", laad);
-document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && Date.now() - (window.__l || 0) > 10 * 60000) { window.__l = Date.now(); laad(); } });
-const io = new IntersectionObserver(([e]) => $("#filters").classList.toggle("stuck", !e.isIntersecting), { rootMargin: "-1px 0px 0px 0px" });
-const sentinel = document.createElement("div"); $("#filters").before(sentinel); io.observe(sentinel);
+$("#reload").addEventListener("click", () => laad());
+let laatst = Date.now();
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && Date.now() - laatst > 10 * 60000) { laatst = Date.now(); laad(); } });
 
-window.__l = Date.now();
-render();
-laad();
+const setTop = () => document.documentElement.style.setProperty("--top", $("#head").offsetHeight + "px");
+new ResizeObserver(setTop).observe($("#head"));
+addEventListener("scroll", () => $("#head").classList.toggle("stuck", scrollY > 4), { passive: true });
+setTop(); render(); laad();
 })();
 </script>
 </body>
