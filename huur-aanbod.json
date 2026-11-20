@@ -1,51 +1,70 @@
 {
- "bijgewerkt": "2026-11-20T13:10:53.233Z",
- "laatsteVolledig": "2026-11-20T12:26:48.127Z",
+ "bijgewerkt": "2026-11-20T14:40:53.641Z",
+ "laatsteVolledig": "2026-11-20T14:40:53.641Z",
  "bronnen": {
   "rdam": {
    "naam": "Rdam Makelaars",
    "ok": true,
    "aantal": 68,
-   "tijd": "2026-11-20T13:10:53.233Z"
+   "tijd": "2026-11-20T14:40:53.641Z"
   },
   "riva": {
    "naam": "Riva Rentals",
    "ok": true,
-   "aantal": 50,
-   "tijd": "2026-11-20T13:10:53.233Z"
+   "aantal": 51,
+   "tijd": "2026-11-20T14:40:53.641Z"
   },
   "voorberg": {
    "naam": "Voorberg",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-20T13:10:53.233Z"
+   "tijd": "2026-11-20T14:40:53.641Z"
   },
   "fonzt": {
    "naam": "FONZT",
    "ok": true,
    "aantal": 0,
-   "tijd": "2026-11-20T13:10:53.233Z"
+   "tijd": "2026-11-20T14:40:53.641Z"
   },
   "atta": {
    "naam": "Atta Makelaars",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-20T13:10:53.233Z"
+   "tijd": "2026-11-20T14:40:53.641Z"
   },
   "ikwilhuren": {
    "naam": "Ik wil huren",
    "ok": true,
-   "aantal": 9,
-   "tijd": "2026-11-20T13:10:53.233Z"
+   "aantal": 10,
+   "tijd": "2026-11-20T14:40:53.641Z"
   },
   "woonzeker": {
    "naam": "Woonzeker",
    "ok": true,
-   "aantal": 20,
-   "tijd": "2026-11-20T13:10:53.233Z"
+   "aantal": 19,
+   "tijd": "2026-11-20T14:40:53.641Z"
   }
  },
  "woningen": [
+  {
+   "id": "riva:rivarentals.nl/object/weena-rotterdam-h178260015",
+   "bron": "riva",
+   "bronNaam": "Riva Rentals",
+   "adres": "Weena",
+   "plaats": "Rotterdam",
+   "wijk": "",
+   "postcode": "",
+   "prijs": 2700,
+   "slaapkamers": 3,
+   "kamers": 0,
+   "m2": 92,
+   "type": "",
+   "url": "https://rivarentals.nl/object/weena-rotterdam-h178260015/",
+   "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/189557d2.jpg?width=600",
+   "lat": 51.923041,
+   "lng": 4.469809,
+   "eersteGezien": "2026-11-20T14:40:53.641Z"
+  },
   {
    "id": "riva:rivarentals.nl/object/kruisplein-rotterdam-h178261974",
    "bron": "riva",
@@ -54,7 +73,7 @@
    "plaats": "Rotterdam",
    "wijk": "",
    "postcode": "",
-   "prijs": 2350,
+   "prijs": 2500,
    "slaapkamers": 3,
    "kamers": 0,
    "m2": 77,
@@ -2498,6 +2517,25 @@
    "eersteGezien": "2026-11-19T23:44:16.145Z"
   },
   {
+   "id": "ikwilhuren:ikwilhuren.nu/object/den-haag-2512bl-1-c18-paviljoensgracht-c27c54072cb934a0b87ea55e3f4fc634",
+   "bron": "ikwilhuren",
+   "bronNaam": "Ik wil huren",
+   "adres": "Paviljoensgracht 1 C18",
+   "plaats": "Den Haag",
+   "wijk": "",
+   "postcode": "2512BL",
+   "prijs": 1115,
+   "slaapkamers": 1,
+   "kamers": 0,
+   "m2": 51,
+   "type": "Appartement",
+   "url": "https://ikwilhuren.nu/object/den-haag-2512bl-1-c18-paviljoensgracht-c27c54072cb934a0b87ea55e3f4fc634/",
+   "foto": "https://d.static.nbo.nl/media/b6/b6d42f0543ae9cfef52695b282ac9aac/768x510/thumb.jpg",
+   "lat": 52.074337,
+   "lng": 4.311039,
+   "eersteGezien": "2026-11-19T23:31:21.294Z"
+  },
+  {
    "id": "ikwilhuren:ikwilhuren.nu/object/rotterdam-3045pe-192-van-der-duijn-van-maasdamweg-f32d94d897ed629de13d60717021ae43",
    "bron": "ikwilhuren",
    "bronNaam": "Ik wil huren",
@@ -2705,25 +2743,6 @@
    "lat": 52.0805306,
    "lng": 4.2959215,
    "eersteGezien": "2026-11-13T16:05:54.000000Z"
-  },
-  {
-   "id": "woonzeker:woonzeker.com/huur/woningen/veenendaalkade-56",
-   "bron": "woonzeker",
-   "bronNaam": "Woonzeker",
-   "adres": "Veenendaalkade 56",
-   "plaats": "Den Haag",
-   "wijk": "",
-   "postcode": "2547 AR",
-   "prijs": 1940,
-   "slaapkamers": 4,
-   "kamers": 0,
-   "m2": 110,
-   "type": "",
-   "url": "https://woonzeker.com/huur/woningen/veenendaalkade-56",
-   "foto": "https://cdn.realmark.cloud/marketsuite/media/projects/1038/publicPhotos/a5fdd39d-88b3-4192-b0c9-41f9c4955d71/b1fb303a-4f21-4717-9b1f-650531d1fcfb.webp",
-   "lat": 52.0607897,
-   "lng": 4.2726133,
-   "eersteGezien": "2026-11-13T16:05:52.000000Z"
   },
   {
    "id": "woonzeker:woonzeker.com/huur/woningen/verschoorstraat-68-a02-3e-etage-voorzijde",
@@ -3063,6 +3082,10 @@
   "van der duijn van maasdamweg 192|3045pe|rotterdam": {
    "lat": 51.949082,
    "lng": 4.453097
+  },
+  "paviljoensgracht 1 c18|2512bl|den haag": {
+   "lat": 52.074337,
+   "lng": 4.311039
   }
  }
 }
