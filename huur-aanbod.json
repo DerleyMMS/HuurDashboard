@@ -1,50 +1,70 @@
 {
- "bijgewerkt": "2026-11-20T11:53:28.782Z",
+ "bijgewerkt": "2026-11-20T12:26:48.127Z",
+ "laatsteVolledig": "2026-11-20T12:26:48.127Z",
  "bronnen": {
   "rdam": {
    "naam": "Rdam Makelaars",
    "ok": true,
    "aantal": 68,
-   "tijd": "2026-11-20T11:53:28.782Z"
+   "tijd": "2026-11-20T12:26:48.127Z"
   },
   "riva": {
    "naam": "Riva Rentals",
    "ok": true,
-   "aantal": 49,
-   "tijd": "2026-11-20T11:53:28.782Z"
+   "aantal": 50,
+   "tijd": "2026-11-20T12:26:48.127Z"
   },
   "voorberg": {
    "naam": "Voorberg",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-20T11:53:28.782Z"
+   "tijd": "2026-11-20T12:26:48.127Z"
   },
   "fonzt": {
    "naam": "FONZT",
    "ok": true,
    "aantal": 0,
-   "tijd": "2026-11-20T11:53:28.782Z"
+   "tijd": "2026-11-20T12:26:48.127Z"
   },
   "atta": {
    "naam": "Atta Makelaars",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-20T11:53:28.782Z"
+   "tijd": "2026-11-20T12:26:48.127Z"
   },
   "ikwilhuren": {
    "naam": "Ik wil huren",
    "ok": true,
    "aantal": 8,
-   "tijd": "2026-11-20T11:53:28.782Z"
+   "tijd": "2026-11-20T12:26:48.127Z"
   },
   "woonzeker": {
    "naam": "Woonzeker",
    "ok": true,
-   "aantal": 21,
-   "tijd": "2026-11-20T11:53:28.782Z"
+   "aantal": 20,
+   "tijd": "2026-11-20T12:26:48.127Z"
   }
  },
  "woningen": [
+  {
+   "id": "riva:rivarentals.nl/object/kruisplein-rotterdam-h178261974",
+   "bron": "riva",
+   "bronNaam": "Riva Rentals",
+   "adres": "Kruisplein",
+   "plaats": "Rotterdam",
+   "wijk": "",
+   "postcode": "",
+   "prijs": 2350,
+   "slaapkamers": 3,
+   "kamers": 0,
+   "m2": 77,
+   "type": "",
+   "url": "https://rivarentals.nl/object/kruisplein-rotterdam-h178261974/",
+   "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/4024c9bb.jpg?width=600",
+   "lat": 51.921737,
+   "lng": 4.470886,
+   "eersteGezien": "2026-11-20T12:26:48.127Z"
+  },
   {
    "id": "rdam:rdammakelaars.nl/property/goereesestraat-63c",
    "bron": "rdam",
@@ -2630,25 +2650,6 @@
    "eersteGezien": "2026-11-18T10:04:34.000000Z"
   },
   {
-   "id": "woonzeker:woonzeker.com/huur/woningen/prins-hendrikstraat-70",
-   "bron": "woonzeker",
-   "bronNaam": "Woonzeker",
-   "adres": "Prins Hendrikstraat 70",
-   "plaats": "Den Haag",
-   "wijk": "",
-   "postcode": "2518 HV",
-   "prijs": 644,
-   "slaapkamers": 1,
-   "kamers": 0,
-   "m2": 24,
-   "type": "",
-   "url": "https://woonzeker.com/huur/woningen/prins-hendrikstraat-70",
-   "foto": "https://cdn.realmark.cloud/marketsuite/media/projects/1038/publicPhotos/f3e6ede8-fed3-483a-a8b5-287dbcf5d478/98031b0f-65f8-45cd-bf24-eb1f49fecbd6.webp",
-   "lat": 52.0815493,
-   "lng": 4.2928604,
-   "eersteGezien": "2026-11-16T17:05:55.000000Z"
-  },
-  {
    "id": "woonzeker:woonzeker.com/huur/woningen/noord-west-buitensingel-6",
    "bron": "woonzeker",
    "bronNaam": "Woonzeker",
@@ -2858,6 +2859,7 @@
    "eersteGezien": "2026-09-28T14:06:16.000000Z"
   }
  ],
+ "teMelden": [],
  "geo": {
   "henegouwerlaan||rotterdam": {
    "lat": 51.920875,
