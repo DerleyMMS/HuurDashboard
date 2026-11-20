@@ -1,47 +1,47 @@
 {
- "bijgewerkt": "2026-11-20T11:33:25.546Z",
+ "bijgewerkt": "2026-11-20T11:37:22.995Z",
  "bronnen": {
   "rdam": {
    "naam": "Rdam Makelaars",
    "ok": true,
-   "aantal": 69,
-   "tijd": "2026-11-20T11:33:25.546Z"
+   "aantal": 68,
+   "tijd": "2026-11-20T11:37:22.995Z"
   },
   "riva": {
    "naam": "Riva Rentals",
    "ok": true,
    "aantal": 49,
-   "tijd": "2026-11-20T11:33:25.546Z"
+   "tijd": "2026-11-20T11:37:22.995Z"
   },
   "voorberg": {
    "naam": "Voorberg",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-20T11:33:25.546Z"
+   "tijd": "2026-11-20T11:37:22.995Z"
   },
   "fonzt": {
    "naam": "FONZT",
    "ok": true,
    "aantal": 0,
-   "tijd": "2026-11-20T11:33:25.546Z"
+   "tijd": "2026-11-20T11:37:22.995Z"
   },
   "atta": {
    "naam": "Atta Makelaars",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-20T11:33:25.546Z"
+   "tijd": "2026-11-20T11:37:22.995Z"
   },
   "ikwilhuren": {
    "naam": "Ik wil huren",
    "ok": true,
    "aantal": 8,
-   "tijd": "2026-11-20T11:33:25.546Z"
+   "tijd": "2026-11-20T11:37:22.995Z"
   },
   "woonzeker": {
    "naam": "Woonzeker",
    "ok": true,
    "aantal": 21,
-   "tijd": "2026-11-20T11:33:25.546Z"
+   "tijd": "2026-11-20T11:37:22.995Z"
   }
  },
  "woningen": [
@@ -544,7 +544,7 @@
    "bron": "rdam",
    "bronNaam": "Rdam Makelaars",
    "adres": "Smidsweg 42b",
-   "plaats": "Rotterdam",
+   "plaats": "'s-Gravendeel",
    "wijk": "",
    "postcode": "3295 BV",
    "prijs": 1595,
@@ -810,8 +810,8 @@
    "bron": "rdam",
    "bronNaam": "Rdam Makelaars",
    "adres": "Zijl 4b",
-   "plaats": ".st0{fill-rule:evenodd;clip-rule:evenodd;} Zijl 4B",
-   "wijk": "",
+   "plaats": "Rotterdam",
+   "wijk": "Stadsdriehoek",
    "postcode": "3011 PX",
    "prijs": 1649,
    "slaapkamers": 2,
@@ -1038,7 +1038,7 @@
    "bron": "rdam",
    "bronNaam": "Rdam Makelaars",
    "adres": "Doormanstraat 32b",
-   "plaats": "Rotterdam",
+   "plaats": "Capelle aan den IJssel",
    "wijk": "",
    "postcode": "2901 AJ",
    "prijs": 672,
@@ -1108,25 +1108,6 @@
    "lat": null,
    "lng": null,
    "eersteGezien": "2026-11-20T11:07:25.546Z"
-  },
-  {
-   "id": "rdam:rdammakelaars.nl/property/doormanstraat-32a",
-   "bron": "rdam",
-   "bronNaam": "Rdam Makelaars",
-   "adres": "Doormanstraat 32a",
-   "plaats": ".st0{fill-rule:evenodd;clip-rule:evenodd;} Doormanstraat 32a",
-   "wijk": "",
-   "postcode": "2901 AJ",
-   "prijs": 800,
-   "slaapkamers": 0,
-   "kamers": 0,
-   "m2": 60,
-   "type": "Winkelruimte",
-   "url": "https://rdammakelaars.nl/property/doormanstraat-32a/",
-   "foto": "https://rdammakelaars.nl/wp-content/uploads/2024/10/IMG_7586-488x326.jpeg",
-   "lat": 51.9124596,
-   "lng": 4.5667708,
-   "eersteGezien": "2026-11-20T11:06:25.546Z"
   },
   {
    "id": "riva:rivarentals.nl/object/kruisplein-rotterdam-h178262220",
@@ -1456,7 +1437,7 @@
    "bron": "rdam",
    "bronNaam": "Rdam Makelaars",
    "adres": "Smidsweg 42c",
-   "plaats": "Rotterdam",
+   "plaats": "'s-Gravendeel",
    "wijk": "",
    "postcode": "3295 BV",
    "prijs": 1460,
@@ -2045,7 +2026,7 @@
    "bron": "rdam",
    "bronNaam": "Rdam Makelaars",
    "adres": "Meester Heemskerkstraat 38",
-   "plaats": "Rotterdam",
+   "plaats": "Ridderkerk",
    "wijk": "",
    "postcode": "2982 SJ",
    "prijs": 849,
@@ -2121,7 +2102,7 @@
    "bron": "rdam",
    "bronNaam": "Rdam Makelaars",
    "adres": "Schieweg 113b",
-   "plaats": ".st0{fill-rule:evenodd;clip-rule:evenodd;} Schieweg 113B",
+   "plaats": "Rotterdam",
    "wijk": "",
    "postcode": "3038 AL",
    "prijs": 899,
@@ -2140,7 +2121,7 @@
    "bron": "rdam",
    "bronNaam": "Rdam Makelaars",
    "adres": "Jonkheer de Savornin Lohmanstraat 175",
-   "plaats": "Rotterdam",
+   "plaats": "Ridderkerk",
    "wijk": "",
    "postcode": "2982 RD",
    "prijs": 775,
@@ -2235,7 +2216,7 @@
    "bron": "rdam",
    "bronNaam": "Rdam Makelaars",
    "adres": "Jozef Israelslaan 144",
-   "plaats": "Rotterdam",
+   "plaats": "Rijswijk",
    "wijk": "",
    "postcode": "2282 TN",
    "prijs": 700,
@@ -2254,7 +2235,7 @@
    "bron": "rdam",
    "bronNaam": "Rdam Makelaars",
    "adres": "Schieweg 211B",
-   "plaats": "Rotterdam 3038 AV",
+   "plaats": "Rotterdam",
    "wijk": "",
    "postcode": "3038 AV",
    "prijs": 950,
@@ -2273,7 +2254,7 @@
    "bron": "rdam",
    "bronNaam": "Rdam Makelaars",
    "adres": "Leopoldstraat 28C",
-   "plaats": "3031 SX Rotterdam",
+   "plaats": "Rotterdam",
    "wijk": "",
    "postcode": "3031 SX",
    "prijs": 949,
@@ -2292,8 +2273,8 @@
    "bron": "rdam",
    "bronNaam": "Rdam Makelaars",
    "adres": "Leopoldstraat 18A",
-   "plaats": ".st0{fill-rule:evenodd;clip-rule:evenodd;} Leopoldstraat 18A",
-   "wijk": "",
+   "plaats": "Rotterdam",
+   "wijk": "Rubroek",
    "postcode": "3031 SW",
    "prijs": 749,
    "slaapkamers": 2,
@@ -2311,7 +2292,7 @@
    "bron": "rdam",
    "bronNaam": "Rdam Makelaars",
    "adres": "Hordijk 164",
-   "plaats": "3079 DK Rotterdam",
+   "plaats": "Rotterdam",
    "wijk": "",
    "postcode": "3079 DK",
    "prijs": 1099,
