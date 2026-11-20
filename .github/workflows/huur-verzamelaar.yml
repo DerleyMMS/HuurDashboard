@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "*/5 * * * *" # elke 5 minuten (GitHub start dit soms wat later)
   workflow_dispatch: # handmatig starten via de knop "Run workflow"
+    inputs:
+      testmelding:
+        description: "Testmelding sturen naar je telefoon"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -31,6 +36,7 @@ jobs:
           MAX_HUUR: ${{ vars.MAX_HUUR }}
           MIN_SLAAPKAMERS: ${{ vars.MIN_SLAAPKAMERS }}
           APP_URL: ${{ vars.APP_URL }}
+          TESTMELDING: ${{ inputs.testmelding }}
       - name: Opslaan
         run: |
           git config user.name "huur-verzamelaar"
