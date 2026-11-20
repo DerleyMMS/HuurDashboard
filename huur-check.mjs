@@ -105,13 +105,24 @@ function parseRdam(html) {
   return blocks(html, /<div class="rhea_property_card_ele_stylish_inner"/).map((b) => {
     const url = pick(b, /class="rhea_permalink[^"]*" href="([^"]+)"/) || pick(b, /<h3[^>]*><a href="([^"]+)"/);
     const loc = pick(b, /data-rhea-map-location="([^"]+)"/).split(",");
-    const full = strip(pick(b, /data-rhea-map-thumb="[^"]*"\s*href="[^"]*"\s*>([\s\S]*?)<\/a>/) || pick(b, /class="rhea_address_sty">([\s\S]*?)<\/div>/));
-    const delen = full.split(",").map((s) => s.trim());
+    const adresHtml = pick(b, /class="rhea_address_sty">([\s\S]*?)<\/div>/)
+      .replace(/<style[\s\S]*?<\/style>/gi, "").replace(/<svg[\s\S]*?<\/svg>/gi, "");
+    const full = strip(adresHtml);
+    const delen = full.split(",").map((s) => s.trim()).filter(Boolean);
     const postcode = (full.match(/\b\d{4}\s?[A-Z]{2}\b/) || [""])[0];
     const plaatsIdx = delen.findIndex((d) => /zuid-holland|noord-holland|utrecht|nederland/i.test(d));
-    // Zonder volledig adres: Rdam Makelaars verhuurt (vrijwel) alleen in Rotterdam.
-    const plaats = plaatsIdx > 0 ? delen[plaatsIdx - 1] : delen.length >= 3 ? delen[delen.length - 3] : "Rotterdam";
-    const wijk = delen.length > 3 ? delen.slice(1, Math.max(1, plaatsIdx - 1)).join(", ") : "";
+    let plaats = "", wijk = "";
+    if (plaatsIdx > 0) {
+      plaats = delen[plaatsIdx - 1];
+      wijk = delen.slice(1, Math.max(1, plaatsIdx - 1)).join(", ");
+    } else {
+      // Kort adres, bijv. "Straat 1, 3031 SX Rotterdam" of alleen "Straat 1".
+      const rest = delen.slice(1).map((d) => d.replace(/\b\d{4}\s?[A-Z]{2}\b/, "").trim()).filter(Boolean);
+      plaats = rest.length ? rest[rest.length - 1] : "";
+      wijk = rest.slice(0, -1).join(", ");
+    }
+    // Zonder plaats: Rdam Makelaars verhuurt (vrijwel) alleen in Rotterdam.
+    if (!plaats || /\d/.test(plaats)) plaats = "Rotterdam";
     const metaVal = (label) => {
       const m = b.match(new RegExp(label + "</span>[\\s\\S]*?<span class=\"figure\">([^<]+)</span>"));
       return m ? num(m[1]) : 0;
@@ -130,7 +141,7 @@ function parseRdam(html) {
       lng: parseFloat(loc[1]) || null,
       type: strip(pick(b, /rhea_prop_status_sty[^>]*>([\s\S]*?)<\/span>/)),
     };
-  }).filter((i) => i.url);
+  }).filter((i) => i.url && !/winkel|bedrijf|kantoor|garage|parkeer/i.test(i.type));
 }
 
 function parseRiva(html) {
@@ -320,7 +331,7 @@ for (const bron of BRONNEN) {
 woningen.sort((a, b) => (b.eersteGezien || "").localeCompare(a.eersteGezien || ""));
 
 // Alleen wegschrijven als er inhoudelijk iets veranderde (scheelt commits).
-const kern = (lijst) => JSON.stringify(lijst.map((w) => [w.id, w.prijs, w.eersteGezien]));
+const kern = (lijst) => JSON.stringify(lijst.map((w) => [w.id, w.prijs, w.eersteGezien, w.adres, w.plaats, w.wijk]));
 const veranderd = kern(woningen) !== kern(vorige.woningen || []) ||
   JSON.stringify(Object.values(status).map((s) => s.ok)) !== JSON.stringify(Object.values(vorige.bronnen || {}).map((s) => s.ok));
 
