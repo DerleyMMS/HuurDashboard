@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Huur">
+<meta name="theme-color" content="#F1F5F5">
+<meta name="robots" content="noindex">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Huurdashboard</title>
+<style>
+:root{
+  --bg:#F1F5F5;--paper:#fff;--ink:#0F3440;--ink2:#56707A;--ink3:#8A9DA3;--line:#DFE6E7;
+  --water:#1F7A8C;--water-soft:#E6F0F2;--sun:#FFC23D;--sun-soft:#FFF6DF;--sun-ink:#4A3300;
+  --display:ui-rounded,"SF Pro Rounded","Nunito","Segoe UI",system-ui,sans-serif;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r:16px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 var(--body);-webkit-text-size-adjust:100%}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px;border-radius:8px}
+.wrap{max-width:1100px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 18px) 16px calc(env(safe-area-inset-bottom) + 40px)}
+
+/* kop */
+.top{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:18px}
+h1{font:800 30px/1.05 var(--display);letter-spacing:-.02em;margin:0}
+.stamp{color:var(--ink2);font-size:13px;margin-top:4px}
+.iconbtn{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--paper);display:grid;place-items:center;flex:none}
+.iconbtn svg{width:20px;height:20px}
+.iconbtn.spin svg{animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* sites */
+.sec-h{display:flex;align-items:baseline;justify-content:space-between;margin:0 2px 10px}
+h2{font:750 18px/1.2 var(--display);margin:0}
+.link{background:none;border:0;color:var(--water);font-weight:600;padding:6px 2px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:26px}
+.tile{position:relative;display:flex;align-items:center;gap:10px;padding:12px;border-radius:var(--r);background:var(--paper);border:1px solid var(--line);text-decoration:none;min-height:64px}
+.tile:hover{border-color:var(--water)}
+.mono{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font:800 15px var(--display);flex:none;color:#fff}
+.tile b{display:block;font-weight:650;font-size:14px;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tile small{display:block;color:var(--ink3);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tile .t{min-width:0;flex:1}
+.tile .cnt{position:absolute;top:-6px;right:-6px;background:var(--sun);color:var(--sun-ink);font-weight:750;font-size:12px;border-radius:999px;padding:1px 8px;border:2px solid var(--bg)}
+.tile .del{display:none;position:absolute;top:-8px;left:-8px;width:26px;height:26px;border-radius:50%;border:0;background:var(--ink);color:#fff;font-weight:700;line-height:1}
+.editing .tile .del{display:block}
+.editing .tile:not(.add){border-color:var(--ink3)}
+@media (prefers-reduced-motion:reduce){.iconbtn.spin svg{animation:none}}
+.tile.add{border-style:dashed;color:var(--water);justify-content:center;font-weight:650;background:transparent}
+
+/* filters */
+.filters{position:sticky;top:0;z-index:5;background:var(--bg);padding:10px 0 10px;margin:0 -16px 6px;padding-left:16px;padding-right:16px;border-bottom:1px solid transparent}
+.filters.stuck{border-bottom-color:var(--line)}
+.row{display:flex;gap:8px;align-items:center}
+.search{flex:1;min-width:0;display:flex;align-items:center;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:0 14px;height:44px}
+.search input{border:0;outline:0;background:none;flex:1;min-width:0;height:100%}
+.search svg{width:18px;height:18px;color:var(--ink3);flex:none}
+select.sel{height:44px;border-radius:999px;border:1px solid var(--line);background:var(--paper);padding:0 12px}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 12px;font-size:13.5px;font-weight:550;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--water);border-color:var(--water);color:#fff}
+.chip.soft{color:var(--ink2)}
+.chip .n{opacity:.65;font-weight:500;margin-left:4px}
+.summary{color:var(--ink2);font-size:13px;margin:8px 2px 0}
+
+/* lijst */
+.day{font:750 15px var(--display);margin:22px 2px 10px;display:flex;gap:8px;align-items:baseline}
+.day span{color:var(--ink3);font:500 13px var(--body)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.card{display:flex;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:10px;text-decoration:none;min-width:0}
+.card:hover{border-color:var(--water)}
+.ph{width:104px;height:88px;border-radius:12px;background:var(--water-soft) center/cover no-repeat;flex:none;position:relative}
+.ph.none{display:grid;place-items:center;color:var(--water);font:800 22px var(--display)}
+.info{min-width:0;flex:1;display:flex;flex-direction:column}
+.adr{font-weight:650;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.plc{color:var(--ink2);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.facts{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:13px;color:var(--ink2);margin-top:auto;padding-top:6px}
+.price{font:800 16px var(--display);color:var(--ink)}
+.meta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}
+.badge{flex:none;max-width:60%;font-size:11.5px;font-weight:650;border-radius:6px;padding:2px 7px;background:var(--water-soft);color:var(--water);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.badge.wnr{background:var(--sun-soft);color:var(--sun-ink)}
+.ago{font-size:12px;color:var(--ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.empty{background:var(--paper);border:1px dashed var(--line);border-radius:var(--r);padding:22px;text-align:center;color:var(--ink2);margin-top:16px}
+.more{display:block;margin:18px auto 0;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:10px 20px;font-weight:600}
+.notice{background:var(--sun-soft);color:var(--sun-ink);border-radius:12px;padding:10px 14px;font-size:13.5px;margin:10px 0}
+.srcstat{font-size:12.5px;color:var(--ink2);margin-top:28px;line-height:1.7}
+.srcstat .bad{color:#A33}
+
+/* sheet */
+dialog{border:0;border-radius:20px;padding:0;max-width:420px;width:calc(100% - 32px);color:var(--ink)}
+dialog::backdrop{background:rgba(15,52,64,.35)}
+.sheet{padding:20px}
+.sheet h3{font:750 19px var(--display);margin:0 0 14px}
+.sheet label{display:block;font-size:13px;font-weight:600;color:var(--ink2);margin:10px 0 4px}
+.sheet input{width:100%;height:44px;border:1px solid var(--line);border-radius:12px;padding:0 12px;background:var(--bg)}
+.sheet .btns{display:flex;gap:8px;justify-content:flex-end;margin-top:18px}
+.btn{height:42px;border-radius:999px;border:1px solid var(--line);background:var(--paper);padding:0 18px;font-weight:650}
+.btn.pri{background:var(--water);border-color:var(--water);color:#fff}
+.err{color:#A33;font-size:13px;min-height:18px;margin-top:6px}
+
+@media (max-width:520px){
+  h1{font-size:26px}
+  .tiles{grid-template-columns:repeat(3,1fr);gap:8px}
+  .tile{flex-direction:column;justify-content:center;text-align:center;gap:6px;padding:10px 6px;min-height:84px}
+  .tile .t{width:100%}
+  .tile b{font-size:12.5px;white-space:normal;line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .tile small{display:none}
+  .mono{width:34px;height:34px;border-radius:11px;font-size:13px}
+  .grid{grid-template-columns:1fr}
+  select.sel{max-width:132px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Huurdashboard</h1>
+      <div class="stamp" id="stamp">Laden…</div>
+    </div>
+    <button class="iconbtn" id="reload" aria-label="Opnieuw laden" title="Opnieuw laden">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.7"/><path d="M20 4v7h-7"/></svg>
+    </button>
+  </header>
+
+  <section aria-labelledby="h-sites">
+    <div class="sec-h"><h2 id="h-sites">Sites</h2><button class="link" id="edit">Bewerken</button></div>
+    <div class="tiles" id="tiles"></div>
+    <button class="link" id="reset-sites" hidden style="margin:-16px 0 18px">Standaardlijst terugzetten</button>
+  </section>
+
+  <section aria-labelledby="h-new">
+    <div class="sec-h"><h2 id="h-new">Nieuwste woningen</h2></div>
+    <div class="filters" id="filters">
+      <div class="row">
+        <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <input id="q" type="search" placeholder="Zoek straat, wijk of plaats" autocomplete="off"></label>
+        <select class="sel" id="sort" aria-label="Sorteren">
+          <option value="nieuw">Nieuwste</option>
+          <option value="oud">Oudste</option>
+          <option value="plaats">Plaats</option>
+          <option value="prijs">Prijs ↑</option>
+          <option value="prijsAf">Prijs ↓</option>
+        </select>
+      </div>
+      <div class="chips" id="areas" aria-label="Gebieden"></div>
+      <div class="chips" id="more" aria-label="Meer filters"></div>
+      <div class="summary" id="summary"></div>
+    </div>
+    <div id="notice"></div>
+    <div id="list"></div>
+    <button class="more" id="showmore" hidden>Meer tonen</button>
+    <div class="srcstat" id="srcstat"></div>
+  </section>
+</div>
+
+<dialog id="dlg-site">
+  <form class="sheet" method="dialog" id="f-site">
+    <h3>Site toevoegen</h3>
+    <label for="s-name">Naam</label>
+    <input id="s-name" placeholder="Bijv. Vesteda" maxlength="40">
+    <label for="s-url">Adres (link naar het huuraanbod)</label>
+    <input id="s-url" type="text" inputmode="url" autocapitalize="off" autocorrect="off" placeholder="https://…">
+    <div class="err" id="s-err"></div>
+    <div class="btns"><button class="btn" value="cancel" formnovalidate>Annuleren</button><button class="btn pri" value="ok" id="s-ok">Toevoegen</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg-areas">
+  <form class="sheet" method="dialog" id="f-areas">
+    <h3>Gebied toevoegen</h3>
+    <label for="a-name">Plaats, wijk of straat</label>
+    <input id="a-name" placeholder="Bijv. Kralingen" maxlength="40">
+    <div class="btns"><button class="btn" value="cancel" formnovalidate>Annuleren</button><button class="btn pri" value="ok">Toevoegen</button></div>
+  </form>
+</dialog>
+
+<script>
+(() => {
+"use strict";
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+const store = {
+  get(k, d) { try { const v = localStorage.getItem("huur-" + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem("huur-" + k, JSON.stringify(v)); } catch {} },
+};
+
+// ---------- sites ----------
+const STANDAARD_SITES = [
+  { id: "woonnet", naam: "Woonnet Rijnmond", url: "https://www.woonnetrijnmond.nl/nl-NL" },
+  { id: "pararius", naam: "Pararius", url: "https://www.pararius.nl" },
+  { id: "huurzone", naam: "Huurzone", url: "https://www.huurzone.nl/huurwoningen/rotterdam?prijs=700-1000" },
+  { id: "rdam", naam: "Rdam Makelaars", url: "https://rdammakelaars.nl/huurwoningen/" },
+  { id: "riva", naam: "Riva Rentals", url: "https://rivarentals.nl/aanbod/" },
+  { id: "voorberg", naam: "Voorberg", url: "https://www.voorberg.nl/woningaanbod/huur/" },
+  { id: "fonzt", naam: "FONZT", url: "https://fonzt.nl/woningaanbod/" },
+  { id: "atta", naam: "Atta Makelaars", url: "https://atta.nl/woningaanbod/huuraanbod/" },
+  { id: "ikwilhuren", naam: "Ik wil huren", url: "https://ikwilhuren.nu/" },
+  { id: "woonzeker", naam: "Woonzeker", url: "https://woonzeker.com/aanbod/rotterdam?view=map" },
+];
+let sites = store.get("sites", null) || STANDAARD_SITES.slice();
+const KLEUREN = ["#1F7A8C", "#2E6A57", "#7A4E8C", "#B5652A", "#3B5BA5", "#8C3B4E", "#4F7A1F", "#6A5A2E", "#246B8C", "#8C6A1F"];
+const kleur = (s) => { let h = 0; for (const c of s) h = (h * 31 + c.charCodeAt(0)) >>> 0; return KLEUREN[h % KLEUREN.length]; };
+const domein = (u) => { try { return new URL(u).hostname.replace(/^www\./, ""); } catch { return u; } };
+const initialen = (n) => n.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join("").toUpperCase() || "?";
+
+function renderTiles() {
+  const vandaag = new Date(); vandaag.setHours(0, 0, 0, 0);
+  const nieuwVandaag = {};
+  for (const w of alle) if (new Date(w.datum) >= vandaag) nieuwVandaag[w.bron] = (nieuwVandaag[w.bron] || 0) + 1;
+  $("#tiles").innerHTML = sites.map((s, i) => {
+    const n = nieuwVandaag[s.id];
+    return `<a class="tile" href="${esc(s.url)}" target="_blank" rel="noopener" data-i="${i}">
+      <span class="mono" style="background:${kleur(s.naam)}">${esc(initialen(s.naam))}</span>
+      <span class="t"><b>${esc(s.naam)}</b><small>${esc(domein(s.url))}</small></span>
+      ${n ? `<span class="cnt" title="${n} nieuw vandaag">+${n}</span>` : ""}
+      <button class="del" data-del="${i}" aria-label="${esc(s.naam)} verwijderen">×</button></a>`;
+  }).join("") + `<button class="tile add" id="add-site">+ Site toevoegen</button>`;
+}
+$("#tiles").addEventListener("click", (e) => {
+  const d = e.target.closest("[data-del]");
+  if (d) { e.preventDefault(); sites.splice(+d.dataset.del, 1); store.set("sites", sites); renderTiles(); return; }
+  if (e.target.closest("#add-site")) { e.preventDefault(); openSite(); return; }
+  if (document.body.classList.contains("editing") && e.target.closest(".tile")) e.preventDefault();
+});
+$("#edit").addEventListener("click", () => {
+  const on = document.body.classList.toggle("editing");
+  $("#tiles").classList.toggle("editing", on);
+  $("#edit").textContent = on ? "Klaar" : "Bewerken";
+  $("#reset-sites").hidden = !on;
+});
+$("#reset-sites").addEventListener("click", () => { sites = STANDAARD_SITES.slice(); store.set("sites", sites); renderTiles(); });
+
+function openSite() {
+  $("#s-name").value = ""; $("#s-url").value = ""; $("#s-err").textContent = "";
+  $("#dlg-site").showModal(); $("#s-url").focus();
+}
+$("#f-site").addEventListener("submit", (e) => {
+  if (e.submitter?.value !== "ok") return;
+  let url = $("#s-url").value.trim();
+  if (url && !/^https?:\/\//i.test(url)) url = "https://" + url;
+  try { new URL(url); } catch { e.preventDefault(); $("#s-err").textContent = "Vul een geldig webadres in, bijv. https://www.vesteda.com"; return; }
+  const naam = $("#s-name").value.trim() || domein(url);
+  sites.push({ id: "eigen-" + Date.now(), naam, url });
+  store.set("sites", sites); renderTiles();
+});
+
+// ---------- data ----------
+let alle = [];
+let bronStatus = {};
+let bijgewerkt = null;
+const BRONNAAM = { woonnet: "Woonnet" };
+
+async function laadMakelaars() {
+  const r = await fetch("huur-aanbod.json?t=" + Date.now(), { cache: "no-store" });
+  if (r.status === 404) return { leeg: true, woningen: [] };
+  if (!r.ok) throw new Error("status " + r.status);
+  const j = await r.json();
+  bronStatus = j.bronnen || {};
+  bijgewerkt = j.bijgewerkt;
+  for (const [id, b] of Object.entries(bronStatus)) BRONNAAM[id] = b.naam;
+  return { woningen: (j.woningen || []).map((w) => ({ ...w, datum: w.eersteGezien })) };
+}
+
+// Woonnet live (zelfde gegevens als op de site, direct uit hun openbare aanbod)
+const WNR = {
+  url: "https://housing.mesh-router.embracecloud.nl/graphql",
+  headers: {
+    accept: "application/graphql-response+json,application/json;q=0.9",
+    "apollographql-client-name": "Portal UI - woonnetrijnmond",
+    "apollographql-client-version": "1.0.0",
+    "content-type": "application/json",
+    "x-ec-portal-id": "UG9ydGFsUHJvdmlkZXJQb3J0YWw6NDg0MDExNWQtZTk4NC00MzQwLTgxYTktZjNjODZiYjM0MDk2",
+    "x-ec-tenant-id": "woonnetrijnmond",
+  },
+  query: `query wnrOverzicht($first: Int, $after: String, $filter: HousingWherePublicationFilterInput, $locale: String) {
+  housingPublications(orderBy: STARTDATE_ASC, filter: $filter, locale: $locale) {
+    nodes(first: $first, after: $after) {
+      pageInfo { hasNextPage endCursor }
+      edges { node {
+        id startTime
+        unit {
+          slug { value }
+          basicRent { exact min max }
+          numberOfBedrooms { exact min max }
+          dimensions { edges { node { area surfaceArea } } }
+          thumbnails: photos(size: PRESENTATION) { edges { node { url } } }
+          location { addressLine1 addressLine2 addressLine3 }
+        }
+      } }
+    }
+  }
+}`,
+  filter: { and: [{ or: [{ unitUsageType: { eq: "STANDARD" } }, { unitUsageType: { eq: "CLUSTER" } }] }] },
+};
+const money = (v) => (v ? v.exact || v.min || v.max || 0 : 0);
+async function laadWoonnet() {
+  const out = [];
+  let after = null;
+  for (let p = 0; p < 30; p++) {
+    const r = await fetch(WNR.url, { method: "POST", headers: WNR.headers, body: JSON.stringify({ operationName: "wnrOverzicht", query: WNR.query, variables: { first: 50, after, locale: "nl-NL", filter: WNR.filter } }) });
+    if (!r.ok) throw new Error("Woonnet status " + r.status);
+    const j = await r.json();
+    const nodes = j?.data?.housingPublications?.nodes;
+    if (!nodes) throw new Error(j?.errors?.[0]?.message || "Woonnet gaf geen gegevens");
+    for (const { node } of nodes.edges || []) {
+      const u = node.unit || {}, loc = u.location || {};
+      const parts = String(loc.addressLine3 || "").split(",").map((s) => s.trim()).filter(Boolean);
+      const total = (u.dimensions?.edges || []).map((e) => e.node).find((n) => n.area === "TOTAL");
+      out.push({
+        id: "woonnet:" + node.id, bron: "woonnet",
+        adres: loc.addressLine1 || "", plaats: loc.addressLine2 || parts[parts.length - 1] || "",
+        wijk: parts.length >= 2 ? parts.slice(0, parts.length >= 3 ? 2 : 1).join(", ") : "",
+        prijs: Math.round(money(u.basicRent)), slaapkamers: u.numberOfBedrooms ? u.numberOfBedrooms.exact || u.numberOfBedrooms.min || 0 : 0,
+        m2: total?.surfaceArea ? Math.round(total.surfaceArea / 1e6) : 0,
+        url: "https://www.woonnetrijnmond.nl/nl-NL/aanbod/advertentie/" + (u.slug?.value || ""),
+        foto: u.thumbnails?.edges?.[0]?.node?.url || "", datum: node.startTime || null,
+      });
+    }
+    if (!nodes.pageInfo?.hasNextPage) break;
+    after = nodes.pageInfo.endCursor;
+  }
+  return out;
+}
+
+// ---------- filters ----------
+const STANDAARD_GEBIEDEN = ["Bergschenhoek", "Berkel en Rodenrijs", "Hillegersberg", "Schiebroek", "Rotterdam"];
+const f = Object.assign({ gebieden: [], eigenGebieden: STANDAARD_GEBIEDEN, q: "", sort: "nieuw", bronnen: [], maxPrijs: 0 }, store.get("filters", {}));
+const bewaar = () => store.set("filters", f);
+const PRIJZEN = [0, 900, 1000, 1100, 1250, 1500, 2000];
+let toon = 60;
+
+const tekstVan = (w) => `${w.adres} ${w.wijk} ${w.plaats} ${w.postcode || ""}`.toLowerCase();
+const inGebied = (w, g) => tekstVan(w).includes(g.toLowerCase());
+
+function gefilterd() {
+  const q = f.q.trim().toLowerCase();
+  return alle.filter((w) =>
+    (!f.gebieden.length || f.gebieden.some((g) => inGebied(w, g))) &&
+    (!q || tekstVan(w).includes(q)) &&
+    (!f.bronnen.length || f.bronnen.includes(w.bron)) &&
+    (!f.maxPrijs || (w.prijs && w.prijs <= f.maxPrijs)));
+}
+const SORT = {
+  nieuw: (a, b) => (b.datum || "").localeCompare(a.datum || ""),
+  oud: (a, b) => (a.datum || "").localeCompare(b.datum || ""),
+  plaats: (a, b) => a.plaats.localeCompare(b.plaats, "nl") || a.adres.localeCompare(b.adres, "nl"),
+  prijs: (a, b) => (a.prijs || 1e9) - (b.prijs || 1e9),
+  prijsAf: (a, b) => (b.prijs || 0) - (a.prijs || 0),
+};
+
+function renderChips() {
+  const telling = (g) => alle.filter((w) => inGebied(w, g)).length;
+  $("#areas").innerHTML =
+    `<button class="chip" data-area="" aria-pressed="${!f.gebieden.length}">Alle gebieden</button>` +
+    f.eigenGebieden.map((g) => `<button class="chip" data-area="${esc(g)}" aria-pressed="${f.gebieden.includes(g)}">${esc(g)}<span class="n">${telling(g)}</span></button>`).join("") +
+    `<button class="chip soft" id="add-area">+ Gebied</button>`;
+  const bronnen = [...new Set(alle.map((w) => w.bron))];
+  $("#more").innerHTML =
+    `<select class="chip" id="maxprijs" aria-label="Maximale huur">${PRIJZEN.map((p) => `<option value="${p}"${p === f.maxPrijs ? " selected" : ""}>${p ? "Tot € " + p.toLocaleString("nl-NL") : "Elke prijs"}</option>`).join("")}</select>` +
+    bronnen.map((b) => `<button class="chip" data-bron="${esc(b)}" aria-pressed="${f.bronnen.includes(b)}">${esc(BRONNAAM[b] || b)}</button>`).join("");
+}
+
+$("#areas").addEventListener("click", (e) => {
+  const c = e.target.closest("[data-area]");
+  if (e.target.closest("#add-area")) { $("#a-name").value = ""; $("#dlg-areas").showModal(); return; }
+  if (!c) return;
+  const g = c.dataset.area;
+  if (!g) f.gebieden = [];
+  else f.gebieden = f.gebieden.includes(g) ? f.gebieden.filter((x) => x !== g) : [...f.gebieden, g];
+  bewaar(); toon = 60; render();
+});
+// lang indrukken / rechtsklik op een gebied = verwijderen uit de lijst
+let lp;
+$("#areas").addEventListener("contextmenu", (e) => { const c = e.target.closest("[data-area]"); if (c && c.dataset.area) { e.preventDefault(); verwijderGebied(c.dataset.area); } });
+$("#areas").addEventListener("touchstart", (e) => { const c = e.target.closest("[data-area]"); if (c && c.dataset.area) lp = setTimeout(() => verwijderGebied(c.dataset.area), 650); }, { passive: true });
+["touchend", "touchmove"].forEach((t) => $("#areas").addEventListener(t, () => clearTimeout(lp), { passive: true }));
+function verwijderGebied(g) {
+  if (!confirm(`"${g}" uit je gebieden halen?`)) return;
+  f.eigenGebieden = f.eigenGebieden.filter((x) => x !== g); f.gebieden = f.gebieden.filter((x) => x !== g); bewaar(); render();
+}
+$("#f-areas").addEventListener("submit", (e) => {
+  if (e.submitter?.value !== "ok") return;
+  const g = $("#a-name").value.trim();
+  if (g && !f.eigenGebieden.some((x) => x.toLowerCase() === g.toLowerCase())) { f.eigenGebieden = [...f.eigenGebieden, g]; f.gebieden = [...f.gebieden, g]; bewaar(); render(); }
+});
+$("#more").addEventListener("click", (e) => {
+  const c = e.target.closest("[data-bron]"); if (!c) return;
+  const b = c.dataset.bron;
+  f.bronnen = f.bronnen.includes(b) ? f.bronnen.filter((x) => x !== b) : [...f.bronnen, b];
+  bewaar(); toon = 60; render();
+});
+$("#more").addEventListener("change", (e) => { if (e.target.id === "maxprijs") { f.maxPrijs = +e.target.value; bewaar(); toon = 60; render(); } });
+$("#q").value = f.q;
+$("#q").addEventListener("input", () => { f.q = $("#q").value; bewaar(); toon = 60; renderList(); });
+$("#sort").value = f.sort;
+$("#sort").addEventListener("change", () => { f.sort = $("#sort").value; bewaar(); renderList(); });
+$("#showmore").addEventListener("click", () => { toon += 60; renderList(); });
+
+// ---------- weergave ----------
+const euro = (n) => "€ " + Math.round(n).toLocaleString("nl-NL");
+function geleden(iso) {
+  const d = new Date(iso); if (!iso || isNaN(d)) return "";
+  const m = Math.round((Date.now() - d) / 60000);
+  if (m < 0) return "binnenkort";
+  if (m < 60) return m <= 1 ? "zojuist" : `${m} min geleden`;
+  const u = Math.round(m / 60); if (u < 24) return `${u} uur geleden`;
+  const dg = Math.round(u / 24); if (dg === 1) return "gisteren"; if (dg <= 30) return `${dg} dagen geleden`;
+  return "sinds " + d.toLocaleDateString("nl-NL", { day: "numeric", month: "short", year: "numeric" });
+}
+function dagKop(iso) {
+  const d = new Date(iso);
+  if (!iso || isNaN(d)) return { key: "x", titel: "Datum onbekend", sub: "" };
+  const dag = (x) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
+  const diff = Math.round((dag(d) - dag(new Date())) / 864e5);
+  const sub = d.toLocaleDateString("nl-NL", { weekday: "long", day: "numeric", month: "long" });
+  const titel = diff === 0 ? "Vandaag" : diff === -1 ? "Gisteren" : sub.charAt(0).toUpperCase() + sub.slice(1);
+  return { key: String(dag(d)), titel, sub: titel.toLowerCase() === sub ? "" : sub };
+}
+function kaart(w) {
+  const naam = BRONNAAM[w.bron] || w.bron;
+  const feiten = [
+    w.prijs ? `<span class="price">${euro(w.prijs)}</span>` : `<span class="price">Prijs op aanvraag</span>`,
+    w.m2 ? `<span>${w.m2} m²</span>` : "",
+    w.slaapkamers ? `<span>${w.slaapkamers} slpk</span>` : w.kamers ? `<span>${w.kamers} ${w.kamers === 1 ? "kamer" : "kamers"}</span>` : "",
+  ].join("");
+  const plek = [...new Set([...String(w.wijk || "").split(",").map((x) => x.trim()), w.plaats])].filter(Boolean).join(", ");
+  const foto = w.foto ? `<div class="ph" style="background-image:url('${esc(w.foto).replace(/'/g, "%27")}')"></div>` : `<div class="ph none">${esc(initialen(naam))}</div>`;
+  return `<a class="card" href="${esc(w.url)}" target="_blank" rel="noopener">${foto}
+    <div class="info"><div class="adr">${esc(w.adres || "Adres onbekend")}</div><div class="plc">${esc(plek)}</div>
+    <div class="facts">${feiten}</div>
+    <div class="meta"><span class="badge${w.bron === "woonnet" ? " wnr" : ""}">${esc(naam)}</span><span class="ago">${esc(w.bron === "woonnet" ? "geplaatst " + geleden(w.datum) : (/^sinds/.test(geleden(w.datum)) ? "" : "gezien ") + geleden(w.datum))}</span></div></div></a>`;
+}
+function renderList() {
+  const lijst = gefilterd().sort(SORT[f.sort]);
+  const zicht = lijst.slice(0, toon);
+  $("#summary").textContent = alle.length ? `${lijst.length} van ${alle.length} woningen` : "";
+  if (!lijst.length) {
+    $("#list").innerHTML = alle.length ? `<div class="empty">Geen woningen met deze filters. Kies een ander gebied of zet “Elke prijs” aan.</div>` : "";
+    $("#showmore").hidden = true; return;
+  }
+  let html = "";
+  if (f.sort === "nieuw" || f.sort === "oud" || f.sort === "plaats") {
+    let key = null, open = false;
+    for (const w of zicht) {
+      const k = f.sort === "plaats" ? { key: w.plaats || "?", titel: w.plaats || "Plaats onbekend", sub: "" } : dagKop(w.datum);
+      if (k.key !== key) { if (open) html += "</div>"; html += `<div class="day">${esc(k.titel)}${k.sub ? `<span>${esc(k.sub)}</span>` : ""}</div><div class="grid">`; key = k.key; open = true; }
+      html += kaart(w);
+    }
+    if (open) html += "</div>";
+  } else html = `<div class="grid" style="margin-top:14px">${zicht.map(kaart).join("")}</div>`;
+  $("#list").innerHTML = html;
+  $("#showmore").hidden = lijst.length <= toon;
+}
+function renderStatus() {
+  const regels = Object.entries(bronStatus).map(([id, b]) =>
+    b.ok ? `${esc(b.naam)}: ${b.aantal}` : `<span class="bad">${esc(b.naam)}: kon niet worden opgehaald</span>`);
+  $("#srcstat").innerHTML = regels.length ? `Makelaars ${bijgewerkt ? "bijgewerkt " + esc(geleden(bijgewerkt)) : ""}: ${regels.join(" · ")}` : "";
+}
+function render() { renderTiles(); renderChips(); renderList(); renderStatus(); }
+
+// ---------- laden ----------
+let wnrStatus = "";
+function stamp() {
+  const t = new Date().toLocaleTimeString("nl-NL", { hour: "2-digit", minute: "2-digit" });
+  $("#stamp").textContent = `Opgehaald om ${t}${wnrStatus}`;
+}
+async function laad() {
+  $("#reload").classList.add("spin");
+  const notes = [];
+  const [mk, wn] = await Promise.allSettled([laadMakelaars(), laadWoonnet()]);
+  alle = [];
+  if (mk.status === "fulfilled") {
+    alle.push(...mk.value.woningen);
+    if (mk.value.leeg) notes.push("Nog geen makelaarsgegevens. Start in GitHub de workflow “Huurdashboard verzamelen” (Actions → Run workflow); daarna verschijnen ze hier.");
+  } else notes.push("Makelaarsgegevens konden niet worden geladen. Probeer het zo opnieuw.");
+  if (wn.status === "fulfilled") { alle.push(...wn.value); wnrStatus = ""; }
+  else { wnrStatus = " · Woonnet niet bereikbaar"; notes.push("Woonnet is nu niet bereikbaar; de makelaars worden wel getoond."); }
+  $("#notice").innerHTML = notes.map((n) => `<div class="notice">${esc(n)}</div>`).join("");
+  $("#reload").classList.remove("spin");
+  stamp(); render();
+}
+$("#reload").addEventListener("click", laad);
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && Date.now() - (window.__l || 0) > 10 * 60000) { window.__l = Date.now(); laad(); } });
+const io = new IntersectionObserver(([e]) => $("#filters").classList.toggle("stuck", !e.isIntersecting), { rootMargin: "-1px 0px 0px 0px" });
+const sentinel = document.createElement("div"); $("#filters").before(sentinel); io.observe(sentinel);
+
+window.__l = Date.now();
+render();
+laad();
+})();
+</script>
+</body>
+</html>

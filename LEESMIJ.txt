@@ -1,0 +1,57 @@
+HUURDASHBOARD – eigen GitHub-site
+=================================
+
+Resultaat: https://derleymms.github.io/Huurdashboard/
+(los van je Woonnet-kaart; die blijft gewoon werken)
+
+1. Nieuwe repo maken
+   github.com → rechtsboven + → New repository
+   Naam: Huurdashboard   ·   Public   ·   Create repository
+
+2. Bestanden uploaden
+   Klik op "uploading an existing file" en sleep deze bestanden erin:
+     index.html, manifest.webmanifest, icon-180.png, icon-192.png,
+     icon-512.png, huur-check.mjs, LEESMIJ.txt
+   → Commit changes.
+
+3. De workflow toevoegen (de map .github is op een Mac vaak onzichtbaar,
+   daarom zo):
+   Add file → Create new file
+   Naam:  .github/workflows/huur-verzamelaar.yml
+   Inhoud: open workflow-huur-verzamelaar.yml uit deze zip met
+   Teksteditor, kopieer alles en plak het hier.
+   (Dat bestand zelf hoef je niet te uploaden.)
+   → Commit changes.
+
+4. Website aanzetten
+   Settings → Pages → Source: "Deploy from a branch",
+   Branch: main  /(root) → Save.
+   Na een minuut staat de site op het adres hierboven.
+
+5. Schrijfrechten voor de verzamelaar
+   Settings → Actions → General → Workflow permissions →
+   "Read and write permissions" → Save.
+
+6. Eerste keer ophalen
+   Actions → "Huurdashboard verzamelen" → Run workflow.
+   Daarna verschijnt huur-aanbod.json in je repo en draait het vanzelf
+   elk half uur.
+
+7. Op je iPhone
+   Open het adres in Safari → deelknop → Zet op beginscherm.
+
+Gebruik
+- Tegels openen de sites. "Bewerken" om tegels weg te halen,
+  "+ Site toevoegen" voor een nieuwe (wordt op je toestel onthouden).
+- Nieuwste woningen van Woonnet (live) en de makelaars (elk half uur),
+  per dag gegroepeerd. Sorteren op nieuwste, oudste, plaats of prijs.
+- Gebieden: tik om te filteren, meerdere tegelijk kan. "+ Gebied" voegt
+  een plaats, wijk of straat toe; lang indrukken haalt er een weg.
+
+Automatisch opgehaald: Rdam Makelaars, Riva Rentals, Voorberg, FONZT, Atta,
+Ik wil huren en Woonzeker (die laatste twee alleen postcodes 2200–3399).
+Pararius en Huurzone staan er alleen als tegel.
+
+Postcodegebied aanpassen (optioneel):
+Settings → Secrets and variables → Actions → Variables → New variable
+Naam POSTCODES, waarde bijv. 2600-3100 ("alles" = geen filter).
