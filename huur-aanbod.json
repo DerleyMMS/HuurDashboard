@@ -1,48 +1,48 @@
 {
- "bijgewerkt": "2026-11-22T16:39:17.384Z",
- "laatsteVolledig": "2026-11-22T16:39:17.384Z",
+ "bijgewerkt": "2026-11-22T21:59:56.384Z",
+ "laatsteVolledig": "2026-11-22T21:59:56.384Z",
  "bronnen": {
   "rdam": {
    "naam": "Rdam Makelaars",
    "ok": true,
    "aantal": 68,
-   "tijd": "2026-11-22T16:39:17.384Z"
+   "tijd": "2026-11-22T21:59:56.384Z"
   },
   "riva": {
    "naam": "Riva Rentals",
    "ok": true,
    "aantal": 51,
-   "tijd": "2026-11-22T16:39:17.384Z"
+   "tijd": "2026-11-22T21:59:56.384Z"
   },
   "voorberg": {
    "naam": "Voorberg",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-22T16:39:17.384Z"
+   "tijd": "2026-11-22T21:59:56.384Z"
   },
   "fonzt": {
    "naam": "FONZT",
    "ok": true,
    "aantal": 0,
-   "tijd": "2026-11-22T16:39:17.384Z"
+   "tijd": "2026-11-22T21:59:56.384Z"
   },
   "atta": {
    "naam": "Atta Makelaars",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-22T16:39:17.384Z"
+   "tijd": "2026-11-22T21:59:56.384Z"
   },
   "ikwilhuren": {
    "naam": "Ik wil huren",
    "ok": true,
    "aantal": 19,
-   "tijd": "2026-11-22T16:39:17.384Z"
+   "tijd": "2026-11-22T21:59:56.384Z"
   },
   "woonzeker": {
    "naam": "Woonzeker",
    "ok": true,
    "aantal": 18,
-   "tijd": "2026-11-22T16:39:17.384Z"
+   "tijd": "2026-11-22T21:59:56.384Z"
   }
  },
  "woningen": [
