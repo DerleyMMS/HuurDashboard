@@ -1,51 +1,127 @@
 {
- "bijgewerkt": "2026-11-23T10:55:44.668Z",
- "laatsteVolledig": "2026-11-23T10:55:44.668Z",
+ "bijgewerkt": "2026-11-23T22:19:28.947Z",
+ "laatsteVolledig": "2026-11-23T22:19:28.947Z",
  "bronnen": {
   "rdam": {
    "naam": "Rdam Makelaars",
    "ok": true,
    "aantal": 68,
-   "tijd": "2026-11-23T10:55:44.668Z"
+   "tijd": "2026-11-23T22:19:28.947Z"
   },
   "riva": {
    "naam": "Riva Rentals",
    "ok": true,
    "aantal": 50,
-   "tijd": "2026-11-23T10:55:44.668Z"
+   "tijd": "2026-11-23T22:19:28.947Z"
   },
   "voorberg": {
    "naam": "Voorberg",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-23T10:55:44.668Z"
+   "tijd": "2026-11-23T22:19:28.947Z"
   },
   "fonzt": {
    "naam": "FONZT",
    "ok": true,
    "aantal": 0,
-   "tijd": "2026-11-23T10:55:44.668Z"
+   "tijd": "2026-11-23T22:19:28.947Z"
   },
   "atta": {
    "naam": "Atta Makelaars",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-23T10:55:44.668Z"
+   "tijd": "2026-11-23T22:19:28.947Z"
   },
   "ikwilhuren": {
    "naam": "Ik wil huren",
    "ok": true,
-   "aantal": 13,
-   "tijd": "2026-11-23T10:55:44.668Z"
+   "aantal": 17,
+   "tijd": "2026-11-23T22:19:28.947Z"
   },
   "woonzeker": {
    "naam": "Woonzeker",
    "ok": true,
-   "aantal": 18,
-   "tijd": "2026-11-23T10:55:44.668Z"
+   "aantal": 21,
+   "tijd": "2026-11-23T22:19:28.947Z"
   }
  },
  "woningen": [
+  {
+   "id": "woonzeker:woonzeker.com/huur/woningen/beukelsdijk-16-c",
+   "bron": "woonzeker",
+   "bronNaam": "Woonzeker",
+   "adres": "Beukelsdijk 16 C",
+   "plaats": "Rotterdam",
+   "wijk": "",
+   "postcode": "3021 AG",
+   "prijs": 1860,
+   "slaapkamers": 1,
+   "kamers": 0,
+   "m2": 77,
+   "type": "",
+   "url": "https://woonzeker.com/huur/woningen/beukelsdijk-16-c",
+   "foto": "https://cdn.realmark.cloud/marketsuite/media/projects/1038/publicPhotos/cf280203-4606-4b10-b934-3b2d7a63955b/fe6e04a8-aaf5-4858-9b2a-a99e2bf7beed.webp",
+   "lat": 51.9216255,
+   "lng": 4.4591179,
+   "eersteGezien": "2026-11-23T17:04:39.000000Z"
+  },
+  {
+   "id": "woonzeker:woonzeker.com/huur/woningen/burgemeester-elsenlaan-225",
+   "bron": "woonzeker",
+   "bronNaam": "Woonzeker",
+   "adres": "Burgemeester Elsenlaan 225",
+   "plaats": "Rijswijk",
+   "wijk": "",
+   "postcode": "2282 NE",
+   "prijs": 1247,
+   "slaapkamers": 2,
+   "kamers": 0,
+   "m2": 74,
+   "type": "",
+   "url": "https://woonzeker.com/huur/woningen/burgemeester-elsenlaan-225",
+   "foto": "https://cdn.realmark.cloud/marketsuite/media/projects/1038/publicPhotos/d473da57-8792-4fd7-b1ab-51f4ad69d36b/515ee0a4-3472-4de0-84ba-e600adb71161.webp",
+   "lat": 52.04915,
+   "lng": 4.3308437,
+   "eersteGezien": "2026-11-23T17:04:30.000000Z"
+  },
+  {
+   "id": "woonzeker:woonzeker.com/huur/woningen/1e-middellandstraat-108-a01",
+   "bron": "woonzeker",
+   "bronNaam": "Woonzeker",
+   "adres": "1e Middellandstraat 108 A01",
+   "plaats": "Rotterdam",
+   "wijk": "",
+   "postcode": "3021 BH",
+   "prijs": 1550,
+   "slaapkamers": 2,
+   "kamers": 0,
+   "m2": 67,
+   "type": "",
+   "url": "https://woonzeker.com/huur/woningen/1e-middellandstraat-108-a01",
+   "foto": "https://cdn.realmark.cloud/marketsuite/media/projects/1038/publicPhotos/13ac0622-03e3-4efb-ad3a-71e2a380f684/e63ece22-e6f6-44fe-a142-9e8d6f31d97e.webp",
+   "lat": 51.9184769,
+   "lng": 4.460784,
+   "eersteGezien": "2026-11-23T11:04:24.000000Z"
+  },
+  {
+   "id": "ikwilhuren:ikwilhuren.nu/object/berkel-en-rodenrijs-2652jg-106-oosterscheldestraat-9d261470c2f3aeb8b1cb9ca2714cc9f8",
+   "bron": "ikwilhuren",
+   "bronNaam": "Ik wil huren",
+   "adres": "Oosterscheldestraat 106",
+   "plaats": "Berkel En Rodenrijs",
+   "wijk": "",
+   "postcode": "2652JG",
+   "prijs": 1600,
+   "slaapkamers": 3,
+   "kamers": 0,
+   "m2": 126,
+   "type": "Eengezinswoning",
+   "url": "https://ikwilhuren.nu/object/berkel-en-rodenrijs-2652jg-106-oosterscheldestraat-9d261470c2f3aeb8b1cb9ca2714cc9f8/",
+   "foto": "https://d.static.nbo.nl/media/90/904511dffc2c98ab85205daff1c8eb75/768x510/thumb.jpg",
+   "lat": 52.000274,
+   "lng": 4.469773,
+   "eersteGezien": "2026-11-22T23:44:38.488Z"
+  },
   {
    "id": "riva:rivarentals.nl/object/weena-rotterdam-h178260015",
    "bron": "riva",
@@ -2460,25 +2536,6 @@
    "eersteGezien": "2026-11-19T23:44:16.145Z"
   },
   {
-   "id": "ikwilhuren:ikwilhuren.nu/object/vlaardingen-3137da-149-aristide-briandring-d05b898c9d740eb592a8315a15f5f71b",
-   "bron": "ikwilhuren",
-   "bronNaam": "Ik wil huren",
-   "adres": "Aristide Briandring 149",
-   "plaats": "Vlaardingen",
-   "wijk": "",
-   "postcode": "3137DA",
-   "prijs": 1172,
-   "slaapkamers": 1,
-   "kamers": 0,
-   "m2": 93,
-   "type": "Appartement",
-   "url": "https://ikwilhuren.nu/object/vlaardingen-3137da-149-aristide-briandring-d05b898c9d740eb592a8315a15f5f71b/",
-   "foto": "https://a.static.nbo.nl/media/77/77ce00f2e35b7bfcd39c797676af4537/768x510/thumb.jpg",
-   "lat": 51.932397,
-   "lng": 4.34627,
-   "eersteGezien": "2026-11-19T23:44:16.145Z"
-  },
-  {
    "id": "ikwilhuren:ikwilhuren.nu/object/voorburg-2274ez-205-guido-gezellestraat-4dcdea846e9a0d1dad85a91e0b966684",
    "bron": "ikwilhuren",
    "bronNaam": "Ik wil huren",
@@ -2496,25 +2553,6 @@
    "lat": 52.074681,
    "lng": 4.359165,
    "eersteGezien": "2026-11-19T23:44:16.145Z"
-  },
-  {
-   "id": "ikwilhuren:ikwilhuren.nu/object/den-haag-2512bl-1-c18-paviljoensgracht-c27c54072cb934a0b87ea55e3f4fc634",
-   "bron": "ikwilhuren",
-   "bronNaam": "Ik wil huren",
-   "adres": "Paviljoensgracht 1 C18",
-   "plaats": "Den Haag",
-   "wijk": "",
-   "postcode": "2512BL",
-   "prijs": 1115,
-   "slaapkamers": 1,
-   "kamers": 0,
-   "m2": 51,
-   "type": "Appartement",
-   "url": "https://ikwilhuren.nu/object/den-haag-2512bl-1-c18-paviljoensgracht-c27c54072cb934a0b87ea55e3f4fc634/",
-   "foto": "https://d.static.nbo.nl/media/b6/b6d42f0543ae9cfef52695b282ac9aac/768x510/thumb.jpg",
-   "lat": 52.074337,
-   "lng": 4.311039,
-   "eersteGezien": "2026-11-19T23:31:21.294Z"
   },
   {
    "id": "ikwilhuren:ikwilhuren.nu/object/rotterdam-3045pe-192-van-der-duijn-van-maasdamweg-f32d94d897ed629de13d60717021ae43",
@@ -2650,6 +2688,82 @@
    "eersteGezien": "2026-11-19T13:06:03.000000Z"
   },
   {
+   "id": "ikwilhuren:ikwilhuren.nu/object/den-haag-2544rm-808-randveen-322f0095871659da6a7a35a41f209579",
+   "bron": "ikwilhuren",
+   "bronNaam": "Ik wil huren",
+   "adres": "Randveen 808",
+   "plaats": "Den Haag",
+   "wijk": "",
+   "postcode": "2544RM",
+   "prijs": 1249,
+   "slaapkamers": 2,
+   "kamers": 0,
+   "m2": 70,
+   "type": "Appartement",
+   "url": "https://ikwilhuren.nu/object/den-haag-2544rm-808-randveen-322f0095871659da6a7a35a41f209579/",
+   "foto": "https://c.static.nbo.nl/media/dd/ddfdbe5289dfaac2f94bed1d4146af08/768x510/thumb.jpg",
+   "lat": 52.039415,
+   "lng": 4.251756,
+   "eersteGezien": "2026-11-18T23:44:43.389Z"
+  },
+  {
+   "id": "ikwilhuren:ikwilhuren.nu/object/rotterdam-3042ab-13-e-baanweg-6e62a6244ff15a2d04611908d347e7f6",
+   "bron": "ikwilhuren",
+   "bronNaam": "Ik wil huren",
+   "adres": "Baanweg 13 E",
+   "plaats": "Rotterdam",
+   "wijk": "",
+   "postcode": "3042AB",
+   "prijs": 1450,
+   "slaapkamers": 3,
+   "kamers": 0,
+   "m2": 111,
+   "type": "Appartement",
+   "url": "https://ikwilhuren.nu/object/rotterdam-3042ab-13-e-baanweg-6e62a6244ff15a2d04611908d347e7f6/",
+   "foto": "https://a.static.nbo.nl/media/dd/dd52515fdb734c3de5ba98d32258e830/768x510/thumb.jpg",
+   "lat": 51.935078,
+   "lng": 4.428507,
+   "eersteGezien": "2026-11-18T23:44:43.389Z"
+  },
+  {
+   "id": "ikwilhuren:ikwilhuren.nu/object/rotterdam-3063km-658-hoge-filterweg-b1b38e764c10bfbc6b96a585c77bafde",
+   "bron": "ikwilhuren",
+   "bronNaam": "Ik wil huren",
+   "adres": "Hoge Filterweg 658",
+   "plaats": "Rotterdam",
+   "wijk": "",
+   "postcode": "3063KM",
+   "prijs": 1250,
+   "slaapkamers": 2,
+   "kamers": 0,
+   "m2": 84,
+   "type": "Appartement",
+   "url": "https://ikwilhuren.nu/object/rotterdam-3063km-658-hoge-filterweg-b1b38e764c10bfbc6b96a585c77bafde/",
+   "foto": "https://b.static.nbo.nl/media/d3/d33b7015e1acd7ec352938c137c5cf12/768x510/thumb.jpg",
+   "lat": 51.907595,
+   "lng": 4.524471,
+   "eersteGezien": "2026-11-18T23:44:43.389Z"
+  },
+  {
+   "id": "ikwilhuren:ikwilhuren.nu/object/leiden-2316xd-1-pg-schipholweg-341ee78068ee954d071baec449a3783f",
+   "bron": "ikwilhuren",
+   "bronNaam": "Ik wil huren",
+   "adres": "1 PG",
+   "plaats": "Leiden",
+   "wijk": "",
+   "postcode": "2316XD",
+   "prijs": 100,
+   "slaapkamers": 0,
+   "kamers": 0,
+   "m2": 0,
+   "type": "Schipholweg",
+   "url": "https://ikwilhuren.nu/object/leiden-2316xd-1-pg-schipholweg-341ee78068ee954d071baec449a3783f/",
+   "foto": "https://b.static.nbo.nl/media/22/22a45ed0cca416d0e20a2c1c939f0f1c/768x510/thumb.jpg",
+   "lat": 52.169107,
+   "lng": 4.486538,
+   "eersteGezien": "2026-11-18T22:19:47.389Z"
+  },
+  {
    "id": "woonzeker:woonzeker.com/huur/woningen/pasteurplein-11-kamer-3",
    "bron": "woonzeker",
    "bronNaam": "Woonzeker",
@@ -2743,6 +2857,25 @@
    "lat": 52.0624421,
    "lng": 4.2945332,
    "eersteGezien": "2026-11-18T10:04:34.000000Z"
+  },
+  {
+   "id": "ikwilhuren:ikwilhuren.nu/object/den-haag-2511ez-308-schedeldoekshaven-aa7938e2d6222c6838880db9d01b6095",
+   "bron": "ikwilhuren",
+   "bronNaam": "Ik wil huren",
+   "adres": "Schedeldoekshaven 308",
+   "plaats": "Den Haag",
+   "wijk": "",
+   "postcode": "2511EZ",
+   "prijs": 1583,
+   "slaapkamers": 1,
+   "kamers": 0,
+   "m2": 71,
+   "type": "Appartement",
+   "url": "https://ikwilhuren.nu/object/den-haag-2511ez-308-schedeldoekshaven-aa7938e2d6222c6838880db9d01b6095/",
+   "foto": "https://d.static.nbo.nl/media/86/8691da0276ff9b20fe374e65ddeacbd9/768x510/thumb.jpg",
+   "lat": 52.077208,
+   "lng": 4.319357,
+   "eersteGezien": "2026-11-17T23:44:44.604Z"
   },
   {
    "id": "woonzeker:woonzeker.com/huur/woningen/noord-west-buitensingel-6",
@@ -3141,6 +3274,10 @@
   "schedeldoekshaven 308|2511ez|den haag": {
    "lat": 52.077208,
    "lng": 4.319357
+  },
+  "oosterscheldestraat 106|2652jg|berkel en rodenrijs": {
+   "lat": 52.000274,
+   "lng": 4.469773
   }
  }
 }
