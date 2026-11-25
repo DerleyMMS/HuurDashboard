@@ -1,51 +1,70 @@
 {
- "bijgewerkt": "2026-11-24T17:34:27.126Z",
- "laatsteVolledig": "2026-11-24T17:34:27.126Z",
+ "bijgewerkt": "2026-11-25T01:33:31.680Z",
+ "laatsteVolledig": "2026-11-25T01:33:31.680Z",
  "bronnen": {
   "rdam": {
    "naam": "Rdam Makelaars",
    "ok": true,
    "aantal": 68,
-   "tijd": "2026-11-24T17:34:27.126Z"
+   "tijd": "2026-11-25T01:33:31.680Z"
   },
   "riva": {
    "naam": "Riva Rentals",
    "ok": true,
-   "aantal": 51,
-   "tijd": "2026-11-24T17:34:27.126Z"
+   "aantal": 52,
+   "tijd": "2026-11-25T01:33:31.680Z"
   },
   "voorberg": {
    "naam": "Voorberg",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-24T17:34:27.126Z"
+   "tijd": "2026-11-25T01:33:31.680Z"
   },
   "fonzt": {
    "naam": "FONZT",
    "ok": true,
    "aantal": 0,
-   "tijd": "2026-11-24T17:34:27.126Z"
+   "tijd": "2026-11-25T01:33:31.680Z"
   },
   "atta": {
    "naam": "Atta Makelaars",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-24T17:34:27.126Z"
+   "tijd": "2026-11-25T01:33:31.680Z"
   },
   "ikwilhuren": {
    "naam": "Ik wil huren",
    "ok": true,
    "aantal": 0,
-   "tijd": "2026-11-24T17:34:27.126Z"
+   "tijd": "2026-11-25T01:33:31.680Z"
   },
   "woonzeker": {
    "naam": "Woonzeker",
    "ok": true,
    "aantal": 18,
-   "tijd": "2026-11-24T17:34:27.126Z"
+   "tijd": "2026-11-25T01:33:31.680Z"
   }
  },
  "woningen": [
+  {
+   "id": "riva:rivarentals.nl/object/honingerhof-rotterdam-h178260796",
+   "bron": "riva",
+   "bronNaam": "Riva Rentals",
+   "adres": "Honingerhof",
+   "plaats": "Rotterdam",
+   "wijk": "",
+   "postcode": "",
+   "prijs": 2950,
+   "slaapkamers": 2,
+   "kamers": 0,
+   "m2": 132,
+   "type": "",
+   "url": "https://rivarentals.nl/object/honingerhof-rotterdam-h178260796/",
+   "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/53903276.1771900407-819.jpg?width=600",
+   "lat": 51.919254,
+   "lng": 4.514282,
+   "eersteGezien": "2026-11-25T01:33:31.680Z"
+  },
   {
    "id": "riva:rivarentals.nl/object/pijnackerplein-rotterdam-h178262252",
    "bron": "riva",
@@ -2925,6 +2944,10 @@
   "achterzeedijk||barendrecht": {
    "lat": 51.834967,
    "lng": 4.533358
+  },
+  "honingerhof||rotterdam": {
+   "lat": 51.919254,
+   "lng": 4.514282
   }
  }
 }
