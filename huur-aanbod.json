@@ -1,51 +1,70 @@
 {
- "bijgewerkt": "2026-11-26T02:40:34.248Z",
- "laatsteVolledig": "2026-11-26T02:40:34.248Z",
+ "bijgewerkt": "2026-11-26T11:28:22.475Z",
+ "laatsteVolledig": "2026-11-26T11:28:22.475Z",
  "bronnen": {
   "rdam": {
    "naam": "Rdam Makelaars",
    "ok": true,
    "aantal": 68,
-   "tijd": "2026-11-26T02:40:34.248Z"
+   "tijd": "2026-11-26T11:28:22.475Z"
   },
   "riva": {
    "naam": "Riva Rentals",
    "ok": true,
-   "aantal": 56,
-   "tijd": "2026-11-26T02:40:34.248Z"
+   "aantal": 54,
+   "tijd": "2026-11-26T11:28:22.475Z"
   },
   "voorberg": {
    "naam": "Voorberg",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-26T02:40:34.248Z"
+   "tijd": "2026-11-26T11:28:22.475Z"
   },
   "fonzt": {
    "naam": "FONZT",
    "ok": true,
    "aantal": 0,
-   "tijd": "2026-11-26T02:40:34.248Z"
+   "tijd": "2026-11-26T11:28:22.475Z"
   },
   "atta": {
    "naam": "Atta Makelaars",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-26T02:40:34.248Z"
+   "tijd": "2026-11-26T11:28:22.475Z"
   },
   "ikwilhuren": {
    "naam": "Ik wil huren",
    "ok": true,
-   "aantal": 5,
-   "tijd": "2026-11-26T02:40:34.248Z"
+   "aantal": 6,
+   "tijd": "2026-11-26T11:28:22.475Z"
   },
   "woonzeker": {
    "naam": "Woonzeker",
    "ok": true,
    "aantal": 18,
-   "tijd": "2026-11-26T02:40:34.248Z"
+   "tijd": "2026-11-26T11:28:22.475Z"
   }
  },
  "woningen": [
+  {
+   "id": "ikwilhuren:ikwilhuren.nu/object/delft-2624gd-350-delflandplein-1dab355a65fcacc1ca390c30a5641144",
+   "bron": "ikwilhuren",
+   "bronNaam": "Ik wil huren",
+   "adres": "Delflandplein 350",
+   "plaats": "Delft",
+   "wijk": "",
+   "postcode": "2624GD",
+   "prijs": 1002,
+   "slaapkamers": 0,
+   "kamers": 0,
+   "m2": 42,
+   "type": "Appartement",
+   "url": "https://ikwilhuren.nu/object/delft-2624gd-350-delflandplein-1dab355a65fcacc1ca390c30a5641144/",
+   "foto": "https://b.static.nbo.nl/media/d5/d55f64243c9e8141fa14cc257f949040/768x510/thumb.jpg",
+   "lat": 51.996632,
+   "lng": 4.353812,
+   "eersteGezien": "2026-11-25T23:58:19.856Z"
+  },
   {
    "id": "riva:rivarentals.nl/object/maaskade-rotterdam-h178261705",
    "bron": "riva",
@@ -339,7 +358,7 @@
    "plaats": "Rijswijk",
    "wijk": "",
    "postcode": "2282 NE",
-   "prijs": 1247,
+   "prijs": 1500,
    "slaapkamers": 2,
    "kamers": 0,
    "m2": 74,
@@ -1013,25 +1032,6 @@
    "foto": "https://rdammakelaars.nl/wp-content/uploads/2025/10/Ingang-488x326.jpg",
    "lat": 51.9300742,
    "lng": 4.4571858,
-   "eersteGezien": "2026-11-20T11:18:25.546Z"
-  },
-  {
-   "id": "riva:rivarentals.nl/object/laan-op-zuid-rotterdam-h178262241",
-   "bron": "riva",
-   "bronNaam": "Riva Rentals",
-   "adres": "Laan op Zuid",
-   "plaats": "Rotterdam",
-   "wijk": "",
-   "postcode": "",
-   "prijs": 2150,
-   "slaapkamers": 2,
-   "kamers": 0,
-   "m2": 92,
-   "type": "",
-   "url": "https://rivarentals.nl/object/laan-op-zuid-rotterdam-h178262241/",
-   "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/1648c45a.jpg?width=600",
-   "lat": 51.904353,
-   "lng": 4.502565,
    "eersteGezien": "2026-11-20T11:18:25.546Z"
   },
   {
@@ -2077,25 +2077,6 @@
    "foto": "https://rdammakelaars.nl/wp-content/uploads/2024/05/IMG_2453-488x326.jpeg",
    "lat": 51.8876735,
    "lng": 4.4856388,
-   "eersteGezien": "2026-11-20T10:49:25.546Z"
-  },
-  {
-   "id": "riva:rivarentals.nl/object/boompjes-rotterdam-h178262113",
-   "bron": "riva",
-   "bronNaam": "Riva Rentals",
-   "adres": "Boompjes",
-   "plaats": "Rotterdam",
-   "wijk": "",
-   "postcode": "",
-   "prijs": 2895,
-   "slaapkamers": 2,
-   "kamers": 0,
-   "m2": 79,
-   "type": "",
-   "url": "https://rivarentals.nl/object/boompjes-rotterdam-h178262113/",
-   "foto": "https://pararius-office-prod.global.ssl.fastly.net/17826/files/photos/export/a06ed2f5e9de9d85649f8aefe72edfd5?width=600",
-   "lat": 51.915402,
-   "lng": 4.48871,
    "eersteGezien": "2026-11-20T10:49:25.546Z"
   },
   {
@@ -3171,6 +3152,10 @@
   "'s-gravelandseweg 673|3119xt|schiedam": {
    "lat": 51.920827,
    "lng": 4.402722
+  },
+  "delflandplein 350|2624gd|delft": {
+   "lat": 51.996632,
+   "lng": 4.353812
   }
  }
 }
