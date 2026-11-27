@@ -1,48 +1,48 @@
 {
- "bijgewerkt": "2026-11-27T02:58:29.257Z",
- "laatsteVolledig": "2026-11-27T02:58:29.257Z",
+ "bijgewerkt": "2026-11-27T11:46:32.035Z",
+ "laatsteVolledig": "2026-11-27T11:46:32.035Z",
  "bronnen": {
   "rdam": {
    "naam": "Rdam Makelaars",
    "ok": true,
    "aantal": 68,
-   "tijd": "2026-11-27T02:58:29.257Z"
+   "tijd": "2026-11-27T11:46:32.035Z"
   },
   "riva": {
    "naam": "Riva Rentals",
    "ok": true,
    "aantal": 55,
-   "tijd": "2026-11-27T02:58:29.257Z"
+   "tijd": "2026-11-27T11:46:32.035Z"
   },
   "voorberg": {
    "naam": "Voorberg",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-27T02:58:29.257Z"
+   "tijd": "2026-11-27T11:46:32.035Z"
   },
   "fonzt": {
    "naam": "FONZT",
    "ok": true,
    "aantal": 0,
-   "tijd": "2026-11-27T02:58:29.257Z"
+   "tijd": "2026-11-27T11:46:32.035Z"
   },
   "atta": {
    "naam": "Atta Makelaars",
    "ok": true,
    "aantal": 1,
-   "tijd": "2026-11-27T02:58:29.257Z"
+   "tijd": "2026-11-27T11:46:32.035Z"
   },
   "ikwilhuren": {
    "naam": "Ik wil huren",
    "ok": true,
-   "aantal": 8,
-   "tijd": "2026-11-27T02:58:29.257Z"
+   "aantal": 1,
+   "tijd": "2026-11-27T11:46:32.035Z"
   },
   "woonzeker": {
    "naam": "Woonzeker",
    "ok": true,
-   "aantal": 20,
-   "tijd": "2026-11-27T02:58:29.257Z"
+   "aantal": 19,
+   "tijd": "2026-11-27T11:46:32.035Z"
   }
  },
  "woningen": [
@@ -74,7 +74,7 @@
    "wijk": "",
    "postcode": "",
    "prijs": 2500,
-   "slaapkamers": 3,
+   "slaapkamers": 2,
    "kamers": 0,
    "m2": 91,
    "type": "",
@@ -169,7 +169,7 @@
    "wijk": "",
    "postcode": "",
    "prijs": 3526,
-   "slaapkamers": 1,
+   "slaapkamers": 4,
    "kamers": 0,
    "m2": 180,
    "type": "",
@@ -1111,6 +1111,25 @@
    "eersteGezien": "2026-11-27T02:58:29.257Z"
   },
   {
+   "id": "ikwilhuren:ikwilhuren.nu/object/den-haag-2512bl-1-f1-paviljoensgracht-c1741f44210b71e44a257eaa31325ea8",
+   "bron": "ikwilhuren",
+   "bronNaam": "Ik wil huren",
+   "adres": "Paviljoensgracht 1 F1",
+   "plaats": "Den Haag",
+   "wijk": "",
+   "postcode": "2512BL",
+   "prijs": 1094,
+   "slaapkamers": 1,
+   "kamers": 0,
+   "m2": 48,
+   "type": "Appartement",
+   "url": "https://ikwilhuren.nu/object/den-haag-2512bl-1-f1-paviljoensgracht-c1741f44210b71e44a257eaa31325ea8/",
+   "foto": "https://d.static.nbo.nl/media/b6/b6d42f0543ae9cfef52695b282ac9aac/768x510/thumb.jpg",
+   "lat": 52.074423,
+   "lng": 4.310788,
+   "eersteGezien": "2026-11-26T23:09:28.463Z"
+  },
+  {
    "id": "woonzeker:woonzeker.com/huur/woningen/paul-krugerlaan-19-b",
    "bron": "woonzeker",
    "bronNaam": "Woonzeker",
@@ -1168,63 +1187,6 @@
    "eersteGezien": "2026-11-26T16:04:06.000000Z"
   },
   {
-   "id": "ikwilhuren:ikwilhuren.nu/object/delft-2624gd-350-delflandplein-1dab355a65fcacc1ca390c30a5641144",
-   "bron": "ikwilhuren",
-   "bronNaam": "Ik wil huren",
-   "adres": "Delflandplein 350",
-   "plaats": "Delft",
-   "wijk": "",
-   "postcode": "2624GD",
-   "prijs": 1002,
-   "slaapkamers": 0,
-   "kamers": 0,
-   "m2": 42,
-   "type": "Appartement",
-   "url": "https://ikwilhuren.nu/object/delft-2624gd-350-delflandplein-1dab355a65fcacc1ca390c30a5641144/",
-   "foto": "https://b.static.nbo.nl/media/d5/d55f64243c9e8141fa14cc257f949040/768x510/thumb.jpg",
-   "lat": 51.996632,
-   "lng": 4.353812,
-   "eersteGezien": "2026-11-25T23:58:19.856Z"
-  },
-  {
-   "id": "ikwilhuren:ikwilhuren.nu/object/schiedam-3119xt-677-s-gravelandseweg-45c8c3163e0090d8536a0f365f78bdbd",
-   "bron": "ikwilhuren",
-   "bronNaam": "Ik wil huren",
-   "adres": "'s-gravelandseweg 677",
-   "plaats": "Schiedam",
-   "wijk": "",
-   "postcode": "3119XT",
-   "prijs": 1340,
-   "slaapkamers": 1,
-   "kamers": 0,
-   "m2": 62,
-   "type": "Appartement",
-   "url": "https://ikwilhuren.nu/object/schiedam-3119xt-677-s-gravelandseweg-45c8c3163e0090d8536a0f365f78bdbd/",
-   "foto": "https://c.static.nbo.nl/media/0a/0adb70bd989fb2d018316534ec889961/768x510/thumb.jpg",
-   "lat": 51.920827,
-   "lng": 4.402722,
-   "eersteGezien": "2026-11-25T23:38:51.873Z"
-  },
-  {
-   "id": "ikwilhuren:ikwilhuren.nu/object/rotterdam-3071az-390-louis-pregerkade-b1a891f564dbea6d4464cd798557b0cc",
-   "bron": "ikwilhuren",
-   "bronNaam": "Ik wil huren",
-   "adres": "Louis Pregerkade 390",
-   "plaats": "Rotterdam",
-   "wijk": "",
-   "postcode": "3071AZ",
-   "prijs": 1434,
-   "slaapkamers": 2,
-   "kamers": 0,
-   "m2": 82,
-   "type": "Appartement",
-   "url": "https://ikwilhuren.nu/object/rotterdam-3071az-390-louis-pregerkade-b1a891f564dbea6d4464cd798557b0cc/",
-   "foto": "https://b.static.nbo.nl/media/fa/fac11994bf5d5691956d550f56bbebcc/768x510/thumb.jpg",
-   "lat": 51.908665,
-   "lng": 4.499036,
-   "eersteGezien": "2026-11-25T23:38:51.873Z"
-  },
-  {
    "id": "woonzeker:woonzeker.com/huur/woningen/laan-van-eik-en-duinen-248-b",
    "bron": "woonzeker",
    "bronNaam": "Woonzeker",
@@ -1242,101 +1204,6 @@
    "lat": 52.072918,
    "lng": 4.2621035,
    "eersteGezien": "2026-11-25T10:05:28.000000Z"
-  },
-  {
-   "id": "ikwilhuren:ikwilhuren.nu/object/rotterdam-3065jk-137-mia-van-ijperenplein-78531c5350856f3bbccb7cd08a84367b",
-   "bron": "ikwilhuren",
-   "bronNaam": "Ik wil huren",
-   "adres": "Mia Van Ijperenplein 137",
-   "plaats": "Rotterdam",
-   "wijk": "",
-   "postcode": "3065JK",
-   "prijs": 1524,
-   "slaapkamers": 1,
-   "kamers": 0,
-   "m2": 99,
-   "type": "Appartement",
-   "url": "https://ikwilhuren.nu/object/rotterdam-3065jk-137-mia-van-ijperenplein-78531c5350856f3bbccb7cd08a84367b/",
-   "foto": "https://d.static.nbo.nl/media/cd/cd8108b44fbb886127780e7f9440b0d7/768x510/thumb.jpg",
-   "lat": 51.92851,
-   "lng": 4.546724,
-   "eersteGezien": "2026-11-24T23:14:32.573Z"
-  },
-  {
-   "id": "ikwilhuren:ikwilhuren.nu/object/rotterdam-3011xl-13-t-jufferstraat-1999ceba49d48c55ad7dcc2eb65e777f",
-   "bron": "ikwilhuren",
-   "bronNaam": "Ik wil huren",
-   "adres": "Jufferstraat 13 T",
-   "plaats": "Rotterdam",
-   "wijk": "",
-   "postcode": "3011XL",
-   "prijs": 1524,
-   "slaapkamers": 1,
-   "kamers": 0,
-   "m2": 62,
-   "type": "Appartement",
-   "url": "https://ikwilhuren.nu/object/rotterdam-3011xl-13-t-jufferstraat-1999ceba49d48c55ad7dcc2eb65e777f/",
-   "foto": "https://b.static.nbo.nl/media/89/8963bd05cb6e43e1c6d1bba1ef4742b1/768x510/thumb.jpg",
-   "lat": 51.916605,
-   "lng": 4.486515,
-   "eersteGezien": "2026-11-24T23:14:32.573Z"
-  },
-  {
-   "id": "ikwilhuren:ikwilhuren.nu/object/schiedam-3119xt-1021-s-gravelandseweg-838d7df86d7beb3bd93a54233f1a1870",
-   "bron": "ikwilhuren",
-   "bronNaam": "Ik wil huren",
-   "adres": "'s-gravelandseweg 1021",
-   "plaats": "Schiedam",
-   "wijk": "",
-   "postcode": "3119XT",
-   "prijs": 1214,
-   "slaapkamers": 1,
-   "kamers": 0,
-   "m2": 60,
-   "type": "Appartement",
-   "url": "https://ikwilhuren.nu/object/schiedam-3119xt-1021-s-gravelandseweg-838d7df86d7beb3bd93a54233f1a1870/",
-   "foto": "https://b.static.nbo.nl/media/ee/ee308159479b1d2805947abb0420d08f/768x510/thumb.jpg",
-   "lat": 51.920276,
-   "lng": 4.402571,
-   "eersteGezien": "2026-11-24T23:04:17.331Z"
-  },
-  {
-   "id": "ikwilhuren:ikwilhuren.nu/object/den-haag-2516ck-2-maanplein-9ee4dd162df993fd330b11fe68ddaa55",
-   "bron": "ikwilhuren",
-   "bronNaam": "Ik wil huren",
-   "adres": "Maanplein 2",
-   "plaats": "Den Haag",
-   "wijk": "",
-   "postcode": "2516CK",
-   "prijs": 1531,
-   "slaapkamers": 2,
-   "kamers": 0,
-   "m2": 85,
-   "type": "Appartement",
-   "url": "https://ikwilhuren.nu/object/den-haag-2516ck-2-maanplein-9ee4dd162df993fd330b11fe68ddaa55/",
-   "foto": "https://b.static.nbo.nl/media/2f/2ff7b2d9bddd69244883a7ec16335ef8/768x510/thumb.jpg",
-   "lat": 52.06726,
-   "lng": 4.351535,
-   "eersteGezien": "2026-11-24T23:04:17.331Z"
-  },
-  {
-   "id": "ikwilhuren:ikwilhuren.nu/object/schiedam-3119xt-673-s-gravelandseweg-199c29635a8fa38a0d0d45a0b465c51e",
-   "bron": "ikwilhuren",
-   "bronNaam": "Ik wil huren",
-   "adres": "'s-gravelandseweg 673",
-   "plaats": "Schiedam",
-   "wijk": "",
-   "postcode": "3119XT",
-   "prijs": 1290,
-   "slaapkamers": 1,
-   "kamers": 0,
-   "m2": 60,
-   "type": "Appartement",
-   "url": "https://ikwilhuren.nu/object/schiedam-3119xt-673-s-gravelandseweg-199c29635a8fa38a0d0d45a0b465c51e/",
-   "foto": "https://b.static.nbo.nl/media/ee/ee308159479b1d2805947abb0420d08f/768x510/thumb.jpg",
-   "lat": 51.920827,
-   "lng": 4.402722,
-   "eersteGezien": "2026-11-24T23:04:16.059Z"
   },
   {
    "id": "woonzeker:woonzeker.com/huur/woningen/zuidhoek-314",
@@ -2933,25 +2800,6 @@
    "lat": 52.073488,
    "lng": 4.3506207,
    "eersteGezien": "2026-10-07T16:05:15.000000Z"
-  },
-  {
-   "id": "woonzeker:woonzeker.com/huur/woningen/oudemansstraat-341",
-   "bron": "woonzeker",
-   "bronNaam": "Woonzeker",
-   "adres": "Oudemansstraat 341",
-   "plaats": "'s-Gravenhage",
-   "wijk": "",
-   "postcode": "2522 SX",
-   "prijs": 1501,
-   "slaapkamers": 3,
-   "kamers": 0,
-   "m2": 73,
-   "type": "",
-   "url": "https://woonzeker.com/huur/woningen/oudemansstraat-341",
-   "foto": "https://cdn.realmark.cloud/marketsuite/media/projects/1038/publicPhotos/6a3461b7-0fa4-4cee-993f-c83ad489e3e8/f6f73760-ee19-4d1d-86e0-cabff08d414e.webp",
-   "lat": 52.0596158,
-   "lng": 4.3281714,
-   "eersteGezien": "2026-09-28T14:06:16.000000Z"
   }
  ],
  "teMelden": [],
@@ -3263,6 +3111,10 @@
   "breitnerstraat||rotterdam": {
    "lat": 51.914822,
    "lng": 4.467515
+  },
+  "paviljoensgracht 1 f1|2512bl|den haag": {
+   "lat": 52.074423,
+   "lng": 4.310788
   }
  }
 }
